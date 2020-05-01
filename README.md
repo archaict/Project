@@ -20,7 +20,6 @@
     x Windows (Putty)
     x MacOS (iterm)
     x Android IOS - Termius
-    x 
 
       // IoT
       --------------
