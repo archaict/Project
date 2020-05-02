@@ -1,13 +1,13 @@
 # Presentation Mode (X_X)
 
 * [Raspberry Pi](#1raspberry-pi)                  
-* [2.  CODING](#2--coding)
-* [3.  TERMINAL](#3--terminal)
-* [4.  Operating System](#4--operating-system)
-* [5.  Artificial Intel](#5--artificial-intel)
-* [6.  LINUX](#6--linux)
-* [7.  Security](#7--security)
-* [8.  What else?](#8--what-else)
+* [Coding](#2coding)
+* [Terminal](#3terminal)
+* [Operating System](#4operating-system)
+* [Artificial Intel](#5artificial-intel)
+* [LINUX](#6linux)
+* [Security](#7security)
+* [What else?](#8what-else)
 
 ## 1.Raspberry Pi
 
