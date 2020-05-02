@@ -1,8 +1,8 @@
 # Presentation Mode (X_X)
 
 # Table of Contents
-* [Headers](#headers)  
-* [Emphasis](#emphasis)  
+1. [Raspberry Pi](#headers)  
+2. [Emphasis](#emphasis)  
 
 
 
