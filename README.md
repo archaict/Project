@@ -1,11 +1,5 @@
 # Presentation Mode (X_X)
 
-## Table of Contents
-1. [Raspberry Pi](1.Raspberry-Pi)  
-2. [Coding](2.CODING)  
-
-
-
 ## 1.Raspberry Pi
 
    // **Mini pie for everyone!**
