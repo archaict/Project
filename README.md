@@ -6,7 +6,7 @@
 
 
 
-## 1.  Rasberry Pi (SBC)
+## 1.  Rasberry Pi (Raspberry Pi) [Raspberry Pi]
 
    // **Mini pie for everyone!**
 
