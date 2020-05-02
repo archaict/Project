@@ -1,6 +1,6 @@
 # Presentation Mode (X_X)
 
-* [1.  Raspberry Pi (SBC)](#1--raspberry-pi-sbc)                  
+* [https://github.com/archaict/ProjectU/blob/master/README.md#1raspberry-pi)](#1--raspberry-pi-sbc)                  
 * [2.  CODING](#2--coding)
 * [3.  TERMINAL](#3--terminal)
 * [4.  Operating System](#4--operating-system)
