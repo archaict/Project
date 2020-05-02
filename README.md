@@ -1,6 +1,6 @@
 # Presentation Mode (X_X)
 
-* [Raspberry Pi](#1-raspberry-pi)                  
+* [Raspberry Pi](#1raspberry-pi)                  
 * [2.  CODING](#2--coding)
 * [3.  TERMINAL](#3--terminal)
 * [4.  Operating System](#4--operating-system)
