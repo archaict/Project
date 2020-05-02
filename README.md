@@ -1,12 +1,12 @@
 # Presentation Mode (X_X)
 
-# Table of Contents
+## Table of Contents
 1. [Raspberry Pi](1.Raspberry-Pi)  
 2. [Coding](2.CODING)  
 
 
 
-## 1.  Raspberry Pi
+## 1.Raspberry Pi
 
    // **Mini pie for everyone!**
 
@@ -50,7 +50,7 @@
     x Raspi Laptop Mode -> Use your old Laptop as Raspi Monitor
     x Smart Mirror and Many more!
 
-## 2.  CODING
+## 2.CODING
 
    // **No starting point, nowhere to go, choose your own path.**
 
@@ -73,7 +73,7 @@
       --------------
     x Vim, Emacs
 
-## 3.  TERMINAL
+## 3.TERMINAL
 
    // **Don't be traumatized by green on black.**
 
@@ -100,7 +100,7 @@
       --------------
       Android Terminal for everyone
 
-## 4.  Operating System
+## 4.Operating System
 
    // **No one shall pass; this little thing.**
 
@@ -115,7 +115,7 @@
     x Backup on fresh Install
     x Timeshift ; System Restore ; Time Machine
 
-## 5.  Artificial Intel
+## 5.Artificial Intel
 
    // **Who am I?**
 
@@ -142,7 +142,7 @@
       --------------
     x dataset.research.google.com
 
-## 6.  LINUX
+## 6.LINUX
 
    // **Why the hard stuff?**
 
@@ -177,7 +177,7 @@
     x Docker based on the same kernel
     x Virt-manager / Virtualbox
 
-## 7.  Security
+## 7.Security
 
    // **Secured?**
 
@@ -190,7 +190,7 @@
     x OPEN PORT - 22 SSH , 80 HTTP , nmap
     x Source - tryhackme , hack the box
 
-## 8.  What else?
+## 8.What else?
 
    // **Bonus Round?**
 
