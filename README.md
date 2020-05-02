@@ -2,7 +2,7 @@
 
 ## 1.Raspberry Pi
 
-   // **Mini pie for everyone!**
+   // ***Mini pie for everyone!***
 
       // Raspi
       --------------
@@ -46,7 +46,7 @@
 
 ## 2.CODING
 
-   // **No starting point, nowhere to go, choose your own path.**
+   // ***No starting point, nowhere to go, choose your own path.***
 
       // Source
       --------------
@@ -69,7 +69,7 @@
 
 ## 3.TERMINAL
 
-   // **Don't be traumatized by green on black.**
+   // ***Don't be traumatized by green on black.***
 
       // PacMan!
       --------------
@@ -96,7 +96,7 @@
 
 ## 4.Operating System
 
-   // **No one shall pass; this little thing.**
+   // ***No one shall pass; this little thing.***
 
       // Most System
       --------------
@@ -111,7 +111,7 @@
 
 ## 5.Artificial Intel
 
-   // **Who am I?**
+   // ***Who am I?***
 
       // Platforms
       --------------
@@ -138,7 +138,7 @@
 
 ## 6.LINUX
 
-   // **Why the hard stuff?**
+   // ***Why the hard stuff?***
 
       // Distro
       --------------
@@ -173,7 +173,7 @@
 
 ## 7.Security
 
-   // **Secured?**
+   // ***Secured?***
 
       // Privacy
       --------------
@@ -186,7 +186,7 @@
 
 ## 8.What else?
 
-   // **Bonus Round?**
+   // ***Bonus Round?***
 
       // Thesis?
       --------------
