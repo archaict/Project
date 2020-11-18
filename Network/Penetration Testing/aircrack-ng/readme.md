@@ -108,7 +108,7 @@ been indicated on the wordlist.txt, in this file, I'll be using
 `common-wordlist.txt` as wordlist file.
 
 ````
-$ sudo aircrack-ng pwnd-02.cap -w common-wordlist.txt 
+$ sudo aircrack-ng pwnd-01.cap -w common-wordlist.txt 
 ````
 
 as you can see on the results below, aircrack-ng says `KEY NOT FOUND`
