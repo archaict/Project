@@ -54,8 +54,11 @@ cracking with aircrack-ng.
 ### [airodump-ng]
 
 By using airodump-ng, we can see essid around us that can be
-pawned. What we need in this session is
-[WPA handshake: MA:C0:AD:DR:ES:S0], this will indicate that 
+pawned. What we need in this session is:
+
+`[WPA handshake: MA:C0:AD:DR:ES:S0]`
+
+this will indicate that 
 the wpa handshake is understood. It'll show when we do the 
 next step. `--write pwnd` command will specify the results
 into `pwnd` file, you can change this with your own file
