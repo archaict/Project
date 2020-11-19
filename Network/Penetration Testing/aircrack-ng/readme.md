@@ -44,19 +44,22 @@ $ sudo airodump-ng wlp1s0mon
 
 ### [airodump-ng and aireplay-ng]
 
-To get four way handshake, we need this two services to run together.
-The tools will then connect each other to indicate the handshake has
-been made or not. Fail to do this or quickly stopping the scan will
-then lead to failure to do the handshake that we need. It'll also
-generate .cap file that we can use to do password cracking with
-aircrack-ng.
+To get four way handshake, we need **`airodump-ng`** and
+**`aireplay-ng`** to run together. The tools will then connect each other to indicate the handshake has been
+made or not. Fail to do this or quickly stopping the scan 
+will then lead to failure to do the handshake that we need. 
+It'll also generate .cap file that we can use to do password 
+cracking with aircrack-ng.
  
 ### [airodump-ng]
 
-By using airodump-ng, we can see essid around us that can be pawned.
-What we need in this session is [WPA handshake: D0:37:45:AB:CC:D3],
-this will indicate that the wpa handshake is understood. It'll show
-when we do the next step. `pwnd` will be the name of the file for 
+By using airodump-ng, we can see essid around us that can be
+pawned. What we need in this session is
+[WPA handshake: MA:C0:AD:DR:ES:S0], this will indicate that 
+the wpa handshake is understood. It'll show when we do the 
+next step. `--write pwnd` command will specify the results
+into `pwnd` file, you can change this with your own file
+output.
 
 
 ````
@@ -64,7 +67,7 @@ $ sudo airodump-ng -c 4 --bssid MA:C0:AD:DR:ES:S0 --write pwnd wlp1s0mon
 ````
 
 ````
- CH  1 ][ Elapsed: 1 min ][ yyyy-mm-dd hh:mm ][ WPA handshake: MA:C0:AD:DR:ES:S0
+ CH  4 ][ Elapsed: 1 min ][ yyyy-mm-dd hh:mm ][ WPA handshake: MA:C0:AD:DR:ES:S0
  
  BSSID              PWR RXQ  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
 
