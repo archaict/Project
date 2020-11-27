@@ -1,0 +1,36 @@
+---
+title: "Assignment Title"
+author: "John Doe"
+
+mainfont: PragmataPro
+sansfont: LiberationSans
+monofont: LiberationMono
+output:
+  pdf_document:
+    latex_engine: xelatex
+font-family: Times New Roman
+---
+
+# Header 1
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis quis ex at dignissim. Nullam ut sapien rutrum, vestibulum libero eget, ornare mauris. Sed sodales nisl vel efficitur egestas. Nulla tempor id enim et commodo. Sed eget pulvinar mi, auctor viverra metus. Proin vestibulum, dui eget interdum posuere, mi dolor vulputate tellus, ut venenatis turpis dui quis sem. Fusce imperdiet nulla at nulla faucibus, non vehicula massa mattis. Aliquam blandit elit neque, eu volutpat metus dapibus nec. Donec sed facilisis odio, eget dapibus nulla.
+
+## Header 2
+
+Fusce erat neque, laoreet eu molestie eget, gravida vitae nisl. Nulla ac massa facilisis, rutrum elit rhoncus, interdum justo. Proin pharetra tincidunt tincidunt. Proin felis nunc, faucibus quis rhoncus nec, porttitor et lacus. Nulla porta eros elementum felis molestie posuere. Duis finibus velit blandit, tempus tortor ut, lacinia erat. Sed porttitor laoreet ex, at ultrices risus aliquam id. In hac habitasse platea dictumst. Nunc at dapibus lectus. Integer imperdiet semper varius.
+
+Quisque tempus magna eu dignissim malesuada. Sed lacus felis, malesuada sed neque quis, commodo commodo ligula. Etiam sit amet dictum lacus. Morbi mattis id felis et dapibus. Etiam iaculis mollis dui. Maecenas metus justo, viverra semper convallis vitae, sodales at elit. Aliquam sed ultrices ipsum, in tempus sapien. Pellentesque dignissim non nulla et placerat. Aenean non convallis ante. Aliquam erat volutpat. Vivamus vel eros urna.
+
+
+## Header 2
+
+In dui tellus, ultrices et dictum sit amet, pulvinar sit amet nisi. Praesent lobortis tortor blandit sem euismod, in elementum nisl mattis. Pellentesque vehicula erat et dictum varius. Phasellus suscipit tortor in mauris sodales malesuada. Nam iaculis nulla non dui ultrices faucibus. Fusce eget pretium lorem. Vestibulum sollicitudin, sapien in posuere faucibus, lacus mi faucibus quam, eget luctus sem tellus vitae lacus. Nulla pulvinar nisl eu eros ultrices feugiat. Aliquam non ultricies massa.
+
+Nunc eget diam ac metus dignissim posuere. Etiam euismod purus eu tortor ornare varius. Phasellus tempus pretium enim id posuere. Nam vel ipsum blandit, bibendum erat ac, blandit velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi malesuada pulvinar pretium. Donec consectetur euismod quam at pulvinar. Morbi nisl justo, lobortis id rhoncus et, venenatis vel turpis. Curabitur interdum, est semper posuere laoreet, nulla mi hendrerit ligula, at semper nunc leo vel arcu. Nulla laoreet gravida arcu. Nunc turpis nisl, euismod ac erat egestas, sodales malesuada ante. Praesent urna ipsum, bibendum rhoncus neque eu, mattis scelerisque tellus. 
+
+
+
+
+
+
+
