@@ -1,4 +1,4 @@
-# Basics
+# Basics [ON PROGRESS]
 
 In here I'll introduce basics about networking in general.
 
