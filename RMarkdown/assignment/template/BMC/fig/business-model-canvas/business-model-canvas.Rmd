@@ -154,29 +154,3 @@ p{
 </table>
 <br>
 Inspired by : https://www.researchgate.net/publication/333754705_BUSINESS_MODEL_FORMULATION_FOR_E-NEWSPAPER_IN_INDONESIA_CASE_STUDY_PIKIRAN_RAKYAT
-
-
-
-# Business Model
-
-- **Digitization**
-  By digitazing news, it's easier for people to access actual and factual based news.
-![Digitization](fig/digi.png){width=20%}
-
-
-- **Hidden Revenue**
-  Advertisement (High-end, not low end), or minimum amount of non-intrusive ads will help income from sponsored articles.
-![Hidden Revenue](fig/hidden-revenue.png)
-
-- **Leverage Customer Data**
-  Data gathered anonymously for demographic and light targeted ads, hence advertisement will be build as non-intrusive as possible.
-![Leverage Customer Data](fig/cust-data.png)
-
-- **Subscription**
-  Regular fee by subscription will help audience to get vip contents like tutorial or user-made contents.
-![Subscription](fig/subs.png)
-
-- **Open Business Model**
-  Collaboration with collaborators will help ensure a good amount of content produced, this will help with traffics.
-![Open Business Model](fig/obm.png)
-
