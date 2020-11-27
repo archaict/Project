@@ -6,15 +6,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis condimentum justo 
 
 
 ![Lorem Ipsum](fig/lorem-ale.jpg)
-
-[^1]: Source: https://www.lipsum.com/
-
+```
+Source: https://www.lipsum.com/
+Photos: https://picsum.photos/
+```
 
 ## 2. Duis
 
 Ut accumsan sodales porta. Cras in augue lacus. Donec quis velit in magna cursus euismod semper in magna. Pellentesque at nisl eget magna dapibus ullamcorper vel tempus nisi. In interdum erat pretium arcu eleifend mattis. Suspendisse suscipit ligula odio, in vulputate nibh sagittis vel. Aliquam malesuada laoreet ante in rhoncus. Aenean libero elit, egestas in tincidunt euismod, facilisis eu odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut sagittis lorem a elit rhoncus interdum quis id eros. Nam dapibus finibus ligula id malesuada. Etiam magna ligula, ultricies rutrum nisl non, pulvinar sodales mi. Vestibulum eu blandit odio.
 
-&nbsp;
 
 ![Quisque Maximus](fig/lorem-rachel.jpg)
 
