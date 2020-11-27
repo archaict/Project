@@ -193,6 +193,7 @@ hacking, this will be your core principle to do *Red or Blue Teaming*
 once you understand this 5 phases.
 
 ![Penetration Testing Phases](fig/pen-testing.jpg)
+https://www.imperva.com/learn/wp-content/uploads/sites/13/2019/01/pen-testing.jpg
 
 To start, it's easier to use distro that is tailored specifically for 
 Offensive Security & Defensive security. Distros that are specifically
