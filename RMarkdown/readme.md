@@ -50,22 +50,20 @@ df = pd.DataFrame({'Lorem': [2, 4, 8, 0],
                    'Quote': [10, 2, 1, 8]},
                    index=['Foundation', 'Sixty', 'Four', 'anomaly'])
 
+
 df.head()
 ```
 
 
 ## 4. Sed
 
-\libera
 Maecenas pulvinar lobortis urna vel tempor. Maecenas fermentum venenatis malesuada. Maecenas aliquam ornare sagittis. Phasellus nisi massa, sodales sed elit eu, semper luctus ex.
 
 > *Maecenas pellentesque pulvinar nisl id sagittis. Donec ullamcorper erat eu tortor fermentum maximus. Vivamus faucibus pulvinar sapien, et venenatis lorem mattis placerat. Fusce in dapibus lorem. Ut pulvinar felis at tellus tempor, cursus faucibus leo venenatis. Nulla eu quam nec mauris posuere semper. Phasellus dignissim vehicula turpis.*
 
-\pragmata
 
 
 ## 5. Suspendisse
 
-\libera
 Morbi at sagittis enim. Nunc efficitur, quam eu lacinia tincidunt, leo enim maximus erat, at elementum sapien justo nec lorem. Donec eu efficitur libero. Pellentesque sagittis dictum sem. Nullam malesuada dolor ipsum, quis eleifend nibh tempor vitae. Sed ac felis id tortor malesuada condimentum. Aliquam gravida nibh nec orci vehicula facilisis. Integer ipsum augue, facilisis id bibendum non, pulvinar quis ex. 
 
