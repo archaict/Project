@@ -11,7 +11,7 @@ Table of Contents
     * [Root [#]](#root-)
     * [User [$]](#user-)
   * [File System](#file-system)
-    * [Filesystem Hierarcy Standard [FHS]](#filesystem-hierarcy-standard-fhs)
+    * [Filesystem Hierarcy Standard](#filesystem-hierarcy-standard)
     * [Home Directory [~]](#home-directory-)
   * [Command-Line Interface [CLI]](#command-line-interface-cli)
     * [Shell](#shell)
@@ -20,9 +20,6 @@ Table of Contents
 * [Networking](#networking)
   * [Internet](#internet)
     * [IP Address](#ip-address)
-    * [lo](#lo)
-    * [eth0 [wired]](#eth0-wired)
-    * [wlan0 [wireless]](#wlan0-wireless)
     * [DNS](#dns)
     * [Router & Hub](#router--hub)
     * [Protocols](#protocols)
@@ -36,7 +33,7 @@ Table of Contents
       * [Exploitation](#exploitation)
       * [Post-Exploitation](#post-exploitation)
       * [Writing Reports](#writing-reports)
-    * [Distribution [Distros]](#distribution-distros)
+    * [Distribution](#distribution)
     * [Tools](#tools)
       * [WiFi Cracking](#wifi-cracking)
 
@@ -75,7 +72,7 @@ group user.
 
 ### File System
 
-#### Filesystem Hierarcy Standard [FHS]
+#### Filesystem Hierarcy Standard
 
 Filesystem Hierarcy Standard [FHS] is maintained by Linux Foundation.
 
@@ -222,10 +219,6 @@ be tailored for specified category in mind, like gaming, studio, and so on.
 | RedHat        | Servers                        |
 | Ubuntu Studio | Studio                         |
 | Kali Linux    | Network & Hacking              |
-|               |                                |
-|               |                                |
-|               |                                |
-|               |                                |
 
 Desktop Enviornment or Desktop interfaces is the graphical interface that
 you'll be interacting with.
@@ -305,21 +298,24 @@ wlan: flags=##<UP,BROADCAST,RUNNING,MULTICAST>  mtu ######
         
 ```
 
-#### lo
+**lo**
+
 Lo stands for localhost, here you'll see your localhost IP, it'll always be
 `127.0.0.1` it's used as a loopback address, if you want to open software
 that are using port 8888 to open a Jupyter Notebook, you'll then type
 `localhost:8888` it'll then resolve to '127.0.0.1:8888', but you won't see
 `127.0.0.0.1` in your browser, if you type localhost because of DNS resolver.
 
-#### eth0 [wired]
+**eth0 [wired]**
+
 This is your ethernet connection, if you're not having eth0 in your `ifconfig`
 results, then it means your device doesn't have eth0 installed, it's the case
 for newer laptops that're ditching ethernet for a slimmer device. To use eth,
 in this case you might want to buy a separate ethernet adapter dongle so you
 can connect with ethernet wired connection.
 
-#### wlan0 [wireless]
+**wlan0 [wireless]**
+
 It is strange that if your laptop, smartphone, or any device post-2010 that
 doesn't have wlan0. This can be found in any devices that you might have
 right now, though in some cases you might not found this if you're using
@@ -328,7 +324,6 @@ buying a wireless adapter, but if you're in cyber security or any environment
 that might need a second wireless card, you might want to buy one that have
 monitoring support that comes with it, most Alfa wireless adapter comes with
 this already configured out-of-the-box.
-
 
 
 | Device             | IP Adress       |
@@ -374,12 +369,18 @@ IP Addresses pool to be used again with another computer.
 
 ##### TCP/IP
 
-[Transmission Control Protocol] This internet protocol is often used in http or https, it is known to be reliable and precise in its execution. 
+***Transmission Control Protocol*** // this internet protocol is often used in http or https, it is known to be reliable and precise in its execution. 
+TCP use sequence when it sends a packet, it'll reduce congestion in the
+traffic and easier for receiver to understand the packet it receive.
+
 
 ##### UDP
 
-[User Datagram Protocol] Often used in DNS because it's faster in its
-execution
+***User Datagram Protocol*** // often used in DNS because it's faster in its
+execution, but it's not as reliable as TCP, it's because there is no
+sequencial packet sending. UDP relies on its speed to send packets, without
+using any sequence, so the packet that the reciever get, might be hard to
+understood, not by human language, but *their* language.
 
 
 
@@ -387,14 +388,81 @@ execution
 
 
 | OSI Layer    | Analogy               | What they do? [analogy]             |
-| ------------ | --------------------- | ----------------------------------- | 
+| ------------ | --------------------- | ----------------------------------- |
 | Application  | Letter (Browser)      | Letter or Package you want to send? |
 | Presentation | Packaging (Filetypes) | Packaged in Envelope or Box ?       |
-| Session      | Address               | Local or International address?     |
-| Transport    | Stamp (Port 443/80)   | How many stamps needed?             |
+| Session      | Address Checking      | Local or International address?     |
+| Transport    | Stamp                 | Which stamps are you using?         |
 | Network      | Post Office (TCP/UDP) | Post office, post box?              |
 | Datalink     | Transportation        | Transported by truck, plane, boat?  |
-| Physical     | Delivery              | Where this package delivered to?    |
+| Physical     | Delivery              | Who will deliver the letter?        |
+
+
+**Analogy Example**
+
+You want to send a letter to a friend in another country. You specify that 
+what you're going to use is `letter`. After you choose what kind of package
+you want to send, then what will it be covered in? You choose that it's best
+to just use `envelope` to send it, since it'll be just the letter. Then you
+write their `address` in the envelope. After you create your `letter`, put it
+inside the 'envelope' and write the `address`, then you put `stamps` in your 
+letter, but since you want to send it over with a courrier, they will put
+`your envelope inside their envelope` to indicate that envelope will be then
+delivered. To deliver this, the courrier will send it to the `Post Office` to
+then transport it with a `plane` since it's faster. This will then be 
+delivered to the nearby Post Office on the receivers end.
+
+On the reciever ends, once the `postman` put it in the nearest gateaway
+from the airport, it'll then transported by `truck` into the nearest `Post 
+Office`, by checking `stamps and envelope` that are given by the courrier,
+it is then sent to the `address` with the `mailer envelope` and the `letter`
+will reach it's destination.
+
+**Application**
+
+This layer is where you define what application are you using for viewing
+contents, your browser belongs here. `Letter` is analogy of the things that
+you want to send.
+
+**Presentation**
+
+This is where your file will be presented, your filetypes (.pdf, .docs, etc.)
+are resides in this layer. This is where your `envelope` comes in, because you
+choose to send it as a 'letter' with an `envelope`.
+
+**Session**
+
+This is where the you throw your address in and to insure that the receiver
+can recieve the letter or not. This is where statuses comes in, if the
+receiver status is down, then the intended message won't reach at all.
+
+**Transport**
+
+TCP and UDP resides here, to send packets, server will then determine, if
+you're using a browser to access https, to use TCP. The courrier will send
+the `envelope` to the `Post Office` but before that, he's encapsulating the
+enveloped letter with `another envelope` so it'll be safer. `Stamps` indicate
+`ports` that it'll be using, since you're accessing https, it'll be using port
+`443`.
+
+**Network**
+
+In here, you'll be seeing Source and Destination IPs, this is where your 
+'Post Office' comes in, you'll be seeing Source IP Address and its 
+Destination IP Address.
+
+
+**Datalink**
+
+What interface you're accessing this packet with, wlan0 or eth0 resides here.
+The `letter` is transported by `plane` from origin to receiver.
+
+**Physical**
+
+This is where the `postman` comes in, he'll then delivering it to the nearest
+gateaway in the airport. This is where you know how the `letter` will then be
+delivered. This also where the packet actually sent to the receiver, maybe
+from eth0 to eth0.
 
 
 ### Penetration Testing
@@ -571,7 +639,7 @@ reports. By doing this, not only you'll learn about the processes as a whole
 but reproducibility just in case they want to try it themselves.
 
 
-#### Distribution [Distros]
+#### Distribution
 
 To start, it's easier to use distro that is tailored specifically for 
 Offensive Security & Defensive security. Distros that are specifically
@@ -599,10 +667,17 @@ distros and use it, it's not advised but possible.
 
 ##### WiFi Cracking
 
-- aircrack-ng
-- fern wifi cracker
+This will be where you make choices to pawn your target wifi, this used in ***Reconnaissance Phase***. This way, if you're around the perimeter where
+you can use targets wifi, then use this tools.
+
+**CLI Tools :**
 - wifite
+- aircrack-ng [airmon-ng, airodump-ng, aireplay-ng]
+ 
+**GUI Tools :**
+- fern wifi cracker
 - kismet
+- wireshark (monitoring)
 
 
 
@@ -615,6 +690,6 @@ Source:
 - [NetworkChuck - OSI Layer](https://www.youtube.com/watch?v=3kfO61Mensg)
 - [Network Direction - OSI Layer](https://www.youtube.com/watch?v=y9PG-_ZNbWg)
 
-English is not primary language, since I wrote this for public use, I try
+English is not my primary language, since I wrote this for public use, I try
 to use English as much as I can. Sorry for any grammatical errors, happy
 Learning!
