@@ -2,24 +2,45 @@
 
 In here I'll introduce basics about networking in general.
 
-1. **GNU/Linux**
-  - Privilege 
-    - Root [#]
-    - User [$]
-  - File System
-    - Filesystem Hierarcy Standard [FHS]
-    - Home Directory [~]
-  - Command-Line Interface [CLI]
-    - Shell
-    - CLI Command Lists
-2. **Networking**
-  - Internet
-    - Protocols
-    - OSI Layer 
-  - Penetration Testing
-    - Phases
-    - Distribution [Distros]
-    - Tools
+
+<!-- vim-markdown-toc GFM -->
+
+* [GNU/Linux](#gnulinux)
+  * [Privilege](#privilege)
+    * [Root [#]](#root-)
+    * [User [$]](#user-)
+  * [File System](#file-system)
+    * [Filesystem Hierarcy Standard [FHS]](#filesystem-hierarcy-standard-fhs)
+    * [Home Directory [~]](#home-directory-)
+  * [Command-Line Interface [CLI]](#command-line-interface-cli)
+    * [Shell](#shell)
+    * [CLI Command Lists](#cli-command-lists)
+* [Distros or DE?](#distros-or-de)
+* [Networking](#networking)
+  * [Internet](#internet)
+    * [IP Address](#ip-address)
+    * [lo](#lo)
+    * [eth0 [wired]](#eth0-wired)
+    * [wlan0 [wireless]](#wlan0-wireless)
+    * [DNS](#dns)
+    * [Router & Hub](#router--hub)
+    * [Protocols](#protocols)
+      * [TCP/IP](#tcpip)
+      * [UDP](#udp)
+    * [OSI Layer](#osi-layer)
+  * [Penetration Testing](#penetration-testing)
+    * [Phases](#phases)
+      * [Reconnaissance](#reconnaissance)
+      * [Scanning and Enumeration](#scanning-and-enumeration)
+      * [Exploitation](#exploitation)
+      * [Post-Exploitation](#post-exploitation)
+      * [Writing Reports](#writing-reports)
+    * [Distribution [Distros]](#distribution-distros)
+    * [Tools](#tools)
+      * [WiFi Cracking](#wifi-cracking)
+
+<!-- vim-markdown-toc -->
+
 
 ## GNU/Linux
 
@@ -231,7 +252,38 @@ you'll be interacting with.
 
 #### IP Address
 
-In this day and age, 
+In this day and age, we have devices that always have a conversation over the
+network, internet connection that always on. For each devices, we have addresses
+associated with them, in this case, it'll be IP Address. There's two kind of IP
+Addresses associated with every device :
+
+- **Public IP Address**
+
+  Devices that are connected always have this kind of IP Address, it's what
+  Internet Service Providers [ISP] give to your devices. This IP can be used
+  by public if they know your Public IPs, so it's best to never show this IP
+  to anyone but yourself.
+  
+- **Local IP Address**
+
+  This IP is associated with your device if you're connected to the router,
+  your router will give you IP Addresses based on their own subnet, usually
+  this will be `192.168.1.0/24`. Typical IP for router will be like this.
+  
+| IP Address  | Device      |
+| :---------- | :---------- |
+| 192.168.1.1 | Router      |
+| 192.168.1.2 | Smartphone  |
+| 192.168.1.3 | Laptop      |
+| 192.168.1.4 | Desktop     |
+
+  This ip usually will be allocated based on who connected first to the router
+  network, and then any device after that will be listed under the connected
+  device. This setting can be configured in your device if you want to connect
+  to the same IP Address everytime you connect to the router, this approach 
+  use static IP instead of dynamic IP that are used by the router. For each 
+  config that you want to use, please refer to your router provider or 
+  company manual.
 
 ```
 ifconfig
@@ -253,7 +305,7 @@ wlan: flags=##<UP,BROADCAST,RUNNING,MULTICAST>  mtu ######
 ```
 
 #### lo
-Lo stands for localhost, here you'll see your localhost IP, it's always be
+Lo stands for localhost, here you'll see your localhost IP, it'll always be
 `127.0.0.1` it's used as a loopback address, if you want to open software
 that are using port 8888 to open a Jupyter Notebook, you'll then type
 `localhost:8888` it'll then resolve to '127.0.0.1:8888', but you won't see
@@ -285,16 +337,6 @@ this already configured out-of-the-box.
 
 #### DNS
 
-#### Router & Hub
-
->Hub is dumb, don't be like hub. Send one to ALL.
->Router is smart, be like router. Send one to ONE.
-
-
-
-
-#### Protocols
-
 Computer is recognized by numbers not name, to understand this, they use DNS
 or Domain Name System to be used as an alias to call an IP Address that are
 associated with it. DNS is used for resolving name to numbers, for example:
@@ -320,6 +362,15 @@ On the other end, once DHCP server know that the IP associated with the
 device is not in use, or disconnected, the IP Address will then be back to
 IP Addresses pool to be used again with another computer.
 
+#### Router & Hub
+
+>Hub is dumb, don't be like hub. Send one to ALL.
+>Router is smart, be like router. Send one to ONE.
+
+
+
+#### Protocols
+
 ##### TCP/IP
 
 [Transmission Control Protocol] This internet protocol is often used in http or https, it is known to be reliable and precise in its execution. 
@@ -343,9 +394,6 @@ execution
 | Network      | Post Office (TCP/UDP) | Post office, post box?              |
 | Datalink     | Transportation        | Transported by truck, plane, boat?  |
 | Physical     | Delivery              | Where this package delivered to?    |
-
-
-
 
 
 ### Penetration Testing
@@ -414,7 +462,7 @@ enumeration to the system, I use `192.168.56.101` because it's the IP's
 of vmbox for metasploitable 2.
 
 ````
-# nmap -O -sV -T4 192.168.56.101
+user@hostname # nmap -O -sV -T4 192.168.56.101
 ````
 
 | Port    | Name          | Product // Version                     |
