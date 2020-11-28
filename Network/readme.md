@@ -240,7 +240,17 @@ By running this command, you'll see an example of what your network might look
 like. Most of the network will provide some IPs and interfaces or network card
 device that'll be associated with what type of network they use.
 
-For instance you have three
+For instance you have three interfaces built-in to your device.
+
+```
+
+lo: flags=##<UP,LOOPBACK,RUNNING>  mtu ######
+        inet 127.0.0.1  netmask 255.0.0.0
+
+wlan: flags=##<UP,BROADCAST,RUNNING,MULTICAST>  mtu ######
+        inet 192.168.1.XX  netmask 255.255.255.0  broadcast 192.168.1.255
+        
+```
 
 #### lo
 Lo stands for localhost, here you'll see your localhost IP, it's always be
@@ -546,23 +556,6 @@ distros and use it, it's not advised but possible.
 - kismet
 
 
-This command will let you see your 
-
-
-```
-$ ifconfig
-```
-
-
-```
-
-lo: flags=##<UP,LOOPBACK,RUNNING>  mtu ######
-        inet 127.0.0.1  netmask 255.0.0.0
-
-wlp1s0: flags=##<UP,BROADCAST,RUNNING,MULTICAST>  mtu ######
-        inet 192.168.1.XX  netmask 255.255.255.0  broadcast 192.168.1.255
-        
-```
 
 Source:
 
