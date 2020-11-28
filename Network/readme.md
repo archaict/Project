@@ -101,7 +101,7 @@ Filesystem Hierarcy Standard [FHS] is maintained by Linux Foundation.
 #### Home Directory [~]
 
 To show hidden files use `ctrl + h`, you will then see hidden files that
-resides here. When you customize your system, you'll se all your configs
+resides here. When you customize your system, you'll see all your configs
 here. To navigate your folder, you might need to use `pcmanfm` or any file
 manager for as GUI software, or use `ranger` in command-line interfaces.
 
