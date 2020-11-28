@@ -680,13 +680,10 @@ you can use targets wifi, then use this tools.
 - wireshark (monitoring)
 
 
-
-Source:
-
+**Source:**
 - [Newhorizons - Networking Basics](https://www.newhorizons.com/article/networking-basics-3-steps-to-sharpen-your-networking-skills-and-advance-your-career)
 - [Hostinger - Bash Commands](https://www.hostinger.com/tutorials/linux-commands)
 - [Metasploitable2](https://sourceforge.net/projects/metasploitable/files/Metasploitable2/)
-
 - [NetworkChuck - OSI Layer](https://www.youtube.com/watch?v=3kfO61Mensg)
 - [Network Direction - OSI Layer](https://www.youtube.com/watch?v=y9PG-_ZNbWg)
 
