@@ -17,6 +17,12 @@ phy0	wlp1s0		ath9k		Qualcomm Atheros QCA9565 / AR9565 Wireless Network Adapter (
 		(mac80211 monitor mode vif enabled for [phy0]wlp1s0 on [phy0]wlp1s0mon)
 		(mac80211 station mode vif disabled for [phy0]wlp1s0)
 ````
+
+Once you run `sudo airmon-ng start wlp1s0`, your device will change into monitor 
+mode indicated by this line 
+`(mac80211 monitor mode vif enabled for [phy0]wlp1s0 on [phy0]wlp1s0mon)`.
+
+
     
 ### [airodump-ng ESSID]
 

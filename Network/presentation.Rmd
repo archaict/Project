@@ -1,0 +1,443 @@
+---
+title: "Networking Basics"
+author: Archaict
+date: November 2020
+output:
+  revealjs::revealjs_presentation:
+    theme: blood
+    center: true
+---
+
+ <style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+</style> 
+
+```{css css-settings, echo=FALSE}
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: 'Space Mono', monospace;
+}
+
+.reveal .slide {
+  font-family: 'Space Mono', monospace;
+}
+```
+
+
+## GNU/Linux
+
+**GNU** is the interfaces that is used to interract with **Linux** kernel;
+some call it **GNU/Linux** but here, I'll be using **UNIX** or **Linux**
+interchangeably to mention **GNU/Linux**.
+
+## Privilege
+
+- Root [#]
+- User [$]
+
+
+# Filesystem Hierarcy Standard
+
+| Folder   | Name      | Contents                                           |
+| :------- | :-------  | :----------------------------------------------    |
+| /bin     | binary    | Software and Commmands used in the system.         |
+| /boot    | boot      | Everything that's needed for booting the system.   |
+| /dev     | devices   | Device lists, disks, CD-ROM, partition (sda,sda1). |
+| /etc     | etcetera  | System specific configuration files.               |
+| /home    | home      | Home folder for users in the machine.              |
+| /media   | media     | Automatically mounted devices.                     |
+| /mnt     | mount     | Manually mounting for devices.                     |
+| /opt     | optional  | Optional software that's outside from the system.  |
+
+##
+
+| Folder   | Name      | Contents                                           |
+| :------- | :-------  | :----------------------------------------------    |
+| /proc    | process   | System processes and sudo files.                   |
+| /root    | root      | Home directory for root user.                      |
+| /run     | run       | RAM processes will be found here.                  |
+| /sbin    | sbinary   | Software used for administering the system(#).     |
+| /tmp     | temporary | Temporary copies of the session apps.              |
+| /srv     | service   | Server will store files here.                      |
+| /sys     | system    | Changing settings here will be temporary           |
+| /usr     | user      | External resources under users will be found here. |
+| /var     | variable  | All other variables related to sys and session.    |
+
+**source** : https://www.youtube.com/watch?v=HbgzrKJvDRw
+
+## Home Directory [~]
+
+To show hidden files use `ctrl + h`, you will then see hidden files that
+resides here. When you customize your system, you'll se all your configs
+here. To navigate your folder, you might need to use `pcmanfm` or any file
+manager for as GUI software, or use `ranger` in command-line interfaces.
+
+
+# Command-Line Interface [CLI]
+
+In unix-based system such as Linux, you might want to accustom yourself
+with command line interface. There are some perks using this kind of
+approach in managing your system, hence it'll also comes with it's own
+pros and cons.
+
+## **Pros**
+
+- It's fast to navigate your system once you get accustomed to it.
+- Minimum RAM usage and can be opened as much as you want.
+- It's known that you can run task faster here, as long as you know
+  what to do.
+- Customize everything to your heart's content.
+
+## **Cons**
+
+- Hard to use if you're here for the first time.
+- No fancy animations you get from GUI application.
+- Actually you can do it; ***if you have time to spare.***
+
+
+## Shell
+
+Bash is GNU Bourne-Again SHell is a language used for processing or
+running commands in the command-line interface. Bash, ZSH, Fish or
+any other flavour of Shell [sh] is using most of syntaxes
+that Bash is using.
+
+Flavour that is introduced in Linux based system are mostly to make
+configuration that is tailored to your taste rather than one-size-fits-all
+solutions.
+
+# CLI Command Lists
+
+| Command  | Name                       | Usage                    | Options |
+| :------- | :------------------------- | :----------------------- | :------ |
+| pwd      | Path to current folder     | pwd                      |         |
+| cd       | Change Directory           | cd /home/username        |         |
+| ls       | List Directory             | ls /home/username        | -lash   |
+| clear    | Clear Terminal             | clear                    |         |
+| cat      | Concatenate                | cat anomaly.txt          |         |
+| rm       | Remove files or dirs       | rm anomaly.txt           | -rf     |
+| cp       | Copy documents or dir      | cp anomaly.txt           | -r      |
+| mv       | Move file or directory     | mv anomaly.txt anom/     |         |
+
+##
+
+| Command  | Name                       | Usage                    | Options |
+| :------- | :------------------------- | :----------------------- | :------ |
+| touch    | Create file                | touch anomaly.txt        |         |
+| mkdir    | Create directory           | mkdir anom/              |         |
+| locate   | Search for files           | locate -i ano*           |         |
+| find     | Search on give dir         | find /home/ -name an.txt |         |
+| grep     | Search through text        | grep anomaly ano.txt     |         |
+| sudo     | SuperUser Do               | sudo apt install         |         |
+| df       | Disk space usage           | df -m                    | -m      |
+| du       | Disk usage                 | du                       | -h      |
+
+##
+
+| Command  | Name                       | Usage                    | Options |
+| :------- | :------------------------- | :----------------------- | :------ |
+| head     | View n-lines from head     | head -n 5 anomaly.txt    |         |
+| tail     | View n-ines from bottom    | tail -n 5 anomaly.txt    |         |
+| diff     | Show changes between files | diff anom1.txt anom2.txt |         |
+| chown    | Change owner to            | chown file user          | user    |
+| chmod    | Change modifiers to (-rwx) | chmod +x anom.sh         | rwx     |
+| kill     | Kill program               | kill PID                 |         |
+| wget     | Download things from web   | wget https://link.com    |         |
+| uname    | Linux system information   | uname -a                 | -a, -r  |
+
+##
+
+| Command  | Name                       | Usage                    | Options |
+| :------- | :------------------------- | :----------------------- | :------ |
+| history  | CLI Command history        | history                  |         |
+| htop     | See running processes      | htop                     |         |
+| man      | Manual page for everything | man bash                 |         |
+| zip      | zip files                  | zip -r anomaly.zip anom  | -r      |
+| unzip    | unzip files                | unzip anomaly.zip        |         |
+| echo     | Echo data input to         | echo "Lorem Ipsum"       |         |
+| hostname | Check hostname             | hostname                 |         |
+| useradd  | Add user                   | useradd anomaly          |         |
+| userdel  | Del user                   | userdel anomaly          |         |
+
+# bash_aliases
+
+
+```
+[.bash_aliases]
+
+alias ls='ls --color=auto --group-directories-first'
+```
+
+
+
+# Distros or DE?
+
+Distribution manage all your packages.
+
+| Base   | Package Manager | Usage           |
+| :----  | :-------------: | --------------: |
+| Arch   | package-manager | pacman -Syyu    |
+| Debian | aptitutde       | apt-get install |
+| Fedora | Dandified YUM   | dnf install     |
+
+## Flavoured Distros
+
+| Flavour       | Tailored For                   |
+| :-----        | -----------:                   |
+| PopOS!        | Gaming                         |
+| Manjaro       | Easy to use Arch Based Desktop |
+| PeppermintOS  | Reviving old laptops           |
+| RedHat        | Servers                        |
+| Ubuntu Studio | Studio                         |
+| Kali Linux    | Network & Hacking              |
+
+## Desktop Enviornment
+
+| Desktop Environment | Best Distro     |
+| :------------------ | --------------: |
+| GNOME               | PopOS! / Ubuntu |
+| KDE Plasma          | Kubuntu         |
+| Xfce                | Manjaro / Mint  |
+| Deepin Desktop      | UbuntuDDE       |
+| Budgie              | Solus           |
+| Cinnamon            | Mint            |
+| Pantheon            | Elementary OS   |
+| MATE                | Ubuntu          |
+| LXDE/LXQt           | PeppermintOS    |
+
+## **Youtube Sources :**
+- [Infinitely Galactic](https://www.youtube.com/user/InfinitelyGalactic)
+- [Chris Titus Tech](https://www.youtube.com/user/homergfunk)
+
+# Networking
+
+## IP Address
+
+
+- **Public IP Address**
+- **Local IP Address**
+
+## Local IP Address
+
+| IP Address  | Device      |
+| :---------- | :---------- |
+| 192.168.1.1 | Router      |
+| 192.168.1.2 | Smartphone  |
+| 192.168.1.3 | Laptop      |
+| 192.168.1.4 | Desktop     |
+
+## Checking IP
+
+```
+
+$ ifconfig
+
+lo: flags=##<UP,LOOPBACK,RUNNING>  mtu ######
+        inet 127.0.0.1  netmask 255.0.0.0
+
+wlan: flags=##<UP,BROADCAST,RUNNING,MULTICAST>  mtu ######
+        inet 192.168.1.XX  netmask 255.255.255.0  broadcast 192.168.1.255
+        
+```
+
+## Connection
+- lo
+- eth0
+- wlan0
+
+## DNS
+
+Computer is recognized by numbers not name, to understand this, they use DNS
+or Domain Name System to be used as an alias to call an IP Address that are
+associated with it. DNS is used for resolving name to numbers, for example:
+
+```
+IP Address xxx.xxx.xxx.xxx is associated with Google.com
+```
+
+## Router & Hub
+
+>Hub send one to ALL. Hub is dumb, don't be like hub.
+>Router send one to ONE. Router is smart, be like router.
+
+# Protocols
+
+- ***Transmission Control Protocol*** // it is known to be reliable and precise in its execution. 
+- ***User Datagram Protocol*** // often used in DNS because it's faster but not reliable.
+
+## OSI Layer
+
+| OSI Layer    | Analogy               | What they do? [analogy]             |
+| ------------ | --------------------- | ----------------------------------- |
+| Application  | Letter (Browser)      | Letter or Package you want to send? |
+| Presentation | Packaging (Filetypes) | Packaged in Envelope or Box ?       |
+| Session      | Address Checking      | Local or International address?     |
+| Transport    | Stamp                 | Which stamps are you using?         |
+| Network      | Post Office (TCP/UDP) | Post office, post box?              |
+| Datalink     | Transportation        | Transported by truck, plane, boat?  |
+| Physical     | Delivery              | Who will deliver the letter?        |
+
+
+# Penetration Testing
+
+## Phases
+
+There are 7 Phases that'll be discussed here, in which is :
+
+| Phases                            | Categories      |
+| --------------------------------- | --------------- |
+| Reconnaissance                    | Pre-Engagement  |
+| Scanning and Enumeration          | Pre-Engagement  |
+| Exploitation                      | Engagement      |
+| Post-Exploitation                 | Engagement      |
+| Writing Reports                   | Post-Engagement |
+
+
+# Reconnaissance
+
+- Gather data through *OSINT* (Open Source Intelligence)
+- Gather information about the company (Shifts, servers, systems)
+- Contact (Email address phone numbers, job postings)
+- Employee that is unhappy about the job (Sentimental data)
+
+##
+
+| Name         | Usage                              | Commands               |
+| :----------- | :--------------------------------- | :--------------------- |
+| NsLookup     | DNS Server records                 | nslookup google.com    |
+| Traceroute   | Measuring route to target          | traceroute google.com  |
+| Ping         | Check if host is alive or not      | ping google.com        |
+| Whois        | Domain and IP address info         | whois google.com       |
+| Maltego      | Easy to use OSINT GUI              | maltego                |
+| Google       | Dorks inside google search engine  | insert query with opts |
+| Social Media | Instagram, Twitter, Facebook, etc. |                        |
+| Sherlock     | Username search in multiple sites  | sherlock username      |
+
+## Scanning and Enumeration
+
+As a root user or if you have `sudo` privilege, run this command to do
+enumeration to the system, I use `192.168.56.101` because it's the IP's
+of vmbox for metasploitable 2.
+
+````
+user@hostname # nmap -O -sV -T4 192.168.56.101
+````
+
+## Results
+
+| Port    | Name          | Product // Version                     |
+| ------- | ------------- | -------------------------------------- |
+| 21      | ftp           | vsftpd 2.3.4                           |
+| 22      | ssh           | OpenSSH 4.7p1 Debian 8ubuntu1          |
+| 23      | telnet        | Linux telnetd                          |
+| 25      | smtp          | Postfix smtpd                          |
+| 53      | domain        | ISC BIND 9.4.2                         |
+| 80      | http          | Apache httpd 2.2.8                     |
+| 111     | rpcbind       | 2                                      |
+| 139     | netbios-ssn   | Samba smbd 3.X - 4.X                   |
+| 445     | netbios-ssn   | Samba smbd 3.X - 4.X                   |
+| 512     | exec          | netkit-rsh rexecd                      |
+
+##
+
+| Port    | Name          | Product // Version                     |
+| ------- | ------------- | -------------------------------------- |
+| 513     | login         |                                        |
+| 514     | shell         | Netkit rshd                            |
+| 1099    | java-rmi      | GNU Classpath grmiregistry             |
+| 1524    | bindshell     | Metasploitable root shell              |
+| 2049    | nfs           | 2-4                                    |
+| 2121    | ftp           | ProFTPD 1.3.1                          |
+| 3306    | mysql         | MySQL 5.0.51a-3ubuntu5                 |
+| 3632    | distccd       | distccd v1                             |
+| 5432    | postgresql    | PostgreSQL DB 8.3.0 - 8.3.7            |
+| 5900    | vnc           | VNC                                    |
+
+##
+
+| Port    | Name          | Product // Version                     |
+| ------- | ------------- | -------------------------------------- |
+| 6000    | X11           |                                        |
+| 6697    | irc           | UnrealIRCd                             |
+| 8009    | ajp13         | Apache Jserv                           |
+| 8180    | http          | Apache Tomcat/Coyote JSP engine 1.1    |
+| 8787    | drb           | Ruby DRb RMI                           |
+| 33206   | nlockmgr      | 1-4                                    |
+| 40304   | mountd        | 1-3                                    |
+| 57133   | status        | 1                                      |
+| 57741   | java-rmi      | GNU Classpath grmiregistry             |
+
+
+# Exploitation
+
+There are 145197 CVE's as of 2020.
+
+- Web Application Attacks
+- Network Attacks
+- Memory-based attacks
+- Wi-Fi attacks
+- Zero-Day Angle
+- Physical Attacks
+- Social engineering
+
+## Insides
+
+Once you're inside the system, there are some things that we should do :
+
+- Privilege Escalation 
+- Maintaining Access & Backdoors
+
+   
+
+## Post-Exploitation
+
+After you do all exploits, you might want to do some post exploitation to
+either maintain access, or retracing all the command you used for
+documentation. This phase is where targets system has been exploited. 
+
+
+# Writing Reports
+
+Starts by documenting what you do before you write the actual writeups for
+reports. By doing this, not only you'll learn about the processes as a whole
+but reproducibility just in case they want to try it themselves.
+
+
+# Distribution
+
+| Flavour    | Tailored For       | Links                                |
+| :--------- | :----------------- | :----------------------------------- |
+| Kali Linux | Hacking            | https://www.kali.org/downloads/      |
+| Parrot OS  | Security & Privacy | https://www.parrotsec.org/download/  |
+| Black Arch | Network & Hacking  | https://blackarch.org/downloads.html |
+
+# Tools
+
+## WiFi Cracking
+
+This will be where you make choices to pawn your target wifi, this used in ***Reconnaissance Phase***. This way, if you're around the perimeter where
+you can use targets wifi, then use this tools.
+
+## CLI Tools :
+
+- wifite
+- aircrack-ng [airmon-ng, airodump-ng, aireplay-ng]
+ 
+## GUI Tools :
+
+- fern wifi cracker
+- kismet
+- wireshark (monitoring)
+
+# Outside Source
+
+**Source:**
+- [Newhorizons - Networking Basics](https://www.newhorizons.com/article/networking-basics-3-steps-to-sharpen-your-networking-skills-and-advance-your-career)
+- [Hostinger - Bash Commands](https://www.hostinger.com/tutorials/linux-commands)
+- [Metasploitable2](https://sourceforge.net/projects/metasploitable/files/Metasploitable2/)
+- [NetworkChuck - OSI Layer](https://www.youtube.com/watch?v=3kfO61Mensg)
+- [Network Direction - OSI Layer](https://www.youtube.com/watch?v=y9PG-_ZNbWg)
