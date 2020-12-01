@@ -111,15 +111,12 @@ if (empty ($nim)) {
 }
 
 ?>
-
-
 ```
 
 
 **[delete.php]**
 
 ```
-
 <?php
 
 include "koneksi.php";
@@ -150,5 +147,4 @@ if (empty ($nim)){
 }
 
 ?>
-
 ```
