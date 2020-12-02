@@ -10,7 +10,6 @@
 
 ![Supervised, Unsuperveised, and Reinforcement](fig/sup-unsup-rein.png)
 
-
 source :
 - [Difference between Supervised Unsupervised amd reinforcement learning](https://intellipaat.com/blog/wp-content/uploads/2019/12/Difference-between-Supervised-Unsupervised-amd-reinforcement-learning-768x259.jpg)
--[Supervised vs Unsupervised vs Rreinforcementl](https://medium.com/@yunusmuhammad007/2-supervised-vs-unsupervised-vs-reinforcement-ml-dd880c03c1bc)
+- [Supervised vs Unsupervised vs Rreinforcementl](https://medium.com/@yunusmuhammad007/2-supervised-vs-unsupervised-vs-reinforcement-ml-dd880c03c1bc)
