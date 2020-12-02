@@ -37,10 +37,6 @@ There are three categories in Machine Learning :
 | Approach         | Maps labeled inputs to the known outputs | Understand Patterns & Discover Output        | Follow trial-and-error method                         |
 
 
-<center>
-![Supervised, Unsuperveised, and Reinforcement](fig/sup-unsup-rein.png)
-[Supervised, Unsupervised, and Reinforcement]
-</center>
 
 source :
 - [Difference between Supervised Unsupervised amd reinforcement learning](https://intellipaat.com/blog/wp-content/uploads/2019/12/Difference-between-Supervised-Unsupervised-amd-reinforcement-learning-768x259.jpg)
