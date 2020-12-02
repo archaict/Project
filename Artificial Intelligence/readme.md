@@ -1,3 +1,32 @@
+# Machine Learning
+
+There are three categories in Machine Learning :
+
+- Supervised Learning
+  - Regression
+    - Linear
+    - Polynomial
+  - Decision Tree
+  - Random Forest
+  - Classification
+    - KNN
+    - Trees
+    - Logistic Regression
+    - Naive Bayes
+    - SVM
+- Unsupervised Learning
+  - Clustering
+    - SVD
+    - PCA
+    - K-means
+  - Association Analysis
+    - Apriori
+    - FP-Growth
+  - Hidden Markov Model
+- Reinforcement Learning
+
+
+
 
 | Criteria         | Supervised Learning                      | Unsupervised Learning                        | Reinforcement Learning                                |
 | ---------------- | ---------------------------------------- | -------------------------------------------- | ----------------------------------------------------- |
@@ -7,7 +36,11 @@
 | Training         | External supervision                     | Unsupervised                                 | Unsupervised                                          |
 | Approach         | Maps labeled inputs to the known outputs | Understand Patterns & Discover Output        | Follow trial-and-error method                         |
 
-![Supervised, Unsuperveised, and Reinforcement](fig/sup-unsup-rein.png =250x)
+
+<center>
+![Supervised, Unsuperveised, and Reinforcement](fig/sup-unsup-rein.png)
+[Supervised, Unsupervised, and Reinforcement]
+</center>
 
 source :
 - [Difference between Supervised Unsupervised amd reinforcement learning](https://intellipaat.com/blog/wp-content/uploads/2019/12/Difference-between-Supervised-Unsupervised-amd-reinforcement-learning-768x259.jpg)
