@@ -2,7 +2,7 @@
 
 There are three categories in Machine Learning :
 
-- Supervised Learning
+1. Supervised Learning
   - Regression
     - Linear
     - Polynomial
@@ -14,7 +14,7 @@ There are three categories in Machine Learning :
     - Logistic Regression
     - Naive Bayes
     - SVM
-- Unsupervised Learning
+2. Unsupervised Learning
   - Clustering
     - SVD
     - PCA
@@ -23,7 +23,35 @@ There are three categories in Machine Learning :
     - Apriori
     - FP-Growth
   - Hidden Markov Model
-- Reinforcement Learning
+3. Reinforcement Learning
+
+
+## 1. Supervised Learning
+
+### Regression
+#### Linear
+#### Polynomial
+
+#### Decision Tree
+#### Random Forest
+#### Classification
+##### KNN
+##### Trees
+##### Logistic Regression
+##### Naive Bayes
+##### SVM
+
+## 2. Unsupervised Learning
+
+### Clustering
+#### SVD
+#### PCA
+#### K-means
+### Association Analysis
+#### Apriori
+#### FP-Growth
+### Hidden Markov Model
+## 3. Reinforcement Learning
 
 
 
@@ -39,5 +67,7 @@ There are three categories in Machine Learning :
 
 
 source :
+
+- [zero to mastery ML]( https://github.com/mrdbourke/zero-to-mastery-ml )
 - [Difference between Supervised Unsupervised amd reinforcement learning](https://intellipaat.com/blog/wp-content/uploads/2019/12/Difference-between-Supervised-Unsupervised-amd-reinforcement-learning-768x259.jpg)
 - [Supervised vs Unsupervised vs Rreinforcementl](https://medium.com/@yunusmuhammad007/2-supervised-vs-unsupervised-vs-reinforcement-ml-dd880c03c1bc)
