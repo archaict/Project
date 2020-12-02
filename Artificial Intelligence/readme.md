@@ -7,8 +7,7 @@
 | Training         | External supervision                     | Unsupervised                                 | Unsupervised                                          |
 | Approach         | Maps labeled inputs to the known outputs | Understand Patterns & Discover Output        | Follow trial-and-error method                         |
 
-
-![Supervised, Unsuperveised, and Reinforcement](fig/sup-unsup-rein.png)
+![Supervised, Unsuperveised, and Reinforcement](fig/sup-unsup-rein.png =250x)
 
 source :
 - [Difference between Supervised Unsupervised amd reinforcement learning](https://intellipaat.com/blog/wp-content/uploads/2019/12/Difference-between-Supervised-Unsupervised-amd-reinforcement-learning-768x259.jpg)
