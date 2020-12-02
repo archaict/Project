@@ -1,39 +1,46 @@
 # Machine Learning
 
+
+<!-- vim-markdown-toc GFM -->
+
+* [Supervised Learning](#supervised-learning)
+  * [Regression](#regression)
+    * [Linear](#linear)
+    * [Polynomial](#polynomial)
+    * [Decision Tree](#decision-tree)
+    * [Random Forest](#random-forest)
+    * [Classification](#classification)
+      * [KNN](#knn)
+      * [Trees](#trees)
+      * [Logistic Regression](#logistic-regression)
+      * [Naive Bayes](#naive-bayes)
+      * [SVM](#svm)
+* [Unsupervised Learning](#unsupervised-learning)
+  * [Clustering](#clustering)
+    * [SVD](#svd)
+    * [PCA](#pca)
+    * [K-means](#k-means)
+  * [Association Analysis](#association-analysis)
+    * [Apriori](#apriori)
+    * [FP-Growth](#fp-growth)
+  * [Hidden Markov Model](#hidden-markov-model)
+* [Reinforcement Learning](#reinforcement-learning)
+
+<!-- vim-markdown-toc -->
+
+
 There are three categories in Machine Learning :
 
-1. Supervised Learning
-  - Regression
-    - Linear
-    - Polynomial
-  - Decision Tree
-  - Random Forest
-  - Classification
-    - KNN
-    - Trees
-    - Logistic Regression
-    - Naive Bayes
-    - SVM
-2. Unsupervised Learning
-  - Clustering
-    - SVD
-    - PCA
-    - K-means
-  - Association Analysis
-    - Apriori
-    - FP-Growth
-  - Hidden Markov Model
-3. Reinforcement Learning
-
-
-## 1. Supervised Learning
+## Supervised Learning
 
 ### Regression
 #### Linear
 #### Polynomial
 
 #### Decision Tree
+
 #### Random Forest
+
 #### Classification
 ##### KNN
 ##### Trees
@@ -41,17 +48,20 @@ There are three categories in Machine Learning :
 ##### Naive Bayes
 ##### SVM
 
-## 2. Unsupervised Learning
+## Unsupervised Learning
 
 ### Clustering
 #### SVD
 #### PCA
 #### K-means
+
 ### Association Analysis
 #### Apriori
 #### FP-Growth
+
 ### Hidden Markov Model
-## 3. Reinforcement Learning
+
+## Reinforcement Learning
 
 
 
