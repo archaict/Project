@@ -46,7 +46,7 @@ again, otherwise, you can just follow through.
 After changing to monitor mode, it'll then start using deauth attack to
 get wpa handshake. Manually, you might be using `airodump-ng` in conjunction
 with `aireplay-ng`. It'll then save your handshake information inside
-`hs/handshake_anom_EE-F1-4B-89-27-D8_2020-12-03T10-58-09.cap`.
+`hs/handshake_anom_MA-C0-AD-DR-ES-S0_2020-12-03T10-58-09.cap`.
 
 ```
  [+] Using wlp1s0mon already in monitor mode
@@ -59,7 +59,7 @@ with `aireplay-ng`. It'll then save your handshake information inside
  [+] anom (67db) WPA Handshake capture: Discovered new client: MA:C0:AD:DR:ES:S0
  [+] anom (0db) WPA Handshake capture: Discovered new client: MA:C0:AD:DR:ES:S0
  [+] anom (76db) WPA Handshake capture: Captured handshake
- [+] saving copy of handshake to hs/handshake_anom_EE-F1-4B-89-27-D8_2020-12-03T10-58-09.cap saved
+ [+] saving copy of handshake to hs/handshake_anom_MA-C0-AD-DR-ES-S0_2020-12-03T10-58-09.cap saved
 ```
 
 `airodump-ng` and `aireplay-ng` are used for capturing handshake and
@@ -93,7 +93,7 @@ this kind of password, since it'll be cracked in no seconds.).
  [+]   Access Point Name: anom
  [+]  Access Point BSSID: MA:C0:AD:DR:ES:S0
  [+]          Encryption: WPA
- [+]      Handshake File: hs/handshake_anom_EE-F1-4B-89-27-D8_2020-12-03T10-58-09.cap
+ [+]      Handshake File: hs/handshake_anom_MA-C0-AD-DR-ES-S0_2020-12-03T10-58-09.cap
  [+]      PSK (password): abcdefgh
  [+] saved crack result to cracked.txt (2 total)
  [+] Finished attacking 1 target(s), exiting
