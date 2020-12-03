@@ -90,7 +90,6 @@ this kind of password, since it'll be cracked in no seconds.).
 *Jokes* aside, the result then will be generated in formats below.
 
 ```
-
  [+]   Access Point Name: anom
  [+]  Access Point BSSID: MA:C0:AD:DR:ES:S0
  [+]          Encryption: WPA
