@@ -8,6 +8,9 @@ Outside of Kali linux, you might want to add other programs like
 `wireshark`,`hxctools`,`cowpatty`,`aircrack-ng` for this script to
 run properly.
 
+Documentation for wifite can be seen it it's github repos in
+[here](https://github.com/derv82/wifite2).
+
 Since this is a script, you might want to use this in Kali instead
 in your normal Linux daily driver. To use Wifite you have to type
 ` sudo ./Wifite.py`, remember to use `sudo` since you need root
