@@ -69,7 +69,7 @@ the handshake captured are a valid handshake.
 
 ```
  [+] analysis of captured handshake file:
- [+]   tshark: .cap file contains a valid handshake for ee:f1:4b:89:27:d8
+ [+]   tshark: .cap file contains a valid handshake for MA:C0:AD:DR:ES:S0
  [!]    pyrit: .cap file does not contain a valid handshake
  [!] cowpatty: .cap file does not contain a valid handshake
  [!] aircrack: .cap file does not contain a valid handshake
