@@ -107,7 +107,8 @@ Using Gruvbox Theme by Pavel Pertsev for your android `colors.xml`.
     <color name="gruvbox_color13">#d3869b</color>
     <color name="gruvbox_color14">#8ec07c</color>
     <color name="gruvbox_color15">#ebdbb2</color>
-
+    
+</resources>
 ```
 
 ## Styles
