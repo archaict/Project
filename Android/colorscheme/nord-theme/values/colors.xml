@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ECEFF4</color>
+    <color name="colorPrimaryDark">#2E3440</color>
+    <color name="colorAccent">#D08770</color>
+    <color name="whiteout">#fafafa</color>
+    <color name="datecolor">#fafafa</color>
+
+    <!--Nord-->
+    <color name="nord_bgd">#242933</color>
+    <color name="nord_bg0">#2E3440</color>
+    <color name="nord_bg1">#3B4252</color>
+    <color name="nord_bg2">#434C5E</color>
+    <color name="nord_bg3">#4C566A</color>
+    <color name="nord_fg1">#D8DEE9</color>
+    <color name="nord_fg2">#E5E9F0</color>
+    <color name="nord_fg3">#ECEFF4</color>
+    <color name="nord_aqua">#8FBCBB</color>
+    <color name="nord_sky">#88C0D0</color>
+    <color name="nord_lblue">#81A1C1</color>
+    <color name="nord_blue">#5E81AC</color>
+    <color name="nord_red">#BF616A</color>
+    <color name="nord_orange">#D08770</color>
+    <color name="nord_yellow">#EBCB8B</color>
+    <color name="nord_green">#A3BE8C</color>
+    <color name="nord_purple">#B48EAD</color>
+
+</resources>

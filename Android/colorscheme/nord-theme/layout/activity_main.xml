@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    tools:context=".MainActivity">
+
+    <Button
+        style="@style/nord_cdbtn"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"
+
+        android:text="CX\nXU"
+        android:letterSpacing="0.1"
+        />
+
+    <Button
+        style="@style/nord_cdbtn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="30dp"
+
+        android:text="NX\nXC"
+        android:letterSpacing="0.1"
+        />
+
+    <LinearLayout
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+
+        <Button style="@style/nord_logo" />
+
+
+        <EditText
+            android:id="@+id/codename"
+            android:hint="codename"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/nord_fg3"
+            android:textColorHint="@color/nord_fg1"
+            android:backgroundTint="@color/nord_fg3"
+            android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/codepass"
+            android:hint="********"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#fafafa"
+            android:textColorHint="@color/nord_fg1"
+            android:backgroundTint="@color/nord_fg3"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:id="@+id/btnlin"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="50dp"
+            >
+
+            <Button
+                style="@style/nord_btn"
+                android:id="@+id/bquit"
+                android:text="QUIT"
+                android:layout_marginRight="5dp"
+                />
+
+            <Button
+                style="@style/nord_btn"
+                android:id="@+id/bsubmit"
+                android:text="SUBMIT"
+                android:layout_marginLeft="5dp"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dio"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="foundation sixtyfour // nate"
+            android:textStyle="bold"
+            android:textSize="9dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:letterSpacing="0.2"
+            android:id="@+id/dev"/>
+    </LinearLayout>
+
+</RelativeLayout>
