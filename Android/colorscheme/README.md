@@ -127,7 +127,7 @@ So instead of smashing a bunch of code, I use modular approach for my
 
 I'll separate this code into some sections so it'll be easier to see.
 
-### Default Sections
+### Default Section
 
 This part of the code used to deploy your colors and default stuff that
 apply to each of your `activities` afterwards, it'll be easier to include
@@ -156,7 +156,7 @@ that you've made your changes.
     </style>
 ```
 
-### Button Sections
+### Button Section
 
 I add this section into the `button` section, it'll be easier to style your button using this for default, and changing other things inside `activity` for unique stuff
 
