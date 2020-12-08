@@ -9,7 +9,7 @@ Here is some color scheme you can use to spice up your project.
 
 ### Nord
 
-![anomaly-nord](screenshot/anom-nord.png | width = 500)
+![anomaly-nord](screenshot/nord.png)
 
 ## Color Scheme - Gen
 You can run python script that I've wrote to see what color it is
