@@ -1,5 +1,21 @@
 # Color Scheme & Style
 
+<!-- vim-markdown-toc GFM -->
+
+* [Introduction](#introduction)
+  * [Color Scheme](#color-scheme)
+    * [Color-scheme In Action](#color-scheme-in-action)
+      * [Nord](#nord)
+    * [Color Scheme - Gen](#color-scheme---gen)
+    * [Nord](#nord-1)
+    * [Gruvbox](#gruvbox)
+  * [Styles](#styles)
+    * [Default Section](#default-section)
+    * [Button Section](#button-section)
+    * [Bonus Section](#bonus-section)
+
+<!-- vim-markdown-toc -->
+
 Here is my take on color-scheme and styles in android-studio
 projects.
 
@@ -15,7 +31,7 @@ I'll share a bit of OoP you can use while making your project.
 This is color scheme that you can add to your android-project,
 you might want to change a few lines in this code to your needs.
 
-### Color-scheme In Action [CIA]
+### Color-scheme In Action
 
 Here is some color scheme you can use to spice up your project.
 
