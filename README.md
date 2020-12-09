@@ -1,13 +1,11 @@
 <h1 align="center"> Projects </h1>
-<h5 align = "center"> ***Hi, foundation sixty four here.*** </h5>
-<h5 align = "center"> *Agents, anomalies has been detected in your repo's.* </h5>
+<h5 align = "center"> <b> Hi, foundation sixty four here.*** <b></h5>
+<h5 align = "center"> <i> Agents, anomalies has been detected in your repo's. </i></h5>
 
-<center>
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
-</center>
 
 
 This repo contains material that I used in univ projects and stuff that I learn along
