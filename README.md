@@ -1,5 +1,6 @@
 # Projects
 
+<h5 align="center">Projects always come in different sizes!</h5>
 <a href="./LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 
 This will include some material that I've learned along
