@@ -1,5 +1,6 @@
 # Projects
 
+<a href="./LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 
 This will include some material that I've learned along
 the way. Everything that you see here can be used for
