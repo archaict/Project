@@ -2,11 +2,19 @@
 <h5 align = "center"> <b> Hi, foundation sixty four here. </b></h5>
 <h5 align = "center"> <i> Agents, anomalies has been detected in your repo's. </i></h5>
 
-[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+<p align="center">
+
+	<a href="https://www.python.org/"><img src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" alt="python"></a>
+	<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license-mit"></a>
+	<a href="https://creativecommons.org/licenses/by-nc/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg" alt="license-cc"></a>
+	<a href="http://commonmark.org"><img src="https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg" alt="markdown"></a>
+
+</p>
+
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
-
 
 This repo contains material that I used in univ projects and stuff that I learn along
 the way. You can use this repo's to help with your own studies or anything else. Please
