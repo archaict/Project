@@ -66,21 +66,24 @@ MariaDB [(none)]> show databases;
 +--------------------+
 | Database           |
 +--------------------+
+| Project            |
 | 1st_database       |
 | 2nd_database       |
 | 3rd_database       |
-| project            |
 +--------------------+
 4 rows in set (0.001 sec)
 
-MariaDB [(none)]> create table user(id int(11) unsigned auto_increment primary key not null, username varchar (30) not null, passwd varchar(30) not null, email varchar(40) not null); 
+MariaDB [(none)]> create table user(id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL, username VARCHAR (30) NOT NULL, password VARCHAR(30) NOT NULL, email VARCHAR(40) NOT NULL); 
+
+MariaDB [(none)]> CREATE TABLE post (id int(11) AUTO_INCREMENT NOT NULL, title VARCHAR(255) DEFAULT NULL, content TEXT, date_time DATETIME DEFAULT NULL, primary key (id));
 
 MariaDB [project]> show tables;
-+---------------------------+
-| Tables_in_project         |
-+---------------------------+
-| user                      |
-+---------------------------+
++-------------------+
+| Tables_in_Project |
++-------------------+
+| post              |
+| user              |
++-------------------+
 1 row in set (0.001 sec)
 
 MariaDB [project]> describe user;
@@ -94,6 +97,16 @@ MariaDB [project]> describe user;
 +----------+------------------+------+-----+---------+----------------+
 4 rows in set (0.002 sec)
 
+MariaDB [project]> describe post;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| title     | varchar(255) | YES  |     | NULL    |                |
+| content   | text         | YES  |     | NULL    |                |
+| date_time | datetime     | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.002 sec)
 ```
 
 <!-- # Sqlmap Sqlmap is a tool that you can use for automating sql injection, yo-->
