@@ -10,6 +10,18 @@ Sql injection is a type of attack that we use for injecting code into a database
 
 To do sql injection, you can use your browser to blind sql injecting or you can use tools like sqlmap to automate injecting the code.
 
+## Installation
+
+```
+$ sudo pacman -S mysql
+$ sudo apt-get install mysql
+```
+
+In Arch based installation, you might be prompted choice, chooose `mariadb`.
+
+This installation will then install `mariadb` to your machine, you can use any `mysql` tools to make database, in here, I'll use cli instead of web version of phpmyadmin since it'll be easier to use, just run the script, and it'll be done.
+
+
 ## SQL Syntax
 
 All the syntax that you have to use can be anything from, `SELECT`, `FROM`, `OR`, `AND`, or any other syntax that usually found inside sql databases.
@@ -109,5 +121,24 @@ MariaDB [project]> describe post;
 4 rows in set (0.002 sec)
 ```
 
-<!-- # Sqlmap Sqlmap is a tool that you can use for automating sql injection, yo-->
+# Fixing Mysql
 
+If you're using MariaDB you might want to add this to your MariaDB, `user` is your machine username, and `yourpassword` is password that you want to use as username identifier.
+
+```
+MariaDB [none]> use mysql
+MariaDB [mysql]> CREATE USER 'user'@'localhost' IDENTIFIED BY 'yourpassword';
+MariaDB [mysql]> exit
+```
+
+For those using Manjaro linux, you might want to see [this post](https://medium.com/@rshrc/mysql-on-manjaro-973e4bfc4f05) to edit help setup your mysql and you'll want to setup password when prompted.
+
+```
+$ sudo systemctl start mysqld
+$ sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+$ sudo systemctl start mysqld && sudo mysql_secure_installation
+```
+
+## Serve PHP
+
+To serve php server, you need to run `sudo xampp start` 
