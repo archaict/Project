@@ -19,10 +19,10 @@ $POST = mysqli_fetch_array($QUINT);
 	<h1 style="text-align: center">Project Archive</h1>
 	<hr>
 	
-	<h2><?php echo $post['title'] ?></h2>
-	<small>Date: <?php echo $post['date_time'] ?></small>
+	<h2><?php echo $POST['title'] ?></h2>
+	<small>Date: <?php echo $POST['date_time'] ?></small>
 	
-	<?php echo $post['content'] ?>
+	<?php echo $POST['content'] ?>
 	
 </body>
 

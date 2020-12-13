@@ -1,8 +1,8 @@
 <?php
 
-$HOST = "localhost";
-$USER = "project";
-$PASS = "password";
+$HOST = "127.0.0.1";
+$USER = "root";
+$PASS = "";
 $DB   = "Project";
 
 $CONN = mysqli_connect($HOST, $USER, $PASS);

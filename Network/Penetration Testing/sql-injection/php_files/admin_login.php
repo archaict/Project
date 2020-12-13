@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
 	$USERNAME = $_POST['username'];
 	$PASSWORD = $_POST['password'];
 	
-	$LOGIN = mysqli_query($conn, "SELECT * FROM user WHERE username = '{$USERNAME}' AND password = '{$PASSWORD}'");
+	$LOGIN = mysqli_query($CONN, "SELECT * FROM user WHERE username = '{$USERNAME}' AND password = '{$PASSWORD}'");
 
 	if (mysqli_num_rows($LOGIN) == 0) {
 		die("Agent code not found, please check your username and password.");
@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
 	
 	<form action="" method="post">
 	
-		<p>Username:</p>
+		<center><p>Username:</p>
 		<input type="text" name="username">
 		
 		<p>Password:</p>
@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
 		<br>
 		<br>
 		<input type="submit" name="submit" value="Login">
-	
+	</center>
 	</form>
 	
 </body>
