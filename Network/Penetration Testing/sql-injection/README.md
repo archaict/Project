@@ -133,9 +133,9 @@ MariaDB [project]> describe post;
 If you're using MariaDB you might want to add this to your MariaDB, `user` is your machine username, and `yourpassword` is password that you want to use as username identifier.
 
 ```
-MariaDB [none]> use mysql
+MariaDB [none]> use mysql;
 MariaDB [mysql]> CREATE USER 'user'@'localhost' IDENTIFIED BY 'yourpassword';
-MariaDB [mysql]> exit
+MariaDB [mysql]> exit;
 ```
 
 For those using Manjaro linux, you might want to see [this post](https://medium.com/@rshrc/mysql-on-manjaro-973e4bfc4f05) to edit help setup your mysql and you'll want to setup password when prompted.
@@ -161,6 +161,80 @@ admin_login.php  admin.php  connection.php  index.php  post.php
 
 After using this command, your `php_files` will be provided in `https://127.0.0.1/php_files/`.
 
+You'll then see when you access from `https://127.0.0.1/php_files/index.php` this screen below.
+
+![Index Page](fig/Index.png)
+
+You'll be shown simple webpage in which you can interract with, when you click `Archive // 01` you'll be presented with this page. Also you might want to go back to this page again after looking at the post below.
+
+![Post Page](fig/Post.png)
+
+This will be your post page, if you notice, in your address bar, it'll shown like this `http://localhost/php_files/post.php?id=1` take note of this link, it'll be useful later on.
+
+Back to `https://127.0.0.1/php_files/index.php`, you'll see `Admin` at the bottom of the page, click this link, you'll be brought into this page below.
+
+![Login Page](fig/Login.png)
+![Login John](fig/Login_John.png)
+
+This page will prompt you with a username and password, this will be discussed in the next section of SQL Injection. Pass along, when you insert the right `username` and `password`, then you will see Administrator page.
+
+![Admin Page](fig/Administrator.png)
+
+And if you input wrong `username` and `password` you'll se this page with text below.
+
+![Wrong user or password](fig/Wrong.png)
+
+## 
+
 # SQL Injection
+
+To actually inject code, you can do it by using `sql` syntaxes, you can see screenshots below for what you can do with `sql` code. You can specify commands inside search bar or automate it with `sqlmap`.
+
+## SQL Query
+
+When creating SQL database and table, you might use `--` to insert comments to your file, this will comment those line and everything that is inserted to that line will be treated as comment.
+
+
+```
+-- -----------------------------------------------------
+-- Schema Project
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS Project ;
+CREATE DATABASE IF NOT EXISTS Project ;
+USE Project ;
+
+```
+
+You can exploit this weakness when you try to login using username 'John', 'Jane', or 'Nyaa' that has been added to the `project_schema.sql`, by using "John'-- ", there's a space, you need to include it inside the login bar, it'll look like this. 
+
+```
+VALUES ('1', 'John', 'Lorem', 'johndoe@project.xyz');
+VALUES ('2', 'Jane', 'Ipsum', 'janedoe@project.xyz');
+VALUES ('3', 'Nyaa', 'Dolor', 'nyaa@project.xyz');
+```
+
+This values can be changed in `project_schema.sql` in the section before `Table post`. You can choose username that you want to use to login in the `admin_login.php`
+
+As mentioned above, this time we will use some sql syntax to do code injection, you can use "John'-- " (you need to use ' but not "), you can see in the image shown below.
+
+![Fake Login](fig/Login_SQL.png)
+
+By using this, you'll introduce escape sequence to your file, this sequence will be executed inside database as:
+
+```
+SELECT * FROM user WHERE username = 'John'-- ' AND password ='password'
+```
+
+This command will confuse your actual database, because you introduce escape sequence and adding comment behind the query as you can see above, `AND password ='password'` will not be included to the query when you click login, you'll then see `Administrator Page` when you click Login.
+
+There are some other escape sequence that you can use:
+
+```
+[John ' OR 1=1 -- ] #only one is needed for statement to be true.
+
+SELECT * FROM user WHERE username = 'John' OR 1=1 -- ' AND password ='password'
+```
+
+This escape sequence can be mitigated by adding `/"`[slash] behind your databases query. or `mysqli_real_escape_string` inside your database.
 
 
