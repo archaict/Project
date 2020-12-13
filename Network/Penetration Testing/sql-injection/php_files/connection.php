@@ -2,7 +2,7 @@
 
 $HOST = "127.0.0.1";
 $USER = "root";
-$PASS = "ralumentia";
+$PASS = "";
 $DB   = "Project";
 
 $CONN = mysqli_connect($HOST, $USER, $PASS);
