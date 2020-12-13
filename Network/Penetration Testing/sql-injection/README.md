@@ -12,9 +12,16 @@ To do sql injection, you can use your browser to blind sql injecting or you can 
 
 ## Installation
 
+This command will be used to install `mysql` and `xampp` in your Arch based distro.
 ```
-$ sudo pacman -S mysql
-$ sudo apt-get install mysql
+$ sudo pacman -S mysql xampp
+```
+
+To install `xampp` in Debian based, you can use this command.
+```
+$ wget https://www.apachefriends.org/xampp-files/5.6.15/xampp-linux-x64-5.6.15-1-installer.run
+$ chmod +x xampp-linux-x64-5.6.15-1-installer.run
+$ sudo ./xampp-linux-x64-5.6.15-1-installer.run 
 ```
 
 In Arch based installation, you might be prompted choice, chooose `mariadb`.
@@ -121,7 +128,7 @@ MariaDB [project]> describe post;
 4 rows in set (0.002 sec)
 ```
 
-# Fixing Mysql
+## Fixing Mysql
 
 If you're using MariaDB you might want to add this to your MariaDB, `user` is your machine username, and `yourpassword` is password that you want to use as username identifier.
 
@@ -141,4 +148,19 @@ $ sudo systemctl start mysqld && sudo mysql_secure_installation
 
 ## Serve PHP
 
-To serve php server, you need to run `sudo xampp start` 
+To serve php server, you need to run `sudo xampp start` and also don't forget to put php files inside `htdocs` folder:
+
+```
+$ cd /opt/lampp/htdocs/php_files
+
+$ ls
+
+[php_files]
+admin_login.php  admin.php  connection.php  index.php  post.php
+```
+
+After using this command, your `php_files` will be provided in `https://127.0.0.1/php_files/`.
+
+# SQL Injection
+
+
