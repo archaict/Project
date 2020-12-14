@@ -4,8 +4,8 @@
 
 
 
-![Login](fig/s1_login.png) &emsp;
-![Dash](fig/s2_dash.png) &emsp;
-![Menu](fig/s3_menu.png) &emsp;
-![Cloth](fig/s5_cloth.png) &emsp;
-![Music](fig/s6_music.png) &emsp;
+
+<p align="center">
+  <img src="https://github.com/archaict/Project/blob/master/Android/fig/s1_login.png" alt="Login Page"/>
+  <img src="https://github.com/archaict/Project/blob/master/Android/fig/s2_dash.png" alt="Dashboard Page"/>
+</p>
