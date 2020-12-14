@@ -2,9 +2,7 @@
 <h4 align = "center"> <b> Hi, foundation sixty four here. </b><br>
 <i><sup> Agents, anomalies has been detected in your repo's. </sup></i></h4>
 
-<center>
-<b>Screenshots of Academica Project</b><br><br>
-</center>
+<center><p><b>Screenshots of Academica Project</b></p></center>
 
 ![Login](fig/s1_login.png) &emsp;
 ![Dash](fig/s2_dash.png) &emsp;
