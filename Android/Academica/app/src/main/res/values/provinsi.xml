@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jawa">Jawa</string>
+    <string name="quot_jawa">Sugeng rawuh \ning tanah jawa!</string>
+
+    <!-- Sumatera -->
+    <string name="sumatera">Sumatera</string>
+    <string name="quot_sumatera">Horas!!!</string>
+    <string name="selatan">Selatan</string>
+
+    <string name="jazz">Jazz</string>
+
+
+    <string name="sumsel">Sumatera Selatan</string>
+
+    <!-- Kalimantan -->
+    <string name="kalimantan">Kalimantan</string>
+    <string name="quot_kalimantan">Kopisanangan \nkinorikatan!</string>
+
+    <!-- sulawesi -->
+    <string name="sulawesi">Sulawesi</string>
+    <string name="quot_sulawesi">Salama Urrampoi,\ndi Sulawesi!</string>
+
+    <!-- bali -->
+    <string name="bali">Bali</string>
+    <string name="quot_bali">Rahajeng Rauh, \ndi Bali!</string>
+
+    <!-- papua -->
+    <string name="papua">Papua</string>
+    <string name="quot_papua">Onomi fakhai,\nLaken</string>
+
+    <!-- kata -->
+    <string name="adat">Adat</string>
+
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="btn_head" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginHorizontal">30dp</item>
+    </style>
+
+    <style name="btn_bg" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:background">@drawable/card_bg_dark</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="elevation">2dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <style name="btn_menu" parent="Theme.AppCompat.Light">
+        <item name="background">@color/trans</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+
+    <style name="btn_text" parent="Theme.AppCompat.Light">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/nord_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="elevation">2dp</item>
+    </style>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sixtyfour.academica">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".profile"></activity>
+        <activity android:name=".pakaian_kalimantan" />
+        <activity android:name=".kalimantan" />
+        <activity android:name=".pakaian_jawa" />
+        <activity android:name=".jawa_tengah" />
+        <activity android:name=".bali" />
+        <activity android:name=".pakaian_bali" />
+        <activity android:name=".sulsel_pakaian" />
+        <activity android:name=".sulawesi_selatan" />
+        <activity android:name=".musik_nusantara" />
+        <activity android:name=".sumsel_pakaian" />
+        <activity android:name=".menu_list" />
+        <activity android:name=".About" />
+        <activity android:name=".image" />
+        <activity android:name=".sumatera_selatan" />
+        <activity android:name=".home_dashboard" />
+        <activity
+            android:name=".SplashScreen"
+            android:noHistory="true"
+            android:theme="@style/SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+    </application>
+
+</manifest>

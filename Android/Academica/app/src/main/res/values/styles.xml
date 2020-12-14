@@ -1,0 +1,132 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColor">@color/nord_fg1</item>
+        <item name="android:fontFamily">@font/osw</item>
+
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!--<item name="android:background">@color/nord_bgd</item>-->
+        <item name="android:statusBarColor">@color/nord_bgd</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+
+    <style name="nord_cdbtn" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:elevation">4dp</item>
+
+
+        <item name="android:background">@color/nord_snow</item>
+        <item name="android:textStyle">bold</item>
+
+
+        <item name="android:padding">10dp</item>
+        <item name="android:minWidth">0dp</item>
+
+
+        <item name="android:fontFamily">@font/dio</item>
+        <item name="android:textSize">20dp</item>
+
+    </style>
+
+    <style name="nord_logo" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">400px</item>
+        <item name="android:layout_height">400px</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:elevation">24dp</item>
+
+        <item name="android:text">NX\nXC</item>
+        <item name="android:textSize">40dp</item>
+        <item name="android:fontFamily">@font/dio</item>
+        <item name="android:background">@color/nord_bg0</item>
+        <item name="android:letterSpacing">0.5</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="nord_backdrop" parent="Theme.AppCompat.Light">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:elevation">24dp</item>
+        <item name="android:layout_margin">30dp</item>
+
+        <item name="android:text">NX\nXC</item>
+        <item name="android:textSize">40dp</item>
+        <item name="android:fontFamily">@font/dio</item>
+        <item name="android:background">@color/nord_bg0</item>
+        <item name="android:letterSpacing">0.5</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="nord_logo_small" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">150px</item>
+        <item name="android:layout_height">150px</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:elevation">24dp</item>
+
+        <item name="android:text">NX\nXC</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:fontFamily">@font/dio</item>
+        <item name="android:background">@color/nord_bg0</item>
+        <item name="android:letterSpacing">0.5</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="nord_btn" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">@font/osw</item>
+        <item name="android:background">@color/nord_bg0</item>
+    </style>
+
+    <style name="SplashScreen" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splashscreen</item>
+    </style>
+
+    <style name="text_field_1" parent="Theme.AppCompat.Light">
+        <item name="android:hint"            >placeholder</item>
+        <item name="android:gravity"         >center</item>
+        <item name="android:layout_width"    >match_parent</item>
+        <item name="android:layout_height"   >wrap_content</item>
+        <item name="android:textColor"       >@color/nord_fg3</item>
+        <item name="android:textColorHint"   >@color/nord_fg1</item>
+        <item name="android:backgroundTint"  >@color/nord_fg3</item>
+        <item name="android:textStyle"       >italic</item>
+    </style>
+
+
+    <style name="header_1" parent="Theme.AppCompat.Light">
+        <item name="android:text"            >STUDENT FORM</item>
+        <item name="android:layout_width"    >wrap_content</item>
+        <item name="android:layout_height"   >wrap_content</item>
+        <item name="android:gravity"         >center</item>
+        <item name="android:textSize"        >20dp</item>
+        <item name="android:fontFamily"      >@font/osw</item>
+        <item name="android:textStyle"       >bold</item>
+        <item name="android:textColor"       >@color/nord_fg1</item>
+    </style>
+
+    <style name="desc" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:fontFamily">@font/osw</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/nord_fg1</item>
+    </style>
+
+</resources>

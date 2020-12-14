@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="tags" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:textSize">9dp</item>
+        <item name="android:fontFamily">@font/osw</item>
+        <item name="android:textColor">@color/nord_snow</item>
+        <item name="android:background">@color/nord_purple</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:paddingHorizontal">8dp</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
+
+    <style name="tags_line" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:layout_marginHorizontal">15dp</item>
+        <item name="android:layout_marginTop" >55dp</item>
+    </style>
+
+    <style name="tags_line_rumah" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginHorizontal">15dp</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:layout_marginTop" >55dp</item>
+    </style>
+
+
+    <style name="tags_big" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/osw</item>
+        <item name="android:textColor">@color/nord_snow</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:paddingHorizontal">8dp</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+</resources>

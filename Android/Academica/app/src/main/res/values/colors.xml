@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ECEFF4</color>
+    <color name="colorPrimaryDark">#2E3440</color>
+    <color name="colorAccent">#D08770</color>
+
+
+    <!--       Background  Alter       -->
+    <color name="nord_bgd">      #fafafa</color>
+    <color name="nord_bg0">      #E5E9F0</color>
+    <color name="nord_bg1">      #ECEFF4</color>
+    <color name="nord_bg2">      #E5E9F0</color>
+    <color name="nord_bg3">      #ECEFF4</color>
+
+    <!--       Foreground  Alter       -->
+    <color name="nord_fg1">      #3B4252</color>
+    <color name="nord_fg2">      #434C5E</color>
+    <color name="nord_fg3">      #4C566A</color>
+
+    <color name="nord_text">     #333333</color>
+    <color name="nord_ash">      #dddddd</color>
+
+
+    <!--        Shade of Blue           -->
+    <color name="nord_aqua">     #8FBCBB</color>
+    <color name="nord_blue">     #5E81AC</color>
+    <color name="nord_lblue">    #81A1C1</color>
+    <color name="nord_sky">      #88C0D0</color>
+
+    <!--        Auroa              -->
+    <color name="nord_red">      #BF616A</color>
+    <color name="nord_green">    #A3BE8C</color>
+    <color name="nord_yellow">   #EBCB8B</color>
+    <color name="nord_purple">   #B48EAD</color>
+    <color name="nord_orange">   #D08770</color>
+    <color name="nord_snow">     #f8f8fa</color>
+
+
+
+    <!--              MeraPu                 -->
+    <color name="ri_maroon">     #B40D1A</color>
+    <color name="ri_merah" >     #C7141A</color>
+    <color name="ri_onyx" >      #333333</color>
+    <color name="ri_abu"   >     #fbfcf5</color>
+    <color name="ri_putih" >     #f8f8f8</color>
+    <color name="ri_yellow">   #ffc000</color>
+    <color name="ri_green">   #8c9a95</color>
+
+    <color name="tags_green">#408080</color>
+    <color name="tags_yellow">#F8E090</color>
+    <color name="tags_pink">#f8c8d0</color>
+
+    <color name="trans">#ffffffff</color>
+
+
+
+
+
+</resources>

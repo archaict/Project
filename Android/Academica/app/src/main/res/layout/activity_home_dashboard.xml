@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home_dashboard">
+
+    <!-- BUTTON MENU // RUMAH_-->
+      <ImageView style="@style/line_top"
+          android:background="@color/nord_ash"/>
+
+      <Button
+          android:text="@string/auth"
+          style="@style/nord_cdbtn"
+          android:layout_marginTop="50dp"
+          android:layout_marginLeft="30dp"
+          />
+
+
+      <TextView
+          style="@style/header_1"
+          android:id="@+id/student_name"
+          android:text="@string/hello"
+          android:layout_marginLeft="30dp"
+          android:layout_marginTop="140dp"
+          />
+
+
+      <TextView
+          style="@style/desc"
+          android:id="@+id/student_desc"
+          android:layout_below="@id/student_name"
+          android:layout_marginLeft="30dp"
+          android:text="Welcome to your dashboard."
+          />
+
+
+    <TextView
+        style="@style/header_1"
+        android:id="@+id/student_id"
+        android:text="NISN"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="140dp"
+        />
+
+
+    <TextView
+        style="@style/desc"
+        android:layout_below="@id/student_id"
+        android:text="0123456789"
+        android:layout_alignParentRight="true"
+        android:textSize="14dp"
+        android:layout_marginRight="30dp"
+        />
+
+    <Button
+        style="@style/avatar"
+        android:id="@+id/avatar"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+         />
+
+
+    <!-- BUTTON // RUMAH_MENU -->
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="450dp"
+       android:layout_marginTop="220dp"
+       >
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+
+
+    <RelativeLayout style="@style/btn_head">
+        <ImageView style="@style/btn_bg" />
+        <Button style="@style/btn_menu"
+            android:id="@+id/btrumahnusa"
+            android:background="#00000000" />
+        <TextView style="@style/btn_text"
+            android:text="@string/exna" />
+
+            <!-- TAGS -->
+
+        <LinearLayout style="@style/tags_line"
+            android:id="@+id/tline1">
+            <Button style="@style/tags"
+                android:text="@string/sumatera"
+                android:background="@color/nord_purple" />
+            <Button style="@style/tags"
+                android:text="@string/jawa"
+                android:layout_marginLeft="5dp"
+                android:background="@color/nord_blue" />
+            <Button style="@style/tags"
+                android:text="@string/kalimantan"
+                android:layout_marginLeft="5dp"
+                android:background="@color/nord_sky" />
+        </LinearLayout>
+        <LinearLayout style="@style/tags_line"
+            android:layout_below="@id/tline1"
+            android:layout_marginTop="5dp"
+            >
+            <Button style="@style/tags"
+                android:text="@string/sulawesi"
+                android:background="@color/nord_orange" />
+            <Button style="@style/tags"
+                android:text="@string/bali"
+                android:layout_marginLeft="5dp"
+                android:background="@color/nord_yellow" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- BUTTON // MUSIK -->
+
+    <RelativeLayout style="@style/btn_head"
+        android:layout_marginTop="150dp">
+        <ImageView style="@style/btn_bg" />
+        <Button style="@style/btn_menu"
+            android:id="@+id/btmusiknusa"
+            android:background="#00000000" />
+        <TextView style="@style/btn_text"
+            android:text="@string/muna" />
+
+        <!-- TAGS -->
+
+        <LinearLayout style="@style/tags_line">
+            <Button style="@style/tags"
+                android:text="@string/bali"
+                android:background="@color/nord_yellow" />
+            <Button style="@style/tags"
+                android:text="@string/sulawesi"
+                android:layout_marginLeft="5dp"
+                android:background="@color/nord_orange" />
+            <Button style="@style/tags"
+                android:text="@string/kalimantan"
+                android:layout_marginLeft="5dp"
+                android:background="@color/nord_sky" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+    <!-- BUTTON // ABOUT_MENU -->
+
+    <RelativeLayout style="@style/btn_head"
+        android:layout_marginTop="300dp">
+        <ImageView style="@style/btn_bg" />
+        <Button style="@style/btn_menu"
+            android:id="@+id/btabout"
+            android:background="#00000000" />
+        <TextView style="@style/btn_text"
+            android:text="@string/about" />
+
+        <!-- TAGS -->
+
+        <LinearLayout style="@style/tags_line">
+            <Button style="@style/tags"
+                android:text="@string/srcd"
+                android:background="@color/nord_red" />
+            <Button style="@style/tags"
+                android:text="@string/git"
+                android:layout_marginLeft="5dp"
+                android:background="@color/nord_green" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+       </RelativeLayout>
+   </ScrollView>
+
+
+    <!-- NAVI -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/ri_onyx"
+        />
+
+    <ImageView style="@style/btn_circle"
+        android:id="@+id/btmenu"
+        android:adjustViewBounds="true"
+        />
+    <ImageButton style="@style/btn_circle"
+        android:layout_height="30dp"
+        android:layout_width="30dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="43dp"
+        android:src="@drawable/search_small"
+        android:background="#00000000"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,137 @@
+<resources>
+    <string name="app_name">Academica</string>
+    <string name="runa">Rumah Nusantara</string>
+    <string name="pana">Pakaian Nusantara</string>
+    <string name="exna">Explore Nusantara</string>
+    <string name="muna">Nusantara Sound of Music</string>
+    <string name="about">About Me</string>
+    <string name="srcd">Source - Code</string>
+    <string name="git">Github | Page</string>
+    <string name="auth">NX\nXC</string>
+    <string name="hello">Hello, John Doe!</string>
+
+    <string name="desc_sumsel">
+        Rumah Limas adalah rumah tradisional berbentuk limas yang dibuat dengan gaya panggung. Bangunan khas daerah Palembang ini dibangun bertingkat. Kumpulan tingkat-tingkatnya disebut masyarakat sebagai Bengkalis yang memiliki makna tersendiri. Luasan Rumah Limas berkisar mulai dari 400 hingga 1000 meter persegi, sering kali dipinjamkan pemilik rumah untuk digunakan sebagai tempat pesta pernikahan dan acara adat.
+    </string>
+
+    <string name="source_sumsel">
+        source: https://indonesia.go.id/
+    </string>
+
+    <string name="desc_pakaian_sumsel">
+        Pakaian adat aesan gede merupakan pakaian yang seringkali digunakan pada saat upacara pernikahan, yang disebut munggah. Aesan gede sendiri berasal dari kata aesan yang berarti hiasan dan gede yang berarti kebesaran, jadi kalau kita simpulkan pakaian adat aesan gede merupakan hiasan atau pakaian kebesaran.
+    </string>
+
+    <string name="source_pakaian_sumsel">
+        source: https://guratgarut.com/pakaian-adat-sumatera-selatan/
+    </string>
+
+    <string name="source_lagu_sumsel">
+        source: https://lagudaerah.id/
+    </string>
+
+    <string name="lagu_sumsel">
+        Cindo nihan tiyuh sikam,\n
+        Tiyuh say sikam bangga-banggako…\n
+        Hujau pemandangan cindo nihan,\n
+        Nanda ko subur tanohna…\n
+        Lamon ragam suku bangsa,\n
+        Say tinggal di tiyuh sikam ganta…\n
+        Hurik rukun budampingan,\n
+        Aman tontram, sonang nihan…\n\n
+
+        Bumi OKU Timur,\n
+        Paninggal ninik muyang sikam…\n
+        Tiyuh say mak pornah ku lupa ko,\n
+        Tiyuh pok kalahiran…\n\n
+
+        Sebiduk Sehaluan,\n
+        jadi samboyan sikam ganta…\n
+        Bangga sikam say jadi wargamu,\n
+        Bumi OKU Timur…\n\n
+
+        Subur nihan tanoh sikam,\n
+        Way Kumoring ngaliri huma-huma…\n
+        Panin pari bulimpah ruah,\n
+        Rasa hati sonang nihan…\n\n
+
+        Ramah tamah Morlii Meranai na,\n
+        Gotong royong disinggahi situlungan…\n
+        Bangga sikam jadi wargamu,\n
+        Niku tumpuan harapan…
+    </string>
+
+
+    <string name="desc_sulsel">
+        Tongkonan dibangun dengan konstruksi yang terbuat dari kayu dan didirikan di atas tumpukan kayu. Biasanya material utama Tongkonan adalah kayu Uru yang bisa dijumpai dengan mudah di Sulawesi.Rumah adat ini dibuat tanpa menggunakan unsur logam, bahkan sebuah paku pun tidak digunakan dalam membangun Tongkonan.
+    </string>
+
+    <string name="source_sulsel">
+        source: https://rumah.com/
+    </string>
+
+
+    <string name="desc_pakaian_sulsel">
+        Baju adat Toraja kedua yakni Baju Pokko. Busana ini eksklusif dikenakan oleh kaum perempuan tana Toraja. Berbeda dengan Seppa Tallu Buku dengan karakteristik pakaian panjang. Pokko mempunyai lengan pendek dengan sejumlah dominasi warna, laksana merah, putih serta kuning. Sampai ketika ini Baju Pokko masih dilestarikan pemakaianya.
+    </string>
+
+    <string name="source_pakaian_sulsel">
+        source: https://tomeladakdomaitoraya.blogspot.com/ dan @dierabachir
+    </string>
+
+
+    <string name="desc_bali">
+        Rumah adat ini dibangun dengan sebuah konsep bernama "Asta Kosala Kosali" yang berarti diperlukan keselarasan yang ada dalam tiga aspek kehidupan yang biasa dikenal dengan istilah Tri Hita Kirana. Konsep ini diturunkan melalui cara penentuan dari ukuran-ukuran bangunan. Ukuran ini mungkin sudah jarang digunakan untuk saat ini, dikarenakan berdasarkan kebutuhan dari luas yang diinginkan.
+    </string>
+
+    <string name="source_bali">
+        source: https://artisanalbistro.com/ dan @ownvilla
+    </string>
+
+
+    <string name="desc_pakaian_bali">
+        Pakaian Bali dibagi menjadi dua macam, Safari untuk pria, dan Kebaya untuk wanita. Kedua baju ini umumnya serupa dengan pakaian formal yang dipakai saat menghadiri acara adat ataupun acara formal lainnya. Untuk pria biasanya diberikan Udeng, atau ikat kepala yang terbuat dari kain, bentuk ikat kepala ini memiliki ikatan di tengahnya.
+    </string>
+
+    <string name="source_pakaian_bali">
+        source: https://pariwisataindonesia.id/
+    </string>
+
+
+    <string name="desc_jawa">
+        Joglo merupakan rumah adat yang berasal dari Jawa, rumah ini terdiri dari dua bagian utama, rumah induk dan rumah tambahan. Rumah induk terdiri dari beberapa bagian, Pendopo, Pringgitan, Emperan, Omah dalem, Senthong-kiwa, Senthong tengah, Senthong-tengen, dan Gandhok.
+    </string>
+
+    <string name="source_jawa">
+        source: https://artisanalbistro.com/ dan @pondokkopi.lebo
+    </string>
+
+
+    <string name="desc_pakaian_jawa">
+        Jawi Jangkep merupakan pakaian adat yang berasal dari Jawa Tengah yang biasanya digunakan oleh kaum pria. Pakaian adat ini terdiri atas motif bunga-bunga dan kain jarik yang bercorak batik. Untuk wanita, pakaian tradisional dari Jawa Tengah adalah Kebaya. Kebaya ini bisa terbuat dari berbagai jenis bahan, mulai dari beludru, sutra, katun, hinggan nilon.
+    </string>
+
+    <string name="source_pakaian_jawa">
+        source: https://kumparan.com/ dan https://id.wikipedia.org/
+    </string>
+
+
+    <string name="desc_kalimantan">
+        Rumah Betang merupakan rumah adat khas dari Kalimantan. Rumah Betang atau lebih dikenal sebagai Rumah Panjang bagi masyarakat tidak hanya sekadar ungkapan legendaris kehidupan nenek moyang, melainkan juga suatu pernyataan secara utuh dan konkret tentang tata pamong desa, organisasi sosial dan juga sistem kemasyarakatan, sehingga tak pelak menjadi titik sentral kehidupan warganya.
+    </string>
+
+    <string name="source_kalimantan">
+        source: https://id.wikipedia.org/
+    </string>
+
+
+    <string name="desc_pakaian_kalimantan">
+        Pakaian adat Dayak Kalimantan merupakan simbol pemersatu, meskipun terdiri dari berbagai jenis sesuai rumpun masing-masing. Kebudayaan awal dari suku Dayak belum mengenal kain, namun mereka menggunakan batu atau manik-manik untuk kemudian dirajut menjadi sebuah baju. Warna kuning yang dipakai oleh baju di suku Dayak menandakan simbol keberadaannya Hatalla atau Tuhan. Mahkota juga dipakai sebagai simbol tingkat kebangsawanan dalam suku Dayak.
+    </string>
+
+    <string name="source_pakaian_kalimantan">
+        source: https://kaltim.idntimes.com dan @gustidessyputrihasan
+    </string>
+
+
+</resources>
