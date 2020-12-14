@@ -6,14 +6,10 @@
 <b>Screenshots of Academica Project</b><br><br>
 </center>
 
-<center>
 ![Login](fig/s1_login.png) &emsp;
 ![Dash](fig/s2_dash.png) &emsp;
 ![Menu](fig/s3_menu.png) &emsp;
-</center>
 
-<center>
 ![House](fig/s4_house.png) &emsp;
 ![Cloth](fig/s5_cloth.png) &emsp;
 ![Music](fig/s6_music.png) &emsp;
-</center>
