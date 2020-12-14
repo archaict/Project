@@ -3,7 +3,7 @@
 <i><sup> Agents, anomalies has been detected in your repo's. </sup></i></h4>
 
 
-<p align="center">Screenshots of Academica</p>
+<p align="center"><b>Screenshots of Academica</b></p>
 
 <p align="center">
   <img src="https://github.com/archaict/Project/blob/master/Android/fig/s1_login.png" alt="Login Page"/>
