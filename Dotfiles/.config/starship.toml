@@ -1,0 +1,64 @@
+#┌─────────────────────┐#
+#│ ✖ STARSHIPS PROMPT✖ │#
+#└─────────────────────┘#
+
+#┌───────────┐#
+#│ ✖ ICONS ✖ │#
+#└───────────┘#
+# Symbola  = ꗝ λ ❯ ➜
+# Arch Lnx = ⮝ ⋏ ⟑ ⩓
+
+# [character]
+# success_symbol = "[ ᛈᚱᛟᛗᛈᛏ ](bold blue)"
+
+#┌─────────────┐#
+#│ ✖ DEFAULT ✖ │#
+#└─────────────┘#
+
+# [package]
+# disabled = true
+
+add_newline = false
+
+#┌───────────────────┐#
+#│ ✖ CUSTOM FORMAT ✖ │#
+#└───────────────────┘#
+
+# [⛬ ](bold #fafafa)
+# [✖ ───](bold #fafafa)
+
+format = """
+[┌── ✖](bold #fafafa)[ ᛈᚱᛟᛗᛈᛏ ](bold #fabd2f)[✖ ─────────────────┐](bold #fafafa)
+[│ ⛬ ](bold #fafafa) $directory$battery
+[└── ](bold #fafafa)[λ](bold #64AECC) """
+
+# format = """
+# [┌── ✖](bold #fafafa)[ ᛈᚱᛟᛗᛈᛏ ](bold #fabd2f)[✖ ─────────────────┐](bold #fafafa)
+# [│ ⛬ ](bold #fafafa) $all"""
+#
+#[character]
+#success_symbol = " [└── ](bold #fafafa)[λ](bold #64AECC) "
+#error_symbol   = " [└── ](bold #fafafa)[λ](bold #64AECC) "
+ 
+[python]
+symbol = "  "
+
+[battery]
+full_symbol        = "•"
+charging_symbol    = "⇡"
+discharging_symbol = "⇣"
+format             = "[$symbol$percentage]($style) "
+
+[[battery.display]] 
+threshold = 20
+style     = "bold red"
+
+[[battery.display]]
+threshold = 40
+style     = "bold yellow"
+
+[directory]
+style = "bold yellow"
+
+[time]
+disabled = true
