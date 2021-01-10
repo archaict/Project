@@ -40,6 +40,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ./hosts.nix
+    ./core
 #    <schema>
 #    (import "${home-manager}/nixos")
   ];
@@ -232,128 +233,6 @@ in
 
 #                                                                  }}}  #
 #└─────────────────────────────────────────────────────────────────────┘#
-#┌──── PACKAGE ──────────────────────────────────────────── [ pak ] ───┐#
-# {{{  Did you order this stuff? Man, so complex.                       #
-
-  nixpkgs.config.allowUnfree = true;
-  virtualisation.docker.enable = true;
-
-  # virtualisation.virtualbox.host.enable = true;
-  # virtualisation.virtualbox.host.enableExtensionPack = true;
-  # users.extraGroups.vboxusers.members = [ "archaict" ];
-
-  environment.systemPackages = with pkgs; [
-
-#┌─────> COMMAND LINE INTERFACE ─────────────────────────── [ cli ] ───┐#
-#  {{{                                                                  #
-
-    kitty zsh fzf htop gotop ctags
-    neovim debootstrap streamlink emacs
-    nox any-nix-shell nix-prefetch nix-prefetch-github
-    ranger figlet toilet lolcat jq
-    neofetch pfetch scrot w3m
-    git curl wget zip unzip bat starship
-    mpd mpc_cli ncmpcpp ffmpeg
-
-#                                                                  }}}  #
-#└─────────────────────────────────────────────────────────────────────┘#
-#┌─────> GRAPHICAL INTERFACE ────────────────────────────── [ gui ] ───┐#
-#  {{{                                                                  #
-
-    matcha-gtk-theme gnome-breeze
-    numix-icon-theme adapta-gtk-theme
-    nixos-icons nordic vscodium
-    zathura sxiv pavucontrol mpv
-    obsidian
-    pcmanfm jmtpfs archiver
-    firefox chromium
-    tor-browser-bundle-bin
-#                                                                  }}}  #
-#└─────────────────────────────────────────────────────────────────────┘#
-#┌─────> WINDOWS MANAGER ────────────────────────────────── [ wmn ] ───┐#
-#  {{{                                                                  #
-
-    dunst libnotify unclutter
-    acpi light tlp
-    nitrogen pscircle feh
-    lxappearance xclip autorandr
-    dmenu rofi polybar tdrop
-
-#                                                                  }}}  #
-#└─────────────────────────────────────────────────────────────────────┘#
-#┌─────> CYBER SECURITY / NETWORKING ────────────────────── [ cys ] ───┐#
-#  {{{                                                                  #
-
-    nmap
-    wireshark
-
-#                                                                  }}}  #
-#└─────────────────────────────────────────────────────────────────────┘#
-#┌─────> DEVELOPMENT ────────────────────────────────────── [ dvl ] ───┐#
-#  {{{                                                                  #
-
-    R #rstudio                                           # ┌    RS    ┐ #
-    youtube-dl                                           # │          │ #
-    nodejs
-    nodePackages_latest.live-server                      # │   Java   │ #
-    nodePackages_latest.prettier
-    android-studio                                       # │ AndroidS │ #
-    ghc                                                  # │  Hskell  │ #
-    qt5ct                                                # └          ┘ #
-    pandoc #texlive.combined.scheme-full
-    go
-    direnv nix-direnv home-manager
-
-#┌──────── R-DEV ──────────────────────────────────────────────────────┐#
-#  {{{                                                             rdv  #
-
-#  (pkgs.rWrapper.override {
-#    packages = with pkgs.rPackages; let
-#      llr = buildRPackage {
-#      name = "llr";
-#      src = pkgs.fetchFromGitHub {
-#       owner = "dirkschumacher";
-#       repo = "llr";
-#       rev = "0a654d469af231e9017e1100f00df47bae212b2c";
-#       sha256 = "0ks96m35z73nf2sb1cb8d7dv8hq8dcmxxhc61dnllrwxqq9m36lr";};
-#    propagatedBuildInputs = [ rlang knitr];
-#    nativeBuildInputs = [ rlang knitr ];};
-#   in [knitr
-#       rlang
-#       rmarkdown
-#       devtools];})
-
-#                                                                  }}}  #
-#└─────────────────────────────────────────────────────────────────────┘#
-#┌──────── PY-DEV ─────────────────────────────────────────────────────┐#
-#  {{{                                                           pydvl  #
-
-    python38Full
-    python38Packages.pip
-    python38Packages.pandas
-    python38Packages.matplotlib
-  ];
-
-#                                                                       #
-#                                                                  }}}  #
-#└─────────────────────────────────────────────────────────────────────┘#
-
-  nix = {
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = true
-      '';
-    };
-  
-  environment.pathsToLink = [
-    "/share/nix-direnv"
-  ];
-
-#                                                                  }}}  #
-#└─────────────────────────────────────────────────────────────────────┘#
-
-#                                                                  }}}  #
-#└─────────────────────────────────────────────────────────────────────┘#
 #┌──── PROFILE ──────────────────────────────────────────── [ prf ] ───┐#
 #  {{{ Who am I?                                                   prf  #
 
@@ -438,6 +317,7 @@ in
 
 #┌────── ARCHLINUX - CONTAINER ────────────────────────────────────────┐#
 #  {{{ NEMESIS                                                     ltn  #
+
   systemd.nspawn."archlinux" = {
     enable = true;
     execConfig = {

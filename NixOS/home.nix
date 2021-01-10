@@ -13,7 +13,7 @@
 
   imports = [ ./machina <schema> ];
 
-  #manual.json.enable = true;
+  manual.json.enable = true;
   home.stateVersion = "20.09";
 
 }
