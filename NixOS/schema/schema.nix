@@ -3,6 +3,11 @@
 with lib;
 
 {
+
+  # [ COLOR SCHEMA ]
+  # HIKARI = ./hikari/hikari.nix
+  # YAMI   = ./yami/yami.nix
+
   options.colors =
     let
       mkColorOption = name: {
@@ -35,9 +40,9 @@ with lib;
         "cyan_dark"
 
 
-        "background_dark"
-        "foreground_dark"
-        "cursorColor_dark"
+        "background"
+        "foreground"
+        "cursorColor"
       ]);
 
 
@@ -52,7 +57,9 @@ with lib;
       };
     in
       listToAttrs (map mkVimColorOption [
-        "color_scheme" "background"
+        "color_scheme"
+        "background" "cc"
+        "light" "dark"
       ]);
 
 
@@ -69,4 +76,21 @@ with lib;
       listToAttrs (map mkFontsOption [
         "font"
       ]);
+
+  options.binding =
+    let
+      mkFontsOption = name: {
+        inherit name;
+        value = mkOption {
+          type = types.str;
+          description = "Fonts ${name}.";
+        };
+      };
+    in
+      listToAttrs (map mkFontsOption [
+        "mod" "ws1" "ws2" "ws3" "ws4"
+        "modifier"
+      ]);
+
+
 }

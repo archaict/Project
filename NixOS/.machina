@@ -1,50 +1,14 @@
-#!/run/current-system/sw/bin/bash
-
-clear
-echo "ARKIV [ NixOS ]
-Logged in at $(date)" 
-MACHINA=$PWD
-NIXCONFIG=$PWD/configuration.nix
-
-alias hm="cd $MACHINA"
-alias pkgs="cd $MACHINA/machina"
-alias aliases="vim $MACHINA/.machina"
-alias nix-pkgs="vim $PWD/hosts.nix"
-
-precmd() {
-  PROMPT='%c %{$fg[blue]%} %{$reset_color%}'
-  RPROMPT='%{$fg[blue]%}[ Nix-Core ]%{$reset_color%}'
-  }
-
-machina() {
-  if [ $1 = 'help' ]; then
-    echo "
-    [ opts ]
-    system : Edit system configs
-    sysup  : NixOS rebuild
-    home   : Home-manager files
-    schema : Edit schema.nix
-    themes : Themes available
-
-    [ core ]
-    core : Edit core
-    core pkgs : Core package
-    "
-  elif [ $1 = 'system' ]; then
-    vim $MACHINA/configuration.nix
-  elif [ $1 = 'home' ]; then
-    vim $MACHINA/home.nix 
-  elif [ $1 = 'schema' ]; then
-    vim $MACHINA/schema/schema.nix 
-  elif [ $1 = 'alias' ]; then
-    vim $MACHINA/.machina 
-  elif [ $1 = 'themes' ]; then
-    vim $MACHINA/schema
-  elif [ $1 = 'core' ]; then
-    vim $MACHINA/core/core.nix
-  elif [ $1 = 'core pkgs' ]; then
-    vim $MACHINA/core/core_pkgs.nix
-  elif [ $1 = 'sysup' ]; then
-    sudo nixos-rebuild -I nixos-config=$NIXCONFIG switch
-  fi
-}
+    ex-genesis() {
+      notify-send "Generating code [ $1 ]..."
+      echo "Generating genesis..."
+      sudo nixos-rebuild \
+        -I nixos-config=$NIXCFG \
+        -I schema=$SCHEMA/$1.nix switch --fast
+      echo "Oratorio incantation [ $1 ]"
+      feh --bg-scale $HAIKEI/$1.jpg
+      pkill polybar
+      polybar -r top &
+      kitty @ set-colors --all --configured $CFG/kitty/kitty.conf
+      notify-send "Incantation ends."
+      echo "Incantation ends."
+    }
