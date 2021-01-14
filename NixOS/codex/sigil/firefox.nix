@@ -10,7 +10,7 @@
       google-search-link-fix
       https-everywhere
       i-dont-care-about-cookies
-      octotree
+    # octotree
       ublock-origin
       unpaywall
       vimium
