@@ -22,8 +22,8 @@
         let g:netrw_banner=0
         set foldmethod=marker
         set clipboard=unnamedplus
-        set expandtab softtabstop=2
-        set nospell noshowmode
+        set nospell noshowmode nobackup
+        set expandtab softtabstop=2 tabstop=2
         set nu rnu smartcase ignorecase
         set listchars=tab:\ \ ,trail:·,eol:¬,nbsp:_
         set fillchars=fold:\ 
@@ -67,6 +67,12 @@
 
         nnoremap <leader>rr :RangerEdit<cr>
         nnoremap <leader>rv :RangerVSplit<cr>
+
+        nmap <leader>F :.!figlet -w 200 -f standard<CR>
+        nmap <leader>f :.!figlet -w 200 -f small<CR>
+        nmap <leader>b :.!toilet -w 200 -f term -F border<CR>
+        nmap <leader>B :.!toilet -w 200 -f pagga -F border<CR>
+
 
         "--------------"
         "| HIGHLIGHTS |"
@@ -115,6 +121,21 @@
        "autocmd BufNewFile,BufRead *.wiki set filetype=markdown
         command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
+        augroup GoyoEnter
+          autocmd!
+          autocmd User GoyoEnter Limelight
+          autocmd User GoyoEnter hi Normal term=none ctermbg=None
+          autocmd User GoyoEnter hi Folded term=none ctermbg=None
+        augroup END
+
+        augroup GoyoLeave
+          autocmd!
+          autocmd User GoyoLeave Limelight!
+          autocmd User GoyoLeave hi Normal term=none ctermbg=None
+          autocmd User GoyoLeave hi Folded term=none ctermbg=None
+        augroup END
+
+        let g:limelight_conceal_ctermfg = 240
 
         set foldtext=MyFoldText()
         function! MyFoldText()

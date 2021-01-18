@@ -19,8 +19,9 @@
 #------------------------ directories ------------------------#
                                                        #alias
 
-    MACHINA=$PWD
+    MACHINA=$PWD/
     CORE=$MACHINA/core
+    SIGIL=$MACHINA/codex/sigil
     SCHEMA=$MACHINA/schema
     HAIKEI=$SCHEMA/haikei
     NIXCFG=$PWD/configuration.nix
@@ -76,6 +77,9 @@
       if [ -z $1 ]; then
         notify-send "Sigil NixOS"
         ranger $MACHINA/codex/sigil
+      elif [ $1 = 'edit' ]; then
+        notify-send "Sigil NixOS"
+        vim $SIGIL/default.nix
       fi
     }
 

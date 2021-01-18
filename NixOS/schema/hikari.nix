@@ -31,7 +31,7 @@
     blue         = "#81A1C1"; # color4
     magenta      = "#B48EAD"; # color5
     cyan         = "#78A5A4"; # color6
-    white        = "#fafafa"; # color7
+    white        = "#ffffff"; # color7
     grey         = "#949494"; # color8
 
     grey_dark    = "#303030"; # color8
@@ -46,8 +46,8 @@
 
     orange = "#F99136";
 
-    cursorColor = "#404040";
-    background  = "#fafafa";
+    cursorColor = "#2e2e2e";
+    background  = "#ffffff";
     foreground  = "#2e2e2e";
 
   };

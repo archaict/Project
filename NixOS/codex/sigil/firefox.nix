@@ -11,6 +11,7 @@
       https-everywhere
       i-dont-care-about-cookies
     # octotree
+    # stylus
       ublock-origin
       unpaywall
       vimium

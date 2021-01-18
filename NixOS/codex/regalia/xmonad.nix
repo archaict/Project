@@ -96,7 +96,7 @@
         myBrowser     = "firefox "
         myEditor      = myTerminal ++ " -e vim "
 
-        myBorderWidth = 2
+        myBorderWidth = 0         -- BORDER --
         altMask       = mod1Mask
         myModMask     = mod4Mask
         myFocusColor  = "${config.colors.yellow}"
@@ -147,7 +147,7 @@
               , fgColor             = "${config.colors.foreground}"
               , bgHLight            = "${config.colors.foreground}"
               , fgHLight            = "${config.colors.background}"
-              , borderColor         = "${config.colors.yellow}"
+              , borderColor         = "${config.colors.background}"
               , promptBorderWidth   = 0
               , promptKeymap        = arcXPKeymap
               , position            = Top
@@ -259,8 +259,7 @@
 
         myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
         myManageHook = composeAll
-             [ title =? "Mozilla Firefox"                         --> doShift ( myWorkspaces !! 1 )
-             , className =? "Chromium-browser"                    --> doShift ( myWorkspaces !! 2 )
+             [ className =? "Mozilla Firefox"                     --> doShift ( myWorkspaces !! 1 )
              , className =? "VirtualBox Manager"                  --> doShift ( myWorkspaces !! 3 )
              , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat
              ]
@@ -287,8 +286,9 @@
             -- Programs
                 , ("M-<Return>" , spawn "kitty --single-instance")
                 , ("M-e"        , spawn "mpv $(xclip -out -selection clipboard")
-                , ("M-c"        , spawn "chromium --kiosk https://web.whatsapp.com")
+                , ("M-c"        , spawn "firefox https://web.whatsapp.com")
                 , ("M-i"        , spawn "firefox")
+                , ("M-o"        , spawn "kitty --session .config/kitty/kitten.conf")
                 , ("M-9"        , spawn "polybar -r top &")
                 , ("M-0"        , spawn "pkill polybar")
                 , ("M-8"        , spawn "scrot")

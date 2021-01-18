@@ -30,9 +30,19 @@
       blur-method = "dual_kawase";
       blur-strength = "5";
       xinerama-shadow-crop = true;
+
+      rounded-corners-exclude = [
+        "class_g = 'Polybar'",
+      ];
     '';
     experimentalBackends = true;
 
+    shadow = true;
+  # shadowOffsets = [ ( -17 ) ( -17 ) ];
+    shadowOffsets = [ ( -15 ) ( -15 ) ];
+    shadowOpacity = "0.1";
+    noDNDShadow = true;
+    noDockShadow = true;
     shadowExclude = [
       "bounding_shaped && !rounded_corners"
     ];
@@ -46,7 +56,6 @@
       "90:class_g   *?= 'Kitty'"
       "100:class_g   *?= 'Firefox'"
       "100:class_g   *?= 'Zathura'"
-
     ];
   };
 }

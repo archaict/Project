@@ -15,6 +15,9 @@
     ./ranger.nix    # RANGER
     ./zathura.nix   # ZATHURA
     ./zsh.nix       # ZSH
+   
+  # ./starship.nix # QUTE
+  # ./qutebrowser.nix # QUTE
 
   ];
 

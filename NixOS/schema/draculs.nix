@@ -2,7 +2,7 @@
   imports = [ ./schema.nix ];
 
   vimcolors ={
-    color_scheme = "dracula-vim" ;
+    color_scheme = "dracula" ;
     background = "dark" ;
     light = "240";
     dark = "255";
@@ -46,7 +46,7 @@
 
     orange = "#ffb86c";
 
-    cursorColor = "#44475a";
+    cursorColor = "#fafafa";
     background  = "#282a36";
     foreground  = "#f8f8f2";
 

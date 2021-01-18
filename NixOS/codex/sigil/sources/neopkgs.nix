@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-dracula-vim      = pkgs.vimUtils.buildVimPlugin {
+dracula          = pkgs.vimUtils.buildVimPlugin {
   name           = "vim";
   src            = pkgs.fetchFromGitHub {
     owner        = "dracula";
@@ -80,10 +80,11 @@ in
       supertab      vim-surround        auto-pairs
       vim-pandoc    vim-rmarkdown       vim-pandoc-syntax
       table-mode    vim-startify        nvim-md-preview
-      vim-easymotion dracula-vim        iceberg_vim
+      vim-easymotion dracula            iceberg_vim
       coc-prettier  vimwiki             fzf-vim
       goyo          colorizer           firenvim
       ranger-vim    gruvbox             NeoSolarized
+      limelight-vim
 
     ]; # vplg
   };

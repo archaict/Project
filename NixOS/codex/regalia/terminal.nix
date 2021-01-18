@@ -28,6 +28,7 @@
       selection_background = "${config.colors.foreground}";
       url_color            = "${config.colors.blue}";
       cursor               = "${config.colors.cursorColor}";
+      cursor_text_color    = "${config.colors.background}";
 
       color0  = "${config.colors.black}";
       color1  = "${config.colors.red}";
@@ -54,11 +55,12 @@
           "ctrl+shift+equal" = "change_font_size all +2.0";
           "ctrl+shift+minus" = "change_font_size all -2.0";
           "ctrl+shift+backspace " = "change_font_size all 0";
+          "kitty_mod+t" = "new_tab";
       };
 
       extraConfig = ''
           editor vim
-          kitty_mod super
+          kitty_mod alt
           font_size 12.0
           background_opacity 0.85
           inactive_text_alpha 0.65

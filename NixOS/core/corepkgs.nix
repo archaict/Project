@@ -16,6 +16,7 @@
       nix-prefetch
       nix-prefetch-github
       nixos-icons
+      nixFlakes
 
     ];
 
@@ -30,7 +31,7 @@
       pandoc neofetch
       pfetch scrot w3m
       git curl wget zip unzip
-      bat starship
+      bat unstable.starship
       mpd mpc_cli ncmpcpp
       ffmpeg youtube-dl
       trash-cli
@@ -46,11 +47,12 @@
       adapta-gtk-theme
       nordic vscodium obsidian
       zathura sxiv pavucontrol
-      mpv pcmanfm
+      mpv pcmanfm gparted
       jmtpfs archiver
-      firefox chromium
+      firefox
+    # qutebrowser chromium
       tor-browser-bundle-bin
-      discord
+      discord signal-desktop
 
     ];
 
@@ -147,13 +149,16 @@
       antialias = true;
       hinting.enable = true;
     };
-    fonts = with pkgs; [
+    fonts =
+    with pkgs; [
+
       liberation_ttf
       iosevka fira-code
       fira-code-symbols
       ubuntu_font_family
       unifont font-awesome siji
       noto-fonts noto-fonts-cjk
+
       ( nerdfonts.override {
         fonts = [
           "FiraCode"
