@@ -2,16 +2,21 @@
 
 {
   nix = {
-    package = pkgs.nixFlakes;
+  # package = pkgs.nixFlakes;
     autoOptimiseStore = true; 
     readOnlyStore = true;
     allowedUsers = ["*"];
-    extraOptions = lib.optionalString (
-      config.nix.package == pkgs.nixFlakes)
-      ''
+    extraOptions = with pkgs; ''
       keep-outputs = true
       keep-derivations = true
-      experimental-features = nix-command flakes
       '';
+
+  # extraOptions = lib.optionalString (
+  #   config.nix.package == pkgs.nixFlakes)
+  #   ''
+  #   keep-outputs = true
+  #   keep-derivations = true
+  #   experimental-features = nix-command flakes
+  #   '';
   };
 }

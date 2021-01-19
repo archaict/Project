@@ -44,7 +44,7 @@ mdpreview        = pkgs.vimUtils.buildVimPlugin {
     owner        = "iamcco";
     repo         = "markdown-preview.nvim";
     rev          = "v0.0.9";
-    sha256       = "0w3b33a7425sd1p4s4m918m45d3w7qchxy49d7z19sl12gggvgr8";
+    sha256       = "1y30ph5l240rccks8hv2q74r0ckx3yldmlcz5cg4sryvhp3gs10x";
     };
   };
 
@@ -89,7 +89,7 @@ in
       vim-nix       nord-vim            coc-nvim
       supertab      vim-surround        auto-pairs
       vim-pandoc    vim-rmarkdown       vim-pandoc-syntax
-      table-mode    vim-startify        nvim-md-preview
+      table-mode    vim-startify        # nvim-md-preview
       vim-easymotion dracula            iceberg_vim
       coc-prettier  vimwiki             fzf-vim
       goyo          colorizer           firenvim

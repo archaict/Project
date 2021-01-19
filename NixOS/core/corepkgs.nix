@@ -16,7 +16,8 @@
       nix-prefetch
       nix-prefetch-github
       nixos-icons
-      nixFlakes
+      socat
+    # nixFlakes
 
     ];
 
@@ -83,7 +84,7 @@
 
       ruby           # Ruby
 
-      gnumake
+      gnumake yarn
       android-studio # Android
 
       nodejs         # Java
