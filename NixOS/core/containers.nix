@@ -28,7 +28,7 @@
 
   };
 
-# BROWSER TOR
+# BROWSER TOR #
 
   containers.browser = {
     autoStart = false;
