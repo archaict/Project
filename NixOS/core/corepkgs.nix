@@ -40,7 +40,7 @@
 
     guipkgs = [
 
-      qt5ct
+      qt5ct gnome-themes-extra
       matcha-gtk-theme
       gnome-breeze
       numix-icon-theme

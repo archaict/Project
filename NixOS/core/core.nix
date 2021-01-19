@@ -44,7 +44,7 @@
     firewall.enable = true;
   };
 
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = true;
 
   programs = {
     adb.enable = true;

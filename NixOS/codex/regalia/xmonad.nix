@@ -20,7 +20,7 @@
         import qualified XMonad.StackSet as W
 
             -- Actions
-        import XMonad.Actions.CopyWindow (kill1, killAllOtherCopies)
+        import XMonad.Actions.CopyWindow (kill1, killAllOtherCopies,copyToAll)
         import XMonad.Actions.CycleWS (moveTo, shiftTo, WSType(..), nextScreen, prevScreen)
         import XMonad.Actions.MouseResize
         import XMonad.Actions.Promote
@@ -43,6 +43,7 @@
         import XMonad.Hooks.FadeInactive
         import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
         import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+        import XMonad.Hooks.Place
         import XMonad.Hooks.ServerMode
         import XMonad.Hooks.SetWMName
         import XMonad.Hooks.WorkspaceHistory
@@ -99,7 +100,7 @@
         myBorderWidth = 0         -- BORDER --
         altMask       = mod1Mask
         myModMask     = mod4Mask
-        myFocusColor  = "${config.colors.yellow}"
+        myFocusColor  = "${config.colors.blue}"
         myNormColor   = "${config.colors.background}"
 
    --  ┌──────────────────────────────────────────────────────────┐ --
@@ -261,7 +262,13 @@
         myManageHook = composeAll
              [ className =? "Mozilla Firefox"                     --> doShift ( myWorkspaces !! 1 )
              , className =? "VirtualBox Manager"                  --> doShift ( myWorkspaces !! 3 )
+             , className =? "pop-up"                              --> doFloat
              , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat
+             , title=? "Picture-in-Picture"                       --> doFloat
+             , title=? "Picture-in-Picture"                       --> doF copyToAll
+          -- , className =? "mpv"                                 --> doFloat
+             , className =? "mpv"                                 --> doF copyToAll
+             , className =? "mpv"  --> placeHook (fixed ( 0.98,0.075 )) <+> doFloat
              ]
 
         myLogHook :: X ()
@@ -285,7 +292,6 @@
 
             -- Programs
                 , ("M-<Return>" , spawn "kitty --single-instance")
-                , ("M-e"        , spawn "mpv $(xclip -out -selection clipboard")
                 , ("M-c"        , spawn "firefox https://web.whatsapp.com")
                 , ("M-i"        , spawn "firefox")
                 , ("M-o"        , spawn "kitty --session .config/kitty/kitten.conf")
@@ -353,6 +359,9 @@
                 , ("<XF86AudioMute>"          , spawn "pactl set-sink-mute 0 toggle")
                 , ("<XF86AudioLowerVolume>"   , spawn "pactl set-sink-volume 0 -5%")
                 , ("<XF86AudioRaiseVolume>"   , spawn "pactl set-sink-volume 0 +5%")
+
+                , ("M-<XF86AudioMute>"        , spawn (myTerminal ++ "mpc toggle"))
+                , ("M-e"                      , spawn "$HOME/Archaict/Scripts/myth.sh")
 
                 , ("<Print>", spawn "scrotd 0")
 

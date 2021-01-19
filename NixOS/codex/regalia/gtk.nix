@@ -7,16 +7,16 @@
     iconTheme.name = "Numix";
     theme.name = "Matcha-dark-aliz";
     gtk2.extraConfig = ''
-      LocationMode=path-bar;
-      ShowHidden=false;
-      ShowSizeColumn=true;
-      GeometryX=294;
-      GeometryY=81;
-      GeometryWidth=780;
-      GeometryHeight=585;
-      SortColumn=name;
-      SortOrder=ascending;
-      StartupMode=recent;
+      LocationMode=path-bar
+      ShowHidden=false
+      ShowSizeColumn=true
+      GeometryX=294
+      GeometryY=81
+      GeometryWidth=780
+      GeometryHeight=585
+      SortColumn=name
+      SortOrder=ascending
+      StartupMode=recent
     '';
     gtk3.extraConfig = {
       gtk-cursor-theme-size=0;

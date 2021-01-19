@@ -52,8 +52,8 @@
           "super+y" = "show_scrollback";
           "ctrl+shift+c" = "copy_to_clipboard";
           "ctrl+shift+v" = "paste_from_clipboard";
-          "ctrl+shift+equal" = "change_font_size all +2.0";
-          "ctrl+shift+minus" = "change_font_size all -2.0";
+          "ctrl+shift+equal" = "change_font_size all +1.0";
+          "ctrl+shift+minus" = "change_font_size all -1.0";
           "ctrl+shift+backspace " = "change_font_size all 0";
           "kitty_mod+t" = "new_tab";
       };

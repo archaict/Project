@@ -38,6 +38,16 @@ nvim-md-preview  = pkgs.vimUtils.buildVimPlugin {
     sha256       = "1kc74y9wd6ipz82ry7c3vzi4r65b817wiwcgf7q0632qxxczqdxr";
     };
   };
+mdpreview        = pkgs.vimUtils.buildVimPlugin {
+  name           = "mdpreview";
+  src            = pkgs.fetchFromGitHub {
+    owner        = "iamcco";
+    repo         = "markdown-preview.nvim";
+    rev          = "v0.0.9";
+    sha256       = "0w3b33a7425sd1p4s4m918m45d3w7qchxy49d7z19sl12gggvgr8";
+    };
+  };
+
 vim-waikiki      = pkgs.vimUtils.buildVimPlugin {
   name           = "vim-waikiki";
   src            = pkgs.fetchFromGitHub {
@@ -84,7 +94,7 @@ in
       coc-prettier  vimwiki             fzf-vim
       goyo          colorizer           firenvim
       ranger-vim    gruvbox             NeoSolarized
-      limelight-vim
+      limelight-vim mdpreview
 
     ]; # vplg
   };
