@@ -44,7 +44,7 @@
       users.extraUsers.browser = {
         isNormalUser = true;
         home = "/home/browser";
-        openssh.authorizedKeys.keys = [  ];
+        openssh.authorizedKeys.keys = [ test ];
         extraGroups = ["audio" "video"];
       };
     };
