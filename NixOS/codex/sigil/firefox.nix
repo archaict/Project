@@ -4,16 +4,16 @@
   programs.firefox = {
     enable=true;
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      decentraleyes
-      disconnect
-      fraidycat
-      google-search-link-fix
-      https-everywhere
-      i-dont-care-about-cookies
+    # decentraleyes
+    # disconnect
+    # fraidycat
+    # google-search-link-fix
+    # https-everywhere
+    # i-dont-care-about-cookies
     # octotree
     # stylus
       ublock-origin
-      unpaywall
+    # unpaywall
       vimium
     ];
     profiles.default = {
@@ -25,10 +25,11 @@
         "browser.uidensity" = 1;
         "browser.tabs.closeTabByDblclick" = true;
 
-        "findbar.modalHighlight" = true; 
+      # "findbar.modalHighlight" = true; 
         "browser.urlbar.trimURLs" = true;
 
-        # "media.autoplay.enabled"  = false;
+        "media.navigator.audio.full_duplex" = false;
+      # "media.autoplay.enabled"  = false;
 
       };
       userChrome = ''
