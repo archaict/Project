@@ -23,47 +23,120 @@
 
     clipkgs = [
 
-      kitty zsh fzf
-      htop ctags gotop
-      neovim debootstrap
-      streamlink emacs
-      ranger figlet toilet
-      lolcat jq tree manpages
-      pandoc neofetch
-      pfetch scrot w3m
-      git curl wget zip unzip
-      bat unstable.starship
-      mpd mpc_cli ncmpcpp
-      ffmpeg youtube-dl
+      kitty
+
+      bc
+      zsh
+      fzf
+      ctags 
+      tree 
+      manpages
+
+      ranger 
+      highlight
+      
+      htop 
+      gotop
+
+      emacs
+      neovim 
+      pandoc 
+
+      figlet 
+      toilet
+      lolcat 
+
+      jq 
+      neofetch
+      scrot 
+
+      w3m
+      git 
+      curl 
+      wget 
+      rtorrent
+
+      zip unzip
+      unrar
+      bat
+      exa
+      ripgrep
+
+      mpd mpc_cli 
+      ncmpcpp
+      ffmpeg 
+      youtube-dl
+
       trash-cli
+      docker-compose
+      lilypond
+
+    # debootstrap
+    # unstable.starship
 
     ];
 
     guipkgs = [
 
-      qt5ct gnome-themes-extra
+      gnome-themes-extra
       matcha-gtk-theme
       gnome-breeze
       numix-icon-theme
       adapta-gtk-theme
-      nordic vscodium obsidian
-      zathura sxiv pavucontrol
-      mpv pcmanfm gparted
-      jmtpfs archiver
+      nordic
+
+      mpv
+      gparted
+      vlc
+      pavucontrol
+    # kodi
+
+      obsidian
+      zathura
+      sxiv
+
+      pcmanfm 
+      jmtpfs
+      archiver
+
+      xfce.thunar
+      xfce.xfconf
+      xfce.tumbler
+      xfce.exo
+
       firefox
-    # qutebrowser chromium
+      chromium
+    # qutebrowser
       tor-browser-bundle-bin
-      discord signal-desktop
+    # discord
+      signal-desktop
+      qbittorrent
+
+      vscodium
 
     ];
 
     wmapkgs = [
 
-      acpi light tlp
-      nitrogen feh xclip
-      dunst libnotify unclutter
-      lxappearance autorandr
-      dmenu rofi polybar tdrop
+      acpi
+      light
+      tlp
+
+      feh
+      nitrogen
+      autorandr
+
+      xclip
+      dunst
+      libnotify
+
+      unclutter
+      lxappearance 
+      
+      dmenu rofi 
+      polybar
+
+      scrcpy
 
     ];
 
@@ -74,10 +147,21 @@
 
     ];
 
+    tlspkgs = [
+
+      usbutils
+      hdparm
+      ddrescue
+      qt5ct
+      gdown
+
+    ];
+
     devpkgs = [
 
       R              # R
       go             # Go
+      libgudev
 
       gcc            # C
       ghc            # Haskell
@@ -95,12 +179,17 @@
       python38Packages.pip
       python38Packages.pandas
       python38Packages.matplotlib
+      python38Packages.citeproc-py
+
+      php74
 
     ];
 
     texpkgs = [
 
-  # texlive.combined.schme-full
+      zotero
+
+    # texlive.combined.schme-full
     ( texlive.combine {
         inherit (texlive)
         collection-basic
@@ -135,6 +224,7 @@
     ++ guipkgs
     ++ wmapkgs
     ++ secpkgs
+    ++ tlspkgs
     ++ devpkgs
     ++ texpkgs;
 

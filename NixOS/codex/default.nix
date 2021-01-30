@@ -10,7 +10,6 @@
 
     ./arkiv.nix     # ARKIV
     ./config.nix    # CONFIG
-    ./machina.nix   # MACHINA
 
 # ──── [ REGALIA ]
 

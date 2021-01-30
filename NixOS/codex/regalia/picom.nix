@@ -33,6 +33,9 @@
 
       rounded-corners-exclude = [
         "class_g = 'Polybar'",
+        "class_g = 'Firefox'",
+        "class_g = 'Chromium-browser'",
+        "class_g = 'mpv'",
       ];
     '';
     experimentalBackends = true;

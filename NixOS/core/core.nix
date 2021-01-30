@@ -38,10 +38,16 @@
 
   networking = {
     hostName = "nixos";
-    useDHCP = false;
-    interfaces.wlp1s0.useDHCP = true;
-    networkmanager.enable = true;
     firewall.enable = true;
+    networkmanager.enable = true;
+    interfaces.wlp1s0.useDHCP = true;
+    extraHosts = (import ./network.nix).hosts ;
+
+    useDHCP = false;
+  # resolvconf.enable = true;
+  # networkmanager.dns = "none";
+  # dhcpcd.extraConfig = "nohook resolv.conf";
+  # nameservers = [ "127.0.0.1" "::1" ];
   };
 
   security.sudo.wheelNeedsPassword = true;
@@ -52,6 +58,7 @@
     light.enable = true;
     qt5ct.enable = true;
     dconf.enable = true;
+    ssh.askPassword = "";
 
     zsh.autosuggestions.enable = true;
     zsh.enableCompletion = true;
@@ -61,6 +68,13 @@
   services = {
     blueman.enable = true;
     lorri.enable = true;
+    tor.enable = true;
+
+  # USB Automounting
+    gvfs.enable = true;
+    udisks2.enable = true;
+    devmon.enable = true;
+
   # printing.enable = true;
   };
 

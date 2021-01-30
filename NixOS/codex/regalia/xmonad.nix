@@ -3,11 +3,9 @@
 {
     xsession.windowManager = {
         xmonad = {
-          enable = true;
-          enableContribAndExtras = true;
+          enable = false;
+          enableContribAndExtras = false;
           config = pkgs.writeText "xmonad.hs" ''
-
-
 
     -- ┌──────────────────────────────────────────────────────────┐ --
     -- │                        ✖ import ✖                        │ --
@@ -261,14 +259,18 @@
         myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
         myManageHook = composeAll
              [ className =? "Mozilla Firefox"                     --> doShift ( myWorkspaces !! 1 )
+             , className =? "Chromium"                            --> doShift ( myWorkspaces !! 2 )
              , className =? "VirtualBox Manager"                  --> doShift ( myWorkspaces !! 3 )
              , className =? "pop-up"                              --> doFloat
              , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat
              , title=? "Picture-in-Picture"                       --> doFloat
              , title=? "Picture-in-Picture"                       --> doF copyToAll
-          -- , className =? "mpv"                                 --> doFloat
+
              , className =? "mpv"                                 --> doF copyToAll
              , className =? "mpv"  --> placeHook (fixed ( 0.98,0.075 )) <+> doFloat
+
+             , className =? "vlc"                                 --> doF copyToAll
+             , className =? "vlc"  --> placeHook (fixed ( 0.98,0.075 )) <+> doFloat
              ]
 
         myLogHook :: X ()
@@ -288,19 +290,23 @@
                 , ("M-S-q", io exitSuccess)
 
             -- Run Prompt
-                , ("M-<Space>" , shellPrompt arcXPConfig) -- Xmonad Shell Prompt
+            --  , ("M-<Space>" , shellPrompt arcXPConfig) -- Xmonad Shell Prompt
+                , ("M-<Space>" , spawn "rofi -show run")
 
             -- Programs
                 , ("M-<Return>" , spawn "kitty --single-instance")
-                , ("M-c"        , spawn "firefox https://web.whatsapp.com")
+                , ("M-c"        , spawn "chromium --kiosk https://web.whatsapp.com")
                 , ("M-i"        , spawn "firefox")
                 , ("M-o"        , spawn "kitty --session .config/kitty/kitten.conf")
                 , ("M-9"        , spawn "polybar -r top &")
                 , ("M-0"        , spawn "pkill polybar")
-                , ("M-8"        , spawn "scrot")
+            --  , ("M-8"        , spawn "scrot")
+            --  , ("M-;"        , spawn "thunar")
 
             -- Kill windows
-                , ("M-w" , kill1)       -- Kill the currently focused client
+             -- , ("M-w" , kill1)       -- Kill the currently focused client
+                , ("M-q" , kill1)       -- Kill the currently focused client
+                , ("M-S-q" , kill1)       -- Kill the currently focused client
 
             -- Workspaces
                 , ("M-a" , windows  (W.greedyView "01"))
@@ -327,8 +333,13 @@
 
             -- Windows navigation
                 , ("M-m"           , windows W.focusMaster)   -- Move focus to the master window
+
                 , ("M-j"           , windows W.focusDown)     -- Move focus to the next window
                 , ("M-k"           , windows W.focusUp)       -- Move focus to the prev window
+
+                , ("M-C-w"           , windows W.focusDown)     -- Move focus to the next window
+                , ("M-C-s"           , windows W.focusUp)       -- Move focus to the prev window
+
                 , ("M-S-m"         , windows W.swapMaster)    -- Swap the focused window and the master window
                 , ("M-S-j"         , windows W.swapDown)      -- Swap focused window with next window
                 , ("M-S-k"         , windows W.swapUp)        -- Swap focused window with prev window
@@ -360,9 +371,15 @@
                 , ("<XF86AudioLowerVolume>"   , spawn "pactl set-sink-volume 0 -5%")
                 , ("<XF86AudioRaiseVolume>"   , spawn "pactl set-sink-volume 0 +5%")
 
-                , ("M-<XF86AudioMute>"        , spawn (myTerminal ++ "mpc toggle"))
-                , ("M-e"                      , spawn "$HOME/Archaict/Scripts/myth.sh")
+                , ("M-S-Up"                   , spawn (myTerminal ++ "mpc toggle"))
+                , ("M-S-Left"                 , spawn (myTerminal ++ "mpc prev"))
+                , ("M-S-Right"                , spawn (myTerminal ++ "mpc next"))
 
+                , ("M-Up"                     , spawn "pactl set-sink-mute 0 toggle")
+                , ("M-Left"                   , spawn "pactl set-sink-volume 0 -5%")
+                , ("M-Right"                  , spawn "pactl set-sink-volume 0 +5%")
+
+                , ("M-e"                      , spawn "$HOME/Archaict/Scripts/myth.sh")
                 , ("<Print>", spawn "scrotd 0")
 
                 ]

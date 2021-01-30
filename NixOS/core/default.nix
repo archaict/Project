@@ -7,8 +7,9 @@
     ./containers.nix
     ./core.nix
     ./corepkgs.nix
-    ./network.nix
+  # ./dnscrypt.nix
     ./nixies.nix
+    ./services.nix
     ./sounds.nix
     ./xserver.nix
     ./damsel-in-distress.nix

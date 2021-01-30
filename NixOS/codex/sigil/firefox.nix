@@ -1,9 +1,12 @@
 { config, pkgs, lib, ... }:
 
+let runic = config.colors; in
+
 {
   programs.firefox = {
     enable=true;
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      darkreader
     # decentraleyes
     # disconnect
     # fraidycat
@@ -24,12 +27,14 @@
 
         "browser.uidensity" = 1;
         "browser.tabs.closeTabByDblclick" = true;
+        "extensions.update.enabled"  = false;
 
-      # "findbar.modalHighlight" = true; 
+        "findbar.modalHighlight" = true; 
         "browser.urlbar.trimURLs" = true;
 
         "media.navigator.audio.full_duplex" = false;
-      # "media.autoplay.enabled"  = false;
+        "media.autoplay.enabled"  = false;
+        
 
       };
       userChrome = ''
@@ -37,35 +42,35 @@
        
            /* Minimal Functional Fox variables*/
        
-          --mff-bg                    : ${config.colors.background};
-          --mff-fg                    : ${config.colors.foreground};
-          --mff-icon-color            : ${config.colors.foreground};
+          --mff-bg                    : ${runic.background};
+          --mff-fg                    : ${runic.foreground};
+          --mff-icon-color            : ${runic.foreground};
           --mff-nav-toolbar-padding   : 8px;
           --mff-sidebar-bg            : var(--mff-bg);
           --mff-sidebar-fg            : var(--mff-fg);
-          --mff-sidebar-color         : ${config.colors.foreground};
+          --mff-sidebar-color         : ${runic.foreground};
        
           --mff-tab-border-radius     : 0px;
-          --mff-tab-color             : ${config.colors.foreground};
+          --mff-tab-color             : ${runic.foreground};
           --mff-tab-font-family       : ${config.schema.font}, sans;
           --mff-tab-font-size         : 11pt;
           --mff-tab-font-weight       : 400;
           --mff-tab-height            : 32px;
-          --mff-tab-pinned-bg         : ${config.colors.yellow};
-          --mff-tab-selected-bg       : ${config.colors.blue};
-          --mff-tab-soundplaying-bg   : ${config.colors.green};
+          --mff-tab-pinned-bg         : ${runic.yellow};
+          --mff-tab-selected-bg       : ${runic.blue};
+          --mff-tab-soundplaying-bg   : ${runic.green};
        
-          --mff-urlbar-color          : ${config.colors.foreground};
-          --mff-urlbar-focused-color  : ${config.colors.foreground};
+          --mff-urlbar-color          : ${runic.foreground};
+          --mff-urlbar-focused-color  : ${runic.foreground};
           --mff-urlbar-font-family    : ${config.schema.font}, serif;
           --mff-urlbar-font-size      : 12pt;
           --mff-urlbar-font-weight    : 700;
 
-          --mff-urlbar-results-color       : ${config.colors.foreground};
+          --mff-urlbar-results-color       : ${runic.foreground};
           --mff-urlbar-results-font-family : ${config.schema.font}, serif;
           --mff-urlbar-results-font-size   : 12pt;
           --mff-urlbar-results-font-weight : 700;
-          --mff-urlbar-results-url-color   : ${config.colors.foreground};
+          --mff-urlbar-results-url-color   : ${runic.foreground};
        
        
           /* Overriden Firefox variables*/
@@ -139,7 +144,7 @@
         }
        
         #tabbrowser-tabs {
-          --tab-loading-fill: ${config.colors.foreground} !important;
+          --tab-loading-fill: ${runic.foreground} !important;
         }
        
         .tab-label-container:not([textoverflow]) {
@@ -179,8 +184,8 @@
         }
        
        ::selection {
-         background-color: ${config.colors.background};
-         color           : ${config.colors.yellow};
+         background-color: ${runic.background};
+         color           : ${runic.yellow};
          }
        
        #tabbrowser-tabs, #tabbrowser-tabs > #tabbrowser-arrowscrollbox {
@@ -371,7 +376,8 @@
         }
        
         td {
-            color: ${config.colors.background};
+            color: ${runic
+.background};
             width: 100%;
         }
        

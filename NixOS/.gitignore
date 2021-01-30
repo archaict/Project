@@ -1,4 +1,4 @@
 .config/*
 core/containers.nix
-secret.nix
+secrets.nix
 core/network.nix

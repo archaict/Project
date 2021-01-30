@@ -22,6 +22,7 @@
 
     "bar/top" = {
       bottom = false;
+      enable-ipc = true;
       fixed-center = true;
 
       width = "100%";

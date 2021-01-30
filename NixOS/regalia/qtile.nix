@@ -1,9 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-
-    services.xserver.windowManager.qtile = {
-        enable = true;
-    };
-
+  services.xserver.windowManager.qtile = {
+    enable = true;
+  };
 }

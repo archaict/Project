@@ -2,22 +2,6 @@
 
 {
   programs.zsh = {
-    sessionVariables = {
-      ARC = "$HOME/Archaict";
-      DLO = "$HOME/Downloads";
-      CFG = "$HOME/.config";
-      LCS=  "$HOME/.local/share";
- 
-      ZARC = "$CFG/zsh";
- 
-      UNI = "$HOME/Archaict/University";
-      DEV = "$HOME/Archaict/University/Devel";
-      TCH = "$HOME/Archaict/Teaching";
-      AKV = "$HOME/Archaict/Arkiv";
- 
-      NIXDIR = "$HOME/Project/NixOS";
-      STARSHIP_CONFIG = "$CFG/starship.toml";
-    };
 
     shellAliases = {
       eiri   = "vim $ZARC/.aliases";
@@ -56,6 +40,8 @@
       vs   = "xclip -o -selection clipboard";
       q    = "exit";
       sudo = "sudo ";
+
+      i    ="cd $NIXDIR && source machina";
 
       mtp-on  = "jmtpfs $HOME/Mount";
       mtp-off = "fusermount -u $HOME/Mount";

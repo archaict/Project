@@ -3,9 +3,9 @@
 {
 
   imports = [
-#   ./qtile.nix
+  # ./i3.nix
+  # ./qtile.nix
     ./xmonad.nix
-#   ./i3.nix
   ];
 
 }
