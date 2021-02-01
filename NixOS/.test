@@ -1,5 +1,0 @@
-corenv (){
-   if [ -n $1 ];then;
-    vim $CORE/$1
-  fi
-}
