@@ -1,19 +1,37 @@
 { config, pkgs, lib, ... }:
 
 {
-  services.xserver.windowManager.xmonad = {
-    enable = true;
-    enableContribAndExtras = true;
-    extraPackages = hp: [
-      hp.dbus
-      hp.xmonad
-      hp.xmobar
-      hp.monad-logger
-      hp.xmonad-contrib
-      hp.xmonad-extras
-    ];
-    config = ./regalia.hs;
+
+  services.xserver.windowManager = {
+    xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      extraPackages = hp: with hp; [
+        dbus
+        xmonad
+        xmobar
+        monad-logger
+        xmonad-contrib
+        xmonad-extras
+      ];
+      config = ./regalia.hs;
+    };
   };
+
+# services.xserver.windowManager.xmonad = {
+#   enable = true;
+#   enableContribAndExtras = true;
+#   extraPackages = haskellPackages: [
+#     haskellPackages.dbus
+#     haskellPackages.xmonad
+#     haskellPackages.xmobar
+#     haskellPackages.monad-logger
+#     haskellPackages.xmonad-contrib
+#     haskellPackages.xmonad-extras
+#   ];
+
+#   config = ./regalia.hs;
+# };
 
 
 # services.xserver.windowManager.i3 = {
