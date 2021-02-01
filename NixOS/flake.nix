@@ -1,5 +1,5 @@
 {
   inputs = {
-    home-manager.url = "github:nix-community/home-manager/tree/release-20.09";
+    home-manager.url = "github:nix-community/home-manager/";
   };
 }
