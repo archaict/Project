@@ -51,17 +51,12 @@
       elif [ $1 = 'pkgs' ]; then
         notify-send "Machine [ core ] extracted"
         vim $CORE/corepkgs.nix
-      elif [ -n $2 ]; then
+      elif [ -n $1 ]; then
         notify-send "Machine [ core ] extracted"
-        vim $CORE/$2
+        vim $CORE/$1.nix
       fi
     }
 
-    cores() {
-      if [ -z $1 ]; then
-        vim $CORE/$1
-      fi
-    }
 
 #--------------------------  codex  --------------------------#
                                                        #alias
@@ -90,15 +85,9 @@
                                                        #alias
     
     genesis() {
-      notify-send "Generating code [ $1 ]..."
-      echo "Generating genesis..."
+      notify-send "Genesis..."
+      echo "Oratorio [ Genesis ]..."
       sudo nixos-rebuild -I nixos-config=$NIXCFG switch --fast
-    #   -I nixos-config=$NIXCFG
-    #   -I schema=$SCHEMA/$1.nix switch --fast
-      echo "Oratorio incantation [ $1 ]"
-      feh --bg-scale $HAIKEI/$1.jpg
-      polybar -r top &
-      kitty @ set-colors --all --configured $CFG/kitty/kitty.conf
       notify-send "Incantation ends."
       echo "Incantation ends."
     }

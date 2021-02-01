@@ -77,6 +77,17 @@ firenvim         = pkgs.vimUtils.buildVimPlugin {
   };
 };
 
+ackvim           = pkgs.vimUtils.buildVimPlugin {
+  name           = "ackvim";
+  src            = pkgs.fetchFromGitHub {
+    owner        = "mileszs";
+    repo         = "ackvim";
+    rev          = "36e40f9ec91bdbf6f1adf408522a73a6925c3042";
+    sha256       = "0yppr89hd1jyp0pj56hxdjbn32sr7pj3mihd18wxispvl5dqd6fm";
+    fetchSubmodules = true;
+  };
+};
+
 in
 
 { 
@@ -94,7 +105,7 @@ in
       coc-prettier  vimwiki             fzf-vim
       goyo          colorizer           firenvim
       ranger-vim    gruvbox             NeoSolarized
-      limelight-vim mdpreview
+      limelight-vim mdpreview           ackvim
 
     ]; # vplg
   };

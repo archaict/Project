@@ -7,9 +7,9 @@
     vimAlias = true;
     configure = {
       customRC = ''
-        "------------"
-        "|   SETS   |"
-        "------------"
+        " ┌──────┐ "
+        " │ SETS │ "
+        " └──────┘ "
 
         syntax on
         colorscheme ${config.vimcolors.color_scheme}
@@ -28,9 +28,9 @@
         set listchars=tab:\ \ ,trail:·,eol:¬,nbsp:_
         set fillchars=fold:\ 
 
-        "------------"
-        "|   LETS   |"
-        "------------"
+        " ┌──────┐ "
+        " │ LETS │ "
+        " └──────┘ "
 
         let mapleader = "\<tab>"
         let g:lion_map_right = 'gj'
@@ -42,9 +42,9 @@
         let g:wiki_link_extension = '.md'
         let g:wiki_link_target_type = 'md'
 
-        "------------"
-        "|  REMAPS  |"
-        "------------"
+        " ┌────────┐ "
+        " │ REMAPS │ "
+        " └────────┘ "
 
         nnoremap j gj
         nnoremap k gk
@@ -74,18 +74,18 @@
         nmap <leader>B :.!toilet -w 200 -f pagga -F border<CR>
 
 
-        "--------------"
-        "| HIGHLIGHTS |"
-        "--------------"
+        " ┌────────────┐ "
+        " │ HIGHLIGHTS │ "
+        " └────────────┘ "
 
        "hi Visual term=none ctermbg=240
         hi Normal term=none ctermbg=None
         hi Folded term=none ctermbg=None
         hi ColorColumn ctermbg=${config.vimcolors.cc}
 
-        "--------------"
-        "| ABBREVIATE |"
-        "--------------"
+        " ┌────────────┐ "
+        " │ ABBREVIATE │ "
+        " └────────────┘ "
 
         iab akd ''${}<left>
         iab akv 
@@ -96,9 +96,9 @@
         \KEYWORDS:<CR>
         \---
 
-        "--------------"
-        "|  ETCETERA  |"
-        "--------------"
+        " ┌──────────┐ "
+        " │ ETCETERA │ "
+        " └──────────┘ "
 
         let s:hidden_all = 1
         function! ToggleHiddenAll()

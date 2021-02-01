@@ -11,7 +11,33 @@
 
     desktopManager.xterm.enable = false;
     displayManager = {
-      gdm.enable = true;
+      lightdm = {
+        enable = true;
+        greeters.mini = {
+          enable = true;
+          user = "archaict";
+          extraConfig = ''
+            [greeter]
+            show-input-cursor = false
+            show-password-label = true
+            password-label-text = ❯
+            password-alignment = right
+            password-input-width = 30
+
+            [greeter-theme]
+            layout-space = 12
+            border-width = 0px
+            background-image = ""
+            password-border-width = 0px
+            border-color = "#2e2e2e"
+            text-color = "#fafafa"
+            window-color = "#2e2e2e"
+            background-color = "#1d2021"
+            password-color = "#fafafa"
+            password-background-color = "#404040"
+            '';
+        };
+      };
       defaultSession = "none+xmonad";
     };
   };

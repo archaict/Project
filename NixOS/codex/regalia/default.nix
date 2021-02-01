@@ -5,7 +5,7 @@
   imports = [
 
   # ./i3wm.nix      # I3WM
-    ./xmonad.nix    # XMONAD
+    ./regalia.nix   # XMONAD
     ./polybar.nix   # POLYBAR
     ./dunst.nix     # DUNST
     ./picom.nix     # PICOM

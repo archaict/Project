@@ -3,9 +3,7 @@
 {
 
   imports = [
-  # ./i3.nix
-  # ./qtile.nix
-    ./xmonad.nix
+    ./regalia.nix
   ];
 
 }

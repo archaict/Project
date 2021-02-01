@@ -103,6 +103,7 @@
       xfce.xfconf
       xfce.tumbler
       xfce.exo
+      betterlockscreen
 
       firefox
       chromium
@@ -144,6 +145,13 @@
 
       nmap
       wireshark
+
+    ];
+
+    optpkgs = [
+
+      cataclysm-dda
+      nethack
 
     ];
 
@@ -224,6 +232,7 @@
     ++ guipkgs
     ++ wmapkgs
     ++ secpkgs
+    ++ optpkgs
     ++ tlspkgs
     ++ devpkgs
     ++ texpkgs;

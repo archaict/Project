@@ -34,6 +34,9 @@ let runic = config.colors; in
 
         "media.navigator.audio.full_duplex" = false;
         "media.autoplay.enabled"  = false;
+
+        "browser.display.background_color"= runic.background;
+        "browser.display.foreground_color"= runic.foreground;
         
 
       };

@@ -1,5 +1,9 @@
 { config, pkgs, lib, ... }:
 
+let
+  hm = https://github.com/rycee/home-manager/archive/release-20.09.tar.gz;
+in
+
 {
 
   imports = [
@@ -14,6 +18,9 @@
     ./xserver.nix
     ./damsel-in-distress.nix
     ./hardware-configuration.nix
+
+    ( import "${ builtins.fetchTarball "${hm}" }/nixos" )
+
   ];
 
 }
