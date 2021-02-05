@@ -88,6 +88,17 @@ ackvim           = pkgs.vimUtils.buildVimPlugin {
   };
 };
 
+vim-blade        = pkgs.vimUtils.buildVimPlugin {
+  name           = "vim-blade";
+  src            = pkgs.fetchFromGitHub {
+    owner        = "jwalton512";
+    repo         = "vim-blade";
+    rev          = "9534101808cc320eef003129a40cab04b026a20c";
+    sha256       = "0000000000000000000000000000000000000000000000000000";
+    fetchSubmodules = true;
+  };
+};
+
 in
 
 { 

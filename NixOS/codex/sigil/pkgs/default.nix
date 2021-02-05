@@ -6,6 +6,8 @@
 
     # [ NEOPKGS ]
     ./neopkgs.nix
+    # [ EMCPKGS ]
+    ./emcpkgs.nix
 
     # [ ZSHPKGS ]
     ./zsheiri.nix

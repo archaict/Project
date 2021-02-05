@@ -4,7 +4,7 @@
   systemd.targets.machines.enable = true;
 
   systemd.nspawn."archlinux" = {
-    enable = true;
+    enable = false;
     execConfig = {
       Boot = true;
     };

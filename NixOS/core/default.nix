@@ -3,8 +3,8 @@
 {
 
   imports = [
-    ./config.nix
-  # ./containers.nix
+  # ./config.nix
+    ./containers.nix
     ./core.nix
     ./corepkgs.nix
     ./nixies.nix

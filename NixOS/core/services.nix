@@ -9,6 +9,11 @@
       dataDir = "/var/db/mysql";
     };
 
+  # emacs = {
+  #   enable = true;
+  #   defaultEditor = true;
+  # };
+
     longview.mysqlPassword = "nixnixnix";
 
   };

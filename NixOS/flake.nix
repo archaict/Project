@@ -1,37 +1,85 @@
 {
-  description = "Arkiv";
+  description = ''
+    Arkiv Configuration Files
+  '';
 
   inputs = {
 
-    nixpkgs.url        = "github:NixOS/nixpkgs/nixos-20.09";
-    unstable.url       = "github:NixOS/nixpkgs/nixos-unstable";
-    home.url           = "github:nix-community/home-manager/release-20.09";
-    master.url         = "nixpkgs/master";
-    nixos.url          = "nixpkgs/release-20.09";
-    nur.url            = "github:nix-community/NUR";
-    flake-utils.url    = "github:numtide/flake-utils/flatten-tree-system";
-    devshell.url       = "github:numtide/devshell";
+    nixpkgs.url       = "github:NixOS/nixpkgs/nixos-20.09";
+    unstable.url      = "github:NixOS/nixpkgs/nixos-unstable";
+    master.url        = "nixpkgs/master";
+    nixos.url         = "nixpkgs/release-20.09";
+    nur.url           = "github:nix-community/NUR";
+    flake-utils.url   = "github:numtide/flake-utils/flatten-tree-system";
+    devshell.url      = "github:numtide/devshell";
+    ci-agent.url      = "github:hercules-ci/hercules-ci-agent";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    ci-agent.url       = "github:hercules-ci/hercules-ci-agent";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-20.09";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
   outputs = { self
   , nixpkgs
-  , home
+  , home-manager
   , master
   , nixos
+  , nur
   , flake-utils
   , devshell
   , nixos-hardware
   , ci-agent
-  , ... }:
+  , ... }@inputs:
+
   let
-    pkgs = nixpkgs;
+
+    overlays = [
+      inputs.nur.overlay
+      inputs.emacs-overlay.overlay
+
+      (final: prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+      })
+
+    ];
+
   in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [ ./configuration.nix];
+
+    nixosConfigurations = {
+      nixos = inputs.nixpkgs.lib.nixosSystem {
+
+        system = "x86_64-linux";
+
+        modules = [
+
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+
+          { 
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.archaict = import ./codex.nix;
+            };
+          }
+
+          {
+            nix.registry.nixpkgs.flake = inputs.nixpkgs;
+            nixpkgs.overlays = overlays;
+          }
+
+        ];
+        specialArgs = { inherit inputs; };
+      };
     };
+   
   };
 }

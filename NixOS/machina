@@ -87,7 +87,7 @@
     genesis() {
       notify-send "Genesis..."
       echo "Oratorio [ Genesis ]..."
-      sudo nixos-rebuild --flake $NIXDIR switch --fast
+      sudo nixos-rebuild -I schema=$SCHEMA/$1.nix --flake $NIXDIR switch --fast
     # sudo nixos-rebuild -I nixos-config=$NIXCFG switch --fast
       notify-send "Incantation ends."
       echo "Incantation ends."

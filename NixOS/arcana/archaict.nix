@@ -15,8 +15,18 @@
   users.defaultUserShell = pkgs.zsh;
 
   environment.sessionVariables = {
-    TERMINAL = "kitty";
+
     EDITOR = "nvim";
+    TERMINAL = "kitty";
+
+    MACHINA = "$HOME/Project/NixOS";
+    CORE    = "$MACHINA/core";
+    SIGIL   = "$MACHINA/codex/sigil";
+    SCHEMA  = "$MACHINA/schema";
+    HAIKEI  = "$SCHEMA/haikei";
+    NIXCFG  = "$PWD/configuration.nix";
+    CFG     = "$HOME/.config";
+
   };
 
   time.timeZone = "Asia/Jakarta";

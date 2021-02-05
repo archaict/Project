@@ -9,7 +9,7 @@
 # ──── [ CORE ]
 
     ./arkiv.nix     # ARKIV
-    ./config.nix    # CONFIG
+    ./extras.nix    # CONFIG
 
 # ──── [ REGALIA ]
 

@@ -37,8 +37,8 @@
             password-background-color = "#404040"
             '';
         };
+    # defaultSession = "none+xmonad";
       };
-      defaultSession = "none+xmonad";
     };
   };
 

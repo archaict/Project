@@ -1,0 +1,68 @@
+{
+  description = "Arkiv";
+
+  inputs = {
+
+    nixpkgs.url       = "github:NixOS/nixpkgs/nixos-20.09";
+    unstable.url      = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url  = "github:nix-community/home-manager/release-20.09";
+    master.url        = "nixpkgs/master";
+    nixos.url         = "nixpkgs/release-20.09";
+    nur.url           = "github:nix-community/NUR";
+    flake-utils.url   = "github:numtide/flake-utils/flatten-tree-system";
+    devshell.url      = "github:numtide/devshell";
+    ci-agent.url      = "github:hercules-ci/hercules-ci-agent";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+
+  };
+
+  outputs = { self
+  , nixpkgs
+  , home-manager
+  , master
+  , nixos
+  , nur
+  , flake-utils
+  , devshell
+  , nixos-hardware
+  , ci-agent
+  , ... }:
+
+  let
+
+  # pkgs = nixpkgs;
+  # pkgs = import nixpkgs {
+  #   overlays = [
+  #     devshell.overlay
+  #   ];
+  # };
+
+  in
+
+  {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+
+        ./configuration.nix
+        home-manager.nixosModules.home-manager
+
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.archaict = import ./codex.nix;
+          };
+        }
+
+        {
+          nixpkgs.overlays = [
+            nur.overlay
+            devshell.overlay
+          ];
+        }
+
+      ];
+    };
+  };
+}

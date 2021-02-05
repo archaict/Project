@@ -1,23 +1,16 @@
 { config, pkgs, lib, ... }:
-
-let runic = config.colors; in
+let
+  runic = config.colors;
+in
 
 {
   programs.firefox = {
     enable=true;
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
       darkreader
-    # decentraleyes
-    # disconnect
-    # fraidycat
-    # google-search-link-fix
-    # https-everywhere
-    # i-dont-care-about-cookies
-    # octotree
-    # stylus
       ublock-origin
-    # unpaywall
       vimium
+      decentraleyes
     ];
     profiles.default = {
       id = 0;
