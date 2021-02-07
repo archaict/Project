@@ -1,0 +1,264 @@
+#+TITLE: Config
+#+PROPERTY: header-args :tangle config.el
+
+*EMACS CONFIGURATIONS:*
+* DOOM
+
+** Installation
+
+To install Doom Emacs you can use this command:
+
+#+begin_src sh :tangle no
+$ git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+$ ~/.emacs.d/bin/doom install
+#+end_src
+
+#+RESULTS:
+
+You might want to create an alias like this:
+
+#+begin_src sh :tangle .alias
+alias doom='~/.emacs.d/bin/doom'
+#+end_src
+
+** Restore Configurations
+
+This is to restore Doom Emacs configurations:
+
+#+begin_src sh :tangle install.sh
+DOOM=$HOME/Project/NixOS/
+ln -sf $DOOM/doom/ ~/.doom.d
+#+end_src
+
+* NixOS
+
+Lifehacks for NixOS options and stuffs.
+
+#+begin_src elisp
+;;(add-to-list 'company-backends 'company-nixos-options)
+#+end_src
+
+* Bindings
+
+This bind your keys to +yourself+ your emacs configs.
+
+#+begin_src elisp
+(map! :leader
+      :desc "Tangle current file" "c t"   #'org-babel-tangle
+
+      :desc "Tangle current file" "t t"   #'org-babel-tangle
+      :desc "Toggle Highlight"    "t h"   #'hl-todo-mode
+
+      :desc "Toggle command log mode" "t c m" #'command-log-mode
+      :desc "Show command log buffer" "t c l" #'clm/toggle-command-log-buffer)
+
+(map! :leader
+      (:prefix-map ("T" . "Text")
+        :desc "List - Lorem Ipsum" "l" #'lorem-ipsum-insert-list
+        :desc "Sentences - Lorem Ipsum" "s" #'lorem-ipsum-insert-sentences
+        :desc "Paragraphs - Lorem Ipsum" "p" #'lorem-ipsum-insert-paragraphs))
+
+(map! :leader
+      (:prefix-map ("N" . "NixOS")
+        :desc "NixOS Options" "h" #'helm-nixos-options))
+
+(evil-better-visual-line-on)
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+(define-key evil-normal-state-map (kbd "J") 'evil-scroll-down)
+(define-key evil-normal-state-map (kbd "K") 'evil-scroll-up)
+#+end_src
+
+* User Interface
+
+All eye-candy configurations from yours truly.
+
+** Fonts
+
+#+begin_src elisp
+(set-window-margins nil 2)
+(setq doom-font (font-spec :family "Iosevka" :size 15)
+      doom-variable-pitch-font (font-spec :family "Iosevka" :size 15)
+      doom-big-font (font-spec :family "Iosevka" :size 24))
+(after! doom-themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+(custom-set-faces!
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-keyword-face :slant italic))
+
+(when (file-exists-p "~/.doom.d/banner")
+  (setq +doom-dashboard-banner-padding '(2 . 2)
+        +doom-dashboard-banner-file "arkiv.png"
+        +doom-dashboard-banner-dir "~/.doom.d/banner"))
+#+end_src
+
+** Modeline
+
+#+begin_src elisp
+(setq doom-modeline-enable-word-count nil)
+;;(set-face-attribute 'header-line nil  :height 36)
+(setq-default header-line-format "   Archive-Code // 01-Ark // %b")
+#+end_src
+
+** Centaur Tabs
+
+#+begin_src elisp :tangle no
+(setq centaur-tabs-set-bar 'over
+      centaur-tabs-set-icons t
+      centaur-tabs-gray-out-icons 'buffer
+      centaur-tabs-height 18
+      centaur-tabs-set-modified-marker t
+      centaur-tabs-style "bar"
+      centaur-tabs-modified-marker "•")
+(map! :leader
+      :desc "Toggle tabs on/off"
+      "t c" #'centaur-tabs-local-mode)
+(evil-define-key 'normal centaur-tabs-mode-map (kbd "g <right>") 'centaur-tabs-forward        ; default Doom binding is 'g t'
+                                               (kbd "g <left>")  'centaur-tabs-backward       ; default Doom binding is 'g T'
+                                               (kbd "g <down>")  'centaur-tabs-forward-group
+                                               (kbd "g <up>")    'centaur-tabs-backward-group)
+#+end_src
+
+* Command Line Interface
+* Emacs Repair
+
+Some utilities to repair this doom that has been lingering since..
+
+** EAF
+
+#+begin_src elisp
+;;(add-to-list 'load-path "~/.emacs.d/.local/straight/build-27.1/eaf")
+#+end_src
+
+** Projectile
+
+#+begin_src elisp
+;; (setq projectile-mode-line "Projectile")
+;; (setq projectile-track-known-projects-automatically 'nil)
+#+end_src
+
+** TODO Fast Scroll
+
+#+begin_src elisp
+(require 'fast-scroll)
+(fast-scroll-config)
+(fast-scroll-mode 1)
+(setq fast-but-imprecise-scrolling 't)
+(setq jit-lock-defer-time 0)
+(setq display-line-numbers-type nil)
+(setq doom-theme 'doom-tomorrow-night)
+;;(setq doom-theme 'doom-nord-light)
+(setq doom-modeline-enable-word-count nil)
+#+end_src
+
+* Garbage Collection
+
+Sometimes it is useful to collect your garbage.
+
+#+begin_src elisp
+(after! gcmh
+  (setq gcmh-high-cons-threshold 33554432))
+#+end_src
+
+* Provide Config File
+
+Provide this config file to be used in ~init.el~
+
+#+begin_src elisp
+(provide 'config)
+#+end_src
+
+* Extra Packages
+#+begin_src elisp :tangle packages.el
+;; NIXOS
+;;(package! nixos-options)
+;;(package! helm-nixos-options)
+;;(package! company-nixos-options)
+
+;; WINDOW MANAGER
+;;(package! exwm)
+
+;; OTHERS
+;;(package! origami)
+
+(package! fast-scroll)
+(package! lorem-ipsum)
+(package! org-bullets)
+(package! command-log-mode)
+
+(package! evil-better-visual-line)
+(provide 'packages)
+#+end_src
+
+** Company install
+
+#+begin_src elisp
+(setq company-idle-delay 0)
+(setq company-tooltip-limit 6)
+(setq company-dabbrev-downcase nil)
+(setq company-minimum-prefix-length 1)
+(setq company-dabbrev-ignore-case nil)
+(setq company-selection-wrap-around t)
+(setq company-selection-default 0)
+#+end_src
+
+* ORG MODE
+
+#+begin_src elisp
+(setq org-hide-emphasis-markers t)
+(setq org-ellipsis " ")
+
+;; Company mode
+(defun trigger-org-company-complete () (interactive)
+  (if (string-equa(setq org-hide-emphasis-markers t))))
+
+(setq org-ellipsis " ")
+
+;; Company mode
+(defun trigger-org-company-complete ()
+  (interactive)
+  (if (string-equal "#" (string (preceding-char)))
+    (progn
+      (insert "+")
+      (company-complete))
+    (insert "+")))
+
+(eval-after-load 'org '(define-key org-mode-map
+               (kbd "+") 'trigger-org-company-complete))
+
+(setq org-bullets-bullet-list '("⚛" "⁜" "⚜" "⛬"))
+
+(custom-set-faces
+  '(org-level-1 ((t (:inherit outline-1 :height 1.2))))
+  '(org-level-2 ((t (:inherit outline-2 :height 1.1))))
+  '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
+  '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+  '(org-level-5 ((t (:inherit outline-5 :height 1.0)))))
+#+end_src
+
+* Globals
+
+International variables on emacs.
+
+#+begin_src elisp
+(global-hl-todo-mode 1)
+(global-hi-lock-mode 1)
+#+end_src
+
+* Hooks Forever
+
+Add-Hook to your emacs
+
+#+begin_src elisp
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'org-mode-hook (lambda () (hl-todo-mode 1)))
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'org-mode-hook
+          '(lambda ()
+             (add-hook 'write-contents-functions
+                       'delete-trailing-whitespace)))
+
+;;(add-hook 'fast-scroll-start-hook (lambda () (flycheck-mode -1)))
+;;(add-hook 'fast-scroll-end-hook (lambda () (flycheck-mode 1)))
+#+end_src

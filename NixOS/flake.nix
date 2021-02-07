@@ -14,7 +14,8 @@
     devshell.url      = "github:numtide/devshell";
     ci-agent.url      = "github:hercules-ci/hercules-ci-agent";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-
+#   nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
+    
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
@@ -32,6 +33,7 @@
   , nur
   , flake-utils
   , devshell
+# , nix-doom-emacs
   , nixos-hardware
   , ci-agent
   , ... }@inputs:
@@ -39,6 +41,7 @@
   let
 
     overlays = [
+
       inputs.nur.overlay
       inputs.emacs-overlay.overlay
 
@@ -67,9 +70,22 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.archaict = import ./codex.nix;
+              users.archaict = import ./codex.nix
             };
           }
+        #     users.archaict = { pkgs, ... }: {
+        #       imports = [
+        #         ./codex.nix
+        #         nix-doom-emacs.hmModule
+        #       ];
+        #       programs.doom-emacs = {
+        #         enable = true;
+        #         doomPrivateDir = ./doom.d;
+        #       };
+        #     };
+        #     
+        #   };
+        # }
 
           {
             nix.registry.nixpkgs.flake = inputs.nixpkgs;

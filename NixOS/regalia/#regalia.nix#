@@ -7,7 +7,11 @@
   windowManager = {
       exwm = {
         enable = true;
-        enableDefaultConfig = false;
+        extraPackages = epkgs: with epkgs; [
+          emms
+          magit
+          proofgeneral
+        ];
       };
 
       xmonad = {

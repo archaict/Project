@@ -15,7 +15,7 @@
   imports = [
 
     ./codex
-    ./schema/hikari.nix
+    ./schema/yami.nix
 
   ];
 

@@ -7,7 +7,8 @@
     # [ NEOPKGS ]
     ./neopkgs.nix
     # [ EMCPKGS ]
-    ./emcpkgs.nix
+#   ./emacspkgs
+#   ./emcpkgs.nix
 
     # [ ZSHPKGS ]
     ./zsheiri.nix
