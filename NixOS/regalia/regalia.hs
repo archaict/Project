@@ -15,7 +15,6 @@ import XMonad.Actions.CycleWS (moveTo, shiftTo, WSType(..), nextScreen, prevScre
 import XMonad.Actions.MouseResize
 import XMonad.Actions.Promote
 import XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
-import qualified XMonad.Actions.TreeSelect as TS
 import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.WithAll (sinkAll, killAll)
 import qualified XMonad.Actions.Search as S
@@ -60,14 +59,6 @@ import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
 import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
--- Prompt
-import XMonad.Prompt
-import XMonad.Prompt.Input
-import XMonad.Prompt.FuzzyMatch
-import XMonad.Prompt.Shell
-import XMonad.Prompt.XMonad
-import Control.Arrow (first)
-
 -- Text
 import Text.Printf
 
@@ -104,7 +95,9 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myStartupHook :: X ()
 myStartupHook = do
           spawnOnce "nitrogen --restore &"
-          spawnOnce "polybar -r top &"
+       -- spawnOnce "polybar -r top &"
+          spawnOnce "emacsclient -c -a ''"
+          spawnOnce "pkill polybar"
           spawnOnce "pkill picom && pkill picom && picom -b"
           setWMName "LG3D"
 
@@ -126,71 +119,6 @@ main = do
         , normalBorderColor  = myNormColor
         , focusedBorderColor = myFocusColor
         } `additionalKeysP` myKeys home
-
-   --  ┌──────────────────────────────────────────────────────────┐ --
-   --  │                        ✖ prompt ✖                        │ --
-   --  └──────────────────────────────────────────────────────────┘ --
-
-arcXPConfig :: XPConfig
-arcXPConfig = def
-      { font                = myFont
-      , bgColor             = "#2e2e2e"
-      , fgColor             = "#fafafa"
-      , bgHLight            = "#fafafa"
-      , fgHLight            = "#2e2e2e"
-      , borderColor         = "#2e2e2e"
-      , promptBorderWidth   = 0
-      , promptKeymap        = arcXPKeymap
-      , position            = Top
-      , historySize         = 256
-      , historyFilter       = id
-      , defaultText         = []
-      , autoComplete        = Just 100000
-      , showCompletionOnTab = False
-      , searchPredicate     = fuzzyMatch
-      , defaultPrompter     = id $ map toUpper
-      , alwaysHighlight     = True
-      , maxComplRows        = Just 5
-      }
-
-arcXPKeymap :: M.Map (KeyMask,KeySym) (XP ())
-arcXPKeymap = M.fromList $
-     map (first $ (,) controlMask)      -- control + <key>
-     [ (xK_z, killBefore)               -- kill line backwards
-     , (xK_k, killAfter)                -- kill line forwards
-     , (xK_a, startOfLine)              -- move to the beginning of the line
-     , (xK_e, endOfLine)                -- move to the end of the line
-     , (xK_m, deleteString Next)        -- delete a character foward
-     , (xK_b, moveCursor Prev)          -- move cursor forward
-     , (xK_f, moveCursor Next)          -- move cursor backward
-     , (xK_BackSpace, killWord Prev)    -- kill the previous word
-     , (xK_y, pasteString)              -- paste a string
-     , (xK_g, quit)                     -- quit out of prompt
-     , (xK_bracketleft, quit)
-     ]
-     ++
-     map (first $ (,) altMask)          -- meta key + <key>
-     [ (xK_BackSpace, killWord Prev)    -- kill the prev word
-     , (xK_f, moveWord Next)            -- move a word forward
-     , (xK_b, moveWord Prev)            -- move a word backward
-     , (xK_d, killWord Next)            -- kill the next word
-     , (xK_n, moveHistory W.focusUp')   -- move up thru history
-     , (xK_p, moveHistory W.focusDown') -- move down thru history
-     ]
-     ++
-     map (first $ (,) 0) -- <key>
-     [ (xK_Return, setSuccess True >> setDone True)
-     , (xK_KP_Enter, setSuccess True >> setDone True)
-     , (xK_BackSpace, deleteString Prev)
-     , (xK_Delete, deleteString Next)
-     , (xK_Left, moveCursor Prev)
-     , (xK_Right, moveCursor Next)
-     , (xK_Home, startOfLine)
-     , (xK_End, endOfLine)
-     , (xK_Down, moveHistory W.focusUp')
-     , (xK_Up, moveHistory W.focusDown')
-     , (xK_Escape, quit)
-     ]
 
    --  ┌──────────────────────────────────────────────────────────┐ --
    --  │                        ✖ layout ✖                        │ --
@@ -282,22 +210,23 @@ myKeys home =
     --  , ("M-S-q", io exitSuccess)
 
     -- Run Prompt
-    --  , ("M-<Space>" , shellPrompt arcXPConfig) -- Xmonad Shell Prompt
         , ("M-<Space>" , spawn "rofi -show run")
 
     -- Programs
-        , ("M-<Return>" , spawn "kitty --single-instance")
+    --  , ("M-<Return>" , spawn "kitty --single-instance")
         , ("M-c"        , spawn "chromium --kiosk https://web.whatsapp.com")
         , ("M-i"        , spawn "firefox")
-        , ("M-o"        , spawn "kitty --session .config/kitty/kitten.conf")
+        , ("M-o"        , spawn "kitty --single-instance")
         , ("M-9"        , spawn "polybar -r top &")
         , ("M-0"        , spawn "pkill polybar")
-    --  , ("M-8"        , spawn "scrot")
-        , ("M-;"        , spawn "thunar")
+    --  , ("M-S-8"      , spawn "scrot")
         , ("M-`"        , spawn "betterlockscreen -t 'BAKA BAKA BAKA!' -s blur")
+        , ("M-e"        , spawn "emacs")
+        , ("M-;"        , spawn "emacsclient -c")
+        , ("M-<Return>" , spawn "emacsclient -c -a '' --eval '(vterm)'")
+        , ("M-S-f"      , spawn "emacsclient -c -a '' --eval '(dired-jump)'")
 
     -- Kill windows
-     -- , ("M-w" , kill1)       -- Kill the currently focused client
         , ("M-q" , kill1)       -- Kill the currently focused client
 
     -- Workspaces
@@ -311,17 +240,10 @@ myKeys home =
         , ("M-S-d" , windows  (W.shift "03"))
         , ("M-S-p" , windows  (W.shift "04"))
 
-
     -- Floating windows
         , ("M-S-f" , sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
         , ("M-t"   , withFocused $ windows . W.sink)  -- Push floating window back to tile
         , ("M-S-t" , sinkAll)                         -- Push ALL floating windows to tile
-
-   -- Increase/decrease spacing (gaps)
-     --, ("M-<Up>"    ,     decWindowSpacing 4)       -- Decrease window spacing
-     --, ("M-<Down>"  ,   incWindowSpacing 4)         -- Increase window spacing
-     --, ("M-S-<Up>"  ,   decScreenSpacing 4)         -- Decrease screen spacing
-     --, ("M-S-<Down>", incScreenSpacing 4)           -- Increase screen spacing
 
     -- Windows navigation
         , ("M-m"           , windows W.focusMaster)   -- Move focus to the master window
@@ -329,8 +251,8 @@ myKeys home =
         , ("M-j"           , windows W.focusDown)     -- Move focus to the next window
         , ("M-k"           , windows W.focusUp)       -- Move focus to the prev window
 
-        , ("M-C-w"           , windows W.focusDown)     -- Move focus to the next window
-        , ("M-C-s"           , windows W.focusUp)       -- Move focus to the prev window
+        , ("M-C-w"         , windows W.focusDown)     -- Move focus to the next window
+        , ("M-C-s"         , windows W.focusUp)       -- Move focus to the prev window
 
         , ("M-S-m"         , windows W.swapMaster)    -- Swap the focused window and the master window
         , ("M-S-j"         , windows W.swapDown)      -- Swap focused window with next window
@@ -371,6 +293,6 @@ myKeys home =
         , ("M-Left"                   , spawn "pactl set-sink-volume 0 -5%")
         , ("M-Right"                  , spawn "pactl set-sink-volume 0 +5%")
 
-        , ("M-e"                      , spawn "$HOME/Archaict/Scripts/myth.sh")
+        , ("M-v"                      , spawn "$HOME/Archaict/Scripts/myth.sh")
         , ("<Print>"                  , spawn "scrotd 0")
         ]

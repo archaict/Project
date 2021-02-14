@@ -70,7 +70,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.archaict = import ./codex.nix
+              users.archaict = import ./codex.nix;
             };
           }
         #     users.archaict = { pkgs, ... }: {

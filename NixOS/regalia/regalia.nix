@@ -1,33 +1,47 @@
 { config, pkgs, lib, ... }:
 
+let
+
+  myemacs = import ./epkgs.nix {pkgs=pkgs;};
+
+in
+
 {
+
+  xsession = {
+    enable = true;
+    windowManager.command = ''
+                           ${myemacs}/bin/emacs --daemon -f exwm-enable
+                           exec ${myemacs}/bin/emacsclient -c
+    '';
+  };
+
+
+# REAL
+
   services.xserver = {
 
-  displayManager.defaultSession = "none+xmonad";
-  windowManager = {
-      exwm = {
-        enable = true;
-        enableDefaultConfig = false;
-      };
+    displayManager.defaultSession = "none+qtile";
+    windowManager = {
 
-      xmonad = {
-        enable = true;
-        enableContribAndExtras = true;
-        extraPackages = hp: with hp; [
-          dbus
-          xmonad
-          xmobar
-          monad-logger
-          xmonad-contrib
-          xmonad-extras
-        ];
-        config = ./regalia.hs;
-      };
-    };
-  };
-}
+#     exwm = {
+#       enable = true;
+#       enableDefaultConfig = false;
+#     };
 
-
+#     xmonad = {
+#       enable = true;
+#       enableContribAndExtras = true;
+#       extraPackages = hp: with hp; [
+#         dbus
+#         xmonad
+#         xmobar
+#         monad-logger
+#         xmonad-contrib
+#         xmonad-extras
+#       ];
+#       config = ./regalia.hs;
+#     };
 
 #     i3 = {
 #       enable = true;
@@ -39,6 +53,14 @@
 #       ];
 #     };
 
-#     qtile = {
-#       enable = true;
-#     };
+      qtile = {
+        enable = true;
+      };
+
+    };
+  };
+}
+
+
+
+

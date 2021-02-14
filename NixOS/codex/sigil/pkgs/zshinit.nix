@@ -60,7 +60,7 @@
     }
 
     precmd() {
-      PROMPT='%c %{$fg[blue]%} %{$reset_color%}'
+      PROMPT='%c %{$fg[blue]%} %{$reset_color%} '
       STATUS='impure'
     
       if [ -n "$VIRTUAL_ENV" ];then

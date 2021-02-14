@@ -26,7 +26,7 @@
       "class_g = 'slop'"
     ];
     extraOptions = ''
-      corner-radius = 5;
+    # corner-radius = 5;
       blur-method = "dual_kawase";
       blur-strength = "5";
       xinerama-shadow-crop = true;
@@ -37,6 +37,7 @@
         "class_g = 'Chromium-browser'",
         "class_g = 'mpv'",
       ];
+
     '';
     experimentalBackends = true;
 
@@ -46,9 +47,9 @@
     shadowOpacity = "0.1";
     noDNDShadow = true;
     noDockShadow = true;
-    shadowExclude = [
-      "bounding_shaped && !rounded_corners"
-    ];
+  # shadowExclude = [
+  #   "bounding_shaped && !rounded_corners"
+  # ];
 
     fade = true;
     fadeDelta = 5;
@@ -59,6 +60,7 @@
       "90:class_g   *?= 'Kitty'"
       "100:class_g   *?= 'Firefox'"
       "100:class_g   *?= 'Zathura'"
+      "90:class_g   *?= 'Emacs'"
     ];
   };
 }

@@ -4,7 +4,8 @@
   programs.zsh = {
 
     shellAliases = {
-      eiri   = "vim $ZARC/.aliases";
+    # eiri   = "nvim $ZARC/.aliases";
+      eiri   = "emacsclient $ZARC/.aliases";
       zshh   = "source $ZARC/.zshrc";
       mach   = "cd $NIXDIR && source machina";
 
@@ -21,6 +22,7 @@
       heal  ="trash-restore";
       incinerate="trash-empty";
 
+      em   = "emacsclient";
       vim  = "nvim";
       sv   = "sudo -E nvim";
       rm   = "rm --preserve-root";

@@ -1,8 +1,15 @@
 { config, pkgs, lib, ... }:
 
+
+ let
+    emacsWithPackages = (pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages (epkgs: with epkgs; ([
+      vterm]));
+ in
+
 {
   nixpkgs.config.allowUnfree = true;
 # nixpkgs.config.allowBroken = true;
+
   environment.systemPackages = with pkgs;
 
   let
@@ -17,6 +24,7 @@
       nix-prefetch-github
       nixos-icons
       socat
+      rnix-lsp
     # nixFlakes
 
     ];
@@ -24,6 +32,7 @@
     clipkgs = [
 
       kitty
+      cool-old-term
 
       bc
       zsh
@@ -38,8 +47,15 @@
       htop 
       gotop
 
-      emacs
-      neovim 
+    # emacsWithPackages
+    # (emacsGcc.override { withXwidgets = true; })
+    # emacsCustom
+
+    # ((emacsPackagesNgGen emacs).emacsWithPackages (epkgs: [
+    #   epkgs.vterm
+    # ]))
+
+      neovim
       pandoc 
 
       figlet 
@@ -126,6 +142,8 @@
       feh
       nitrogen
       autorandr
+      xdotool
+      wmctrl
 
       xclip
       dunst
@@ -135,7 +153,7 @@
       lxappearance 
       
       dmenu rofi 
-      polybar
+    # polybar
 
       scrcpy
 
@@ -170,7 +188,6 @@
       usbutils
       hdparm
       ddrescue
-      qt5ct
       gdown
 
     ];
@@ -199,7 +216,20 @@
       python38Packages.matplotlib
       python38Packages.citeproc-py
 
+      qt5.full
+      qt5ct
+      python38Packages.epc
+    # python38Packages.sip
+      python38Packages.pyqt5
+      python3Packages.pyqt5
+    # python38Packages.pyqt5_with_qtwebkit
+      python38Packages.pymupdf
+
+
       php74
+      php74Packages.composer2
+
+      graphviz
 
     ];
 
@@ -268,6 +298,7 @@
       ubuntu_font_family
       unifont font-awesome siji
       noto-fonts noto-fonts-cjk
+      source-code-pro
 
       ( nerdfonts.override {
         fonts = [
@@ -278,6 +309,29 @@
       })
     ];
   };
+
+  nixpkgs.overlays = [
+    (self: super: {
+      emacsCustom = let
+      # myEmacs = pkgs.emacsGcc.override {
+        myEmacs = pkgs.emacs;
+      #   nativeComp = true;
+      #   withXwidgets = true;
+      # # withGTK2 = false;
+      # # withGTK3 = true;
+      # # imagemagick = pkgs.imagemagickBig;
+      # # withX = true;
+      # # srcRepo = true;
+      # # withCsrc = true;
+      # };
+        emacsWithPackages = (pkgs.emacsPackagesGen myEmacs).emacsWithPackages;
+      in emacsWithPackages (epkgs: with epkgs; [
+        vterm undo-tree plantuml-mode
+        pdf-tools org-pdftools
+      ]);
+    })
+  ];
+
 
   programs.dconf.enable = true;
 }

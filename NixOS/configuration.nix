@@ -21,6 +21,7 @@
     ./regalia
   ];
   users.users.archaict.isNormalUser = true;
+
 # nixpkgs.overlays = [ nur.overlay ];
 
 # DISABLE

@@ -1,8 +1,16 @@
-#+TITLE: Config
+#+TITLE:Emacs Configurations
+#+SUBTITLE:This is configurations for emacs-doombringer.
+#+AUTHOR: Archaict of Project 64
 #+PROPERTY: header-args :tangle config.el
+#+STARTUP: contents
 
-*EMACS CONFIGURATIONS:*
-* DOOM
+┌────────────────────────────────────────────────────┐
+│ TODO: Configure Doom-Emacs to your hearts content. │
+│ HACK: All the actual configurations below!         │
+└────────────────────────────────────────────────────┘
+
+* /Doom Emacs
+/Distribution of Emacs/
 
 ** Installation
 
@@ -30,56 +38,171 @@ DOOM=$HOME/Project/NixOS/
 ln -sf $DOOM/doom/ ~/.doom.d
 #+end_src
 
-* NixOS
+** Scratch Mode
 
+This is to restore Doom Emacs configurations:
+
+#+begin_src elisp
+(setq doom-scratch-initial-major-mode 'org-mode)
+#+end_src
+
+** Provide Config File
+
+Provide this config file to be used in ~init.el~
+
+#+begin_src elisp
+(provide 'config)
+#+end_src
+
+* /Repairables/
+/Reap the benefit from confiscating stuff/
+Some utilities to repair this doom that has been lingering since..
+
+** TODO Fast Scroll
+
+#+begin_src elisp
+;; (require 'fast-scroll)
+;; (fast-scroll-config)
+;; (fast-scroll-mode 1)
+(setq fast-but-imprecise-scrolling 't)
+(setq jit-lock-defer-time 0)
+(setq display-line-numbers-type nil)
+(setq doom-theme 'doom-tomorrow-night)
+;;(setq doom-theme 'doom-nord-light)
+(setq doom-modeline-enable-word-count nil)
+#+end_src
+
+** Garbage Collection
+
+Sometimes it is useful to collect your garbage.
+
+#+begin_src elisp
+(after! gcmh
+  ;;(setq gcmh-high-cons-threshold 33554432))
+  (setq gc-cons-threshold 100000000))
+
+#+end_src
+
+* /Buffers/
+/Buff up your Emacs Buffers/
+
+#+begin_src elisp
+;; Makes *scratch* empty.
+(setq initial-scratch-message "")
+
+;; Removes *scratch* & *Messagesh*
+(kill-buffer "*scratch*")
+(kill-buffer "*Messages*")
+(setq-default message-log-max nil)
+(setq inhibit-startup-buffer-menu t)
+#+end_src
+
+* /NixOS/
+/Nix Language based operating system/
 Lifehacks for NixOS options and stuffs.
 
 #+begin_src elisp
 ;;(add-to-list 'company-backends 'company-nixos-options)
 #+end_src
 
-* Bindings
+* /Bindings/
+/This bind your +yourself+ keys to doom emacs configs./
 
-This bind your keys to +yourself+ your emacs configs.
-
+** GLOB
 #+begin_src elisp
 (map! :leader
       :desc "Tangle current file" "c t"   #'org-babel-tangle
-
       :desc "Tangle current file" "t t"   #'org-babel-tangle
-      :desc "Toggle Highlight"    "t h"   #'hl-todo-mode
 
+      :desc "Highlight"    "t h"   #'hl-todo-mode
+      :desc "Time"         "t T"   #'display-time
+
+      :desc "Dired" "d d"   #'dired-jump
+
+      :desc "Run code" "t c c" #'org-ctrl-c-ctrl-c
       :desc "Toggle command log mode" "t c m" #'command-log-mode
-      :desc "Show command log buffer" "t c l" #'clm/toggle-command-log-buffer)
+      :desc "Show command log buffer" "t c l" #'clm/toggle-command-log-buffer
 
-(map! :leader
-      (:prefix-map ("T" . "Text")
-        :desc "List - Lorem Ipsum" "l" #'lorem-ipsum-insert-list
-        :desc "Sentences - Lorem Ipsum" "s" #'lorem-ipsum-insert-sentences
-        :desc "Paragraphs - Lorem Ipsum" "p" #'lorem-ipsum-insert-paragraphs))
+   ;; :desc "Terminal buffer" "o T" #'vterm
+
+      :desc "Presentation"      "t p"   #'org-present
+      :desc "Quit presentation" "P q"   #'org-present-quit
+      :desc "Next Slide"        "P h"   #'org-present-prev
+      :desc "Prevous Slide"     "P l"   #'org-present-next
+      :desc "Big Mode"          "P b"   #'org-present-big
+      :desc "Small Mode"        "P s"   #'org-present-small
+      :desc "First Slide"       "P B"   #'org-present-beginning
+      :desc "End Slide"         "P E"   #'org-present-end
+      )
 
 (map! :leader
       (:prefix-map ("N" . "NixOS")
         :desc "NixOS Options" "h" #'helm-nixos-options))
+#+end_src
 
+** MODE
+
+#+begin_src elisp
+(map! :leader
+      (:prefix-map ("M" . "mode")
+
+        :desc "Shell" "s" #'shell-script-mode))
+
+(map! :leader
+      (:prefix-map ("e" . "eval")
+
+        :desc "Eval Sexp" "s" #'eval-last-sexp))
+#+end_src
+
+** TEXT
+
+#+begin_src elisp
+(map! :leader
+      (:prefix-map ("T" . "Text")
+
+        :desc "Figlet Border" "f b" #'figlet-border
+        :desc "Figlet Future" "f f" #'figlet-future
+        :desc "Figlet Pagga"  "f p" #'figlet-pagga
+        :desc "Figlet Small"  "f s" #'figlet-small
+        :desc "Figlet Future Border" "f F" #'figlet-future-border
+
+        :desc "List - Lorem Ipsum" "l" #'lorem-ipsum-insert-list
+        :desc "Sentences - Lorem Ipsum" "s" #'lorem-ipsum-insert-sentences
+        :desc "Paragraphs - Lorem Ipsum" "p" #'lorem-ipsum-insert-paragraphs))
+#+end_src
+
+** EVIL
+
+#+begin_src elisp
 (evil-better-visual-line-on)
 (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
 (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 (define-key evil-normal-state-map (kbd "J") 'evil-scroll-down)
 (define-key evil-normal-state-map (kbd "K") 'evil-scroll-up)
+;; split-window-right
+
+(map! (:after dired
+       :map dired-mode-map
+       :n "H" #'dired-up-directory
+       :n "L" #'dired-find-file
+       :n "<backspace>" #'dired-up-directory
+       ))
 #+end_src
 
-* User Interface
+* /Interface/
 
 All eye-candy configurations from yours truly.
 
 ** Fonts
 
 #+begin_src elisp
-(set-window-margins nil 2)
 (setq doom-font (font-spec :family "Iosevka" :size 15)
       doom-variable-pitch-font (font-spec :family "Iosevka" :size 15)
       doom-big-font (font-spec :family "Iosevka" :size 24))
+
+;;(setq-default left-margin-width 4 right-margin-width 4)
+;;(set-window-buffer nil (current-buffer))
+
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -95,102 +218,130 @@ All eye-candy configurations from yours truly.
 
 ** Modeline
 
+All moodline goodness!
+
 #+begin_src elisp
+;;  NIXOS ICON
+
+(display-time-mode 1)
+(setq display-time-format "%Y-%m-%d | %R [%Z] ")
+(display-battery-mode 1) ;; Battery ERROR
+
+;; Header
+(setq-default header-line-format " ")
+;;(set-face-attribute 'header-line nil  :height 150)
+
+;; Doom Modeline
+(setq doom-modeline-lsp t)
+(setq doom-modeline-height 35)
+(setq doom-modeline-modal-icon t)
+(setq doom-modeline-minor-modes nil)
 (setq doom-modeline-enable-word-count nil)
-;;(set-face-attribute 'header-line nil  :height 36)
-(setq-default header-line-format "   Archive-Code // 01-Ark // %b")
+(setq doom-modeline-major-mode-color-icon t)
+(setq doom-modeline-continuous-word-count-modes nil)
+
+(custom-set-faces
+  '(mode-line ((t (:family "Iosevka Term" :height 1.0))))
+  '(mode-line-inactive ((t (:family "Iosevka Term" :height 1.0)))))
 #+end_src
 
 ** Centaur Tabs
 
-#+begin_src elisp :tangle no
-(setq centaur-tabs-set-bar 'over
-      centaur-tabs-set-icons t
-      centaur-tabs-gray-out-icons 'buffer
-      centaur-tabs-height 18
-      centaur-tabs-set-modified-marker t
-      centaur-tabs-style "bar"
-      centaur-tabs-modified-marker "•")
-(map! :leader
-      :desc "Toggle tabs on/off"
-      "t c" #'centaur-tabs-local-mode)
-(evil-define-key 'normal centaur-tabs-mode-map (kbd "g <right>") 'centaur-tabs-forward        ; default Doom binding is 'g t'
-                                               (kbd "g <left>")  'centaur-tabs-backward       ; default Doom binding is 'g T'
-                                               (kbd "g <down>")  'centaur-tabs-forward-group
-                                               (kbd "g <up>")    'centaur-tabs-backward-group)
+#+begin_src elisp
+;;(setq centaur-tabs-set-bar 'over
+;;      centaur-tabs-set-icons t
+;;      centaur-tabs-gray-out-icons 'buffer
+;;      centaur-tabs-height 18
+;;      centaur-tabs-set-modified-marker t
+;;      centaur-tabs-style "bar"
+;;      centaur-tabs-modified-marker "•")
+;;(map! :leader
+;;      :desc "Toggle tabs on/off"
+;;      "t c" #'centaur-tabs-local-mode)
+;;(evil-define-key 'normal centaur-tabs-mode-map (kbd "g <right>") 'centaur-tabs-forward        ; default Doom binding is 'g t'
+;;                                               (kbd "g <left>")  'centaur-tabs-backward       ; default Doom binding is 'g T'
+;;                                               (kbd "g <down>")  'centaur-tabs-forward-group
+;;                                               (kbd "g <up>")    'centaur-tabs-backward-group)
 #+end_src
 
-* Command Line Interface
-* Emacs Repair
-
-Some utilities to repair this doom that has been lingering since..
-
-** EAF
+** Command Line
+** Cursor
 
 #+begin_src elisp
-;;(add-to-list 'load-path "~/.emacs.d/.local/straight/build-27.1/eaf")
+(setq evil-normal-state-cursor '("#dddddd" box))
+(setq evil-visual-state-cursor '("#dddddd" box))
+(setq evil-insert-state-cursor '("#dddddd" bar))
 #+end_src
 
-** Projectile
+* /Packages/
 
-#+begin_src elisp
-;; (setq projectile-mode-line "Projectile")
-;; (setq projectile-track-known-projects-automatically 'nil)
-#+end_src
+** NixOS
 
-** TODO Fast Scroll
-
-#+begin_src elisp
-(require 'fast-scroll)
-(fast-scroll-config)
-(fast-scroll-mode 1)
-(setq fast-but-imprecise-scrolling 't)
-(setq jit-lock-defer-time 0)
-(setq display-line-numbers-type nil)
-(setq doom-theme 'doom-tomorrow-night)
-;;(setq doom-theme 'doom-nord-light)
-(setq doom-modeline-enable-word-count nil)
-#+end_src
-
-* Garbage Collection
-
-Sometimes it is useful to collect your garbage.
-
-#+begin_src elisp
-(after! gcmh
-  (setq gcmh-high-cons-threshold 33554432))
-#+end_src
-
-* Provide Config File
-
-Provide this config file to be used in ~init.el~
-
-#+begin_src elisp
-(provide 'config)
-#+end_src
-
-* Extra Packages
 #+begin_src elisp :tangle packages.el
 ;; NIXOS
 ;;(package! nixos-options)
 ;;(package! helm-nixos-options)
 ;;(package! company-nixos-options)
+#+end_src
 
-;; WINDOW MANAGER
-;;(package! exwm)
+** Mode
 
-;; OTHERS
-;;(package! origami)
+#+begin_src elisp :tangle packages.el
+;; MAJOR MODE
+(package! zen-mode)
+(package! command-log-mode)
+(package! xwwp)
 
-(package! fast-scroll)
+;; TEXT MODE
+;;(package! perfect-margin)
 (package! lorem-ipsum)
 (package! org-bullets)
-(package! command-log-mode)
+(package! figlet)
+
+;; PRESENTATION
+(package! ox-reveal)
+(package! org-tree-slide)
+
+;; ORG
+;; (package! visual-fill-column)
+#+end_src
+
+** Others
+
+#+begin_src elisp :tangle packages.el
+(package! fast-scroll)
+;; (package! origami)
+#+end_src
+
+** Themes
+
+#+begin_src elisp :tangle packages.el
+(package! doom-themes)
 
 (package! evil-better-visual-line)
 (provide 'packages)
 #+end_src
 
+** Search
+
+#+begin_src elisp :tangle packages.el
+(package! github-search)
+#+end_src
+
+** EAF
+
+#+begin_src elisp :tangle no
+;; (package! eaf
+;;   :recipe (:host github
+;;            :repo "manateelazycat/emacs-application-framework"
+;;            :files ("*")))
+;; (package! s)
+;; (package! epc)
+;; (package! ctable)
+;; (package! deferred)
+#+end_src
+
+* /Settings/
 ** Company install
 
 #+begin_src elisp
@@ -203,18 +354,92 @@ Provide this config file to be used in ~init.el~
 (setq company-selection-default 0)
 #+end_src
 
-* ORG MODE
+** Figlet
 
 #+begin_src elisp
+(defun figlet-border (&optional b e)
+  (interactive "r")
+  (shell-command-on-region b e "toilet -w 200 -f term -F border" (current-buffer) t))
+
+(defun figlet-future (&optional b e)
+  (interactive "r")
+  (shell-command-on-region b e "toilet -w 200 -f future" (current-buffer) t))
+
+(defun figlet-future-border (&optional b e)
+  (interactive "r")
+  (shell-command-on-region b e "toilet -w 200 -f future -F border" (current-buffer) t))
+
+(defun figlet-pagga (&optional b e)
+  (interactive "r")
+  (shell-command-on-region b e "toilet -w 200 -f pagga -F border" (current-buffer) t))
+
+(defun figlet-small (&optional b e)
+  (interactive "r")
+  (shell-command-on-region b e "figlet -f small" (current-buffer) t))
+#+end_src
+
+** Yasnippet
+
+Personal snippets location
+
+#+begin_src elisp
+(setq yas-snippet-dirs '("~/Project/NixOS/doom/snippets"))
+#+end_src
+
+* /Modes/
+
+Configurations of every Emacs mode.
+
+** ORG
+
+#+begin_src elisp
+(setq org-ellipsis " ")
 (setq org-hide-emphasis-markers t)
-(setq org-ellipsis " ")
+(setq org-hide-leading-stars t)
+(setq org-hidden-keywords '(title subtitle))
 
-;; Company mode
-(defun trigger-org-company-complete () (interactive)
-  (if (string-equa(setq org-hide-emphasis-markers t))))
+(custom-set-faces!
+  '(org-document-title      :height 2.0 :foreground "#eaeaea")
+  '(org-document-info       :height 1.0 :foreground "#cccccc" :italic t))
 
-(setq org-ellipsis " ")
+(custom-set-faces!
+  '(link                    :height 1.0 :foreground "#5E81AC" :italic t)
+  )
 
+(custom-set-faces!
+  '(org-level-1 :foreground "#eaeaea" :weight extra-bold :height 1.50 )
+  '(org-level-2 :foreground "#dddddd" :weight bold       :height 1.20 )
+  '(org-level-3 :foreground "#cccccc" :weight bold       :height 1.10 )
+  '(org-level-4 :foreground "#bbbbbb" :weight bold       :height 1.00 )
+  '(org-level-5 :foreground "#aaaaaa" :weight bold       :height 0.90 ))
+
+(lambda () (progn
+  (setq left-margin-width 8)
+  (setq right-margin-width 8)
+  (set-window-buffer nil (current-buffer))))
+#+end_src
+
+*** Prettify
+
+#+begin_src elisp
+;; Hook in HOOKS FOREVER
+;; (prettify-symbols-mode t)
+(global-prettify-symbols-mode t)
+(global-hl-todo-mode t)
+#+end_src
+
+*** Bullets
+
+#+begin_src elisp
+;; BulletPoint: "※","⛬","⬢","‖"
+;;(setq org-bullets-bullet-list '("⛬" "⬢" "⬢" "⬢" "⬢" "⬢"))
+(setq org-bullets-bullet-list '("⌬" "⬢" "⬢" "⬢" "⬢" "⬢"))
+;;(setq org-bullets-bullet-list '("⬢"))
+#+end_src
+
+*** Company
+
+#+begin_src elisp
 ;; Company mode
 (defun trigger-org-company-complete ()
   (interactive)
@@ -224,41 +449,213 @@ Provide this config file to be used in ~init.el~
       (company-complete))
     (insert "+")))
 
-(eval-after-load 'org '(define-key org-mode-map
-               (kbd "+") 'trigger-org-company-complete))
-
-(setq org-bullets-bullet-list '("⚛" "⁜" "⚜" "⛬"))
-
-(custom-set-faces
-  '(org-level-1 ((t (:inherit outline-1 :height 1.2))))
-  '(org-level-2 ((t (:inherit outline-2 :height 1.1))))
-  '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
-  '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
-  '(org-level-5 ((t (:inherit outline-5 :height 1.0)))))
+(defun trigger-org-company-complete () (interactive)
+  (if (string-equa(setq org-hide-emphasis-markers t))))
 #+end_src
 
-* Globals
+*** Reveal
+
+#+begin_src elisp
+;;(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
+#+end_src
+
+*** Deft
+
+#+begin_src elisp
+(setq deft-directory "~/notebook"
+      deft-extensions '("org" "md")
+      deft-recursive t)
+#+end_src
+
+*** Present
+
+#+begin_src elisp
+(add-to-list 'load-path "~/Project/NixOS/doom/misc/")
+(autoload 'org-present "org-present" nil t)
+#+end_src
+
+** HIGHLIGHT
+
+#+begin_src elisp
+(setq hl-todo-keyword-faces
+      '(("HOLD"   . "#D3869B")
+        ("TITLE"  . "#FABD2F")
+        ("TODO"   . "#FABD2F")
+        ("LINK"   . "#5E81AC")
+        ("NOTE"   . "#B8BB26")
+        ("DONE"   . "#808080")
+        ("HACK"   . "#FE8019")
+        ("FIXME"  . "#FB4934")))
+#+end_src
+
+* /Functions/
+
+#+begin_src emacs-lisp
+;;(defun arc/make-tangled-files-executable ()
+;;  (set-file-modes (buffer-file-name) #o755))
+;;(add-hook 'org-babel-post-tangle-hook 'arc/make-tangled-files-executable)
+#+end_src
+
+* /Hooks/
+
+Add-Hook to your emacs
+
+** INIT Hooks
+
+#+begin_src elisp
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'display-time-mode)
+;;(add-hook 'after-init-hook 'exwm-init)
+
+(add-hook 'after-init-hook(lambda ()(setq indent-tabs-mode nil)))
+(add-hook 'after-init-hook(lambda ()(setq tab-width 2)))
+(add-hook 'after-init-hook(lambda ()(setq evil-shift-width 2)))
+#+end_src
+
+** ORG Hooks
+
+#+begin_src elisp
+(add-hook 'org-mode-hook (lambda () (hl-todo-mode 1)))
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;; (add-hook 'org-mode-hook (lambda () (arc/org-mode-visual-fill)))
+(add-hook 'org-mode-hook ;; Prettify Symbols
+          (lambda ()
+            (push '("#+begin_src" . "λ") prettify-symbols-alist)
+            (push '("#+end_src" . "λ") prettify-symbols-alist)))
+(add-hook 'org-mode-hook
+          '(lambda ()
+             (add-hook 'write-contents-functions
+                       'delete-trailing-whitespace)))
+#+end_src
+
+** OTHER Hooks
+
+#+begin_src elisp
+(add-hook 'fast-scroll-start-hook (lambda () (flycheck-mode -1)))
+(add-hook 'fast-scroll-end-hook (lambda () (flycheck-mode 1)))
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+#+end_src
+
+* /Globals/
 
 International variables on emacs.
 
 #+begin_src elisp
 (global-hl-todo-mode 1)
 (global-hi-lock-mode 1)
+;;(perfect-margin-mode 1)
 #+end_src
 
-* Hooks Forever
-
-Add-Hook to your emacs
+* /Defaults/
 
 #+begin_src elisp
-(add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'org-mode-hook (lambda () (hl-todo-mode 1)))
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-(add-hook 'org-mode-hook
-          '(lambda ()
-             (add-hook 'write-contents-functions
-                       'delete-trailing-whitespace)))
+(setq figlet-default-font "Future")
+#+end_src
 
-;;(add-hook 'fast-scroll-start-hook (lambda () (flycheck-mode -1)))
-;;(add-hook 'fast-scroll-end-hook (lambda () (flycheck-mode 1)))
+* EXWM
+
+** Packages
+
+#+begin_src elisp :tangle packages.el
+(package! exwm)
+(package! wallpaper)
+#+end_src
+
+** Wallpaper
+
+#+begin_src elisp
+(defun arc/set-wallpaper ()
+  (interactive)
+  ;; NOTE: You will need to update this to a valid background path!
+  (start-process-shell-command
+      "feh" nil  "feh --bg-scale ~/Pictures/HD/streets.png"))
+(arc/set-wallpaper)
+;; Transparency (disable outside emacs)
+(set-frame-parameter (selected-frame) 'alpha '(85 . 85))
+(add-to-list 'default-frame-alist '(alpha 85 85))
+;;(set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+;;(add-to-list 'default-frame-alist '(fullscreen . 'maximized))
+#+end_src
+
+** Workspaces
+
+#+begin_src elisp
+(defun arc/exwm-update-class ()
+  (exwm-workspace-rename-buffer exwm-class-name))
+(setq exwm-workspace-number 4)
+(add-hook 'exwm-update-class-hook #'arc/exwm-update-class)
+
+(require 'exwm-randr)
+(exwm-randr-enable)
+;; (start-process-shell-command "xrandr" nil "xrandr --output Virtual-1 --primary --mode 2048x1152 --pos 0x0 --rotate normal")
+
+;; Load the system tray before exwm-init
+(require 'exwm-systemtray)
+(exwm-systemtray-enable)
+#+end_src
+
+** Bindings
+
+#+begin_src  elisp
+(map! :leader
+      (:prefix-map ("E" . "EXWM")
+        :desc "EXWM init" "i" #'exwm-init))
+#+end_src
+
+*** Pass Through
+
+#+begin_src elisp
+
+;; These keys should always pass through to Emacs
+(setq exwm-input-prefix-keys
+  '(?\C-x
+    ?\C-u
+    ?\C-h
+    ?\M-x
+    ?\M-`
+    ?\M-&
+    ?\M-:
+    ?\C-\M-j  ;; Buffer list
+    ?\C-\ ))  ;; Ctrl+Space
+
+;; Ctrl+Q will enable the next key to be sent directly
+(define-key exwm-mode-map [?\C-q] 'exwm-input-send-next-key)
+
+#+end_src
+
+*** Global Bindings
+
+#+begin_src elisp
+(setq exwm-input-global-keys
+      `(
+        ([?\s-r] . exwm-reset)
+
+        ;; Move between windows
+        ([?\s-h] . windmove-left)
+        ([?\s-j] . windmove-down)
+        ([?\s-k] . windmove-up)
+        ([?\s-l] . windmove-right)
+
+        ([?\s-a] . (lambda () (interactive) (exwm-workspace-switch-create 1)))
+        ([?\s-s] . (lambda () (interactive) (exwm-workspace-switch-create 2)))
+        ([?\s-d] . (lambda () (interactive) (exwm-workspace-switch-create 3)))
+        ([?\s-p] . (lambda () (interactive) (exwm-workspace-switch-create 0)))
+
+        ;; Launch applications via shell command
+        ([?\s-o] . (lambda (command)
+                     (interactive (list (read-shell-command "$ ")))
+                     (start-process-shell-command command nil command)))
+
+        ;; Switch workspace
+        ([?\s-w] . exwm-workspace-switch)
+        ([?\s-`] . (lambda () (interactive) (exwm-workspace-switch-create 0)))
+
+        ,@(mapcar (lambda (i)
+                    `(,(kbd (format "s-%d" i)) .
+                      (lambda ()
+                    (interactive)
+                    (exwm-workspace-switch-create ,i))))
+                  (number-sequence 0 9))))
+
+(exwm-enable)
 #+end_src

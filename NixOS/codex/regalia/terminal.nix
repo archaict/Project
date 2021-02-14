@@ -9,7 +9,8 @@
       italic_font = "${config.schema.font} Italic";
       bold_italic_font = "${config.schema.font} Bold Italic";
 
-      cursor_shape      = "underline";
+    # cursor_shape      = "underline";
+      cursor_shape      = "block";
       open_url_with     = "firefox";
 
       update_check_interval = 0;

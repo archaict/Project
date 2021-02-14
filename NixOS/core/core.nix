@@ -77,11 +77,6 @@
 
   # printing.enable = true;
   };
- 
-  services.emacs = {
-    enable = true;
-  # package = import $HOME/.emacs.d { pkgs=pkgs; };
-  };
 
   system.stateVersion = "20.09";
 }

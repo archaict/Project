@@ -16,7 +16,8 @@
 
   environment.sessionVariables = {
 
-    EDITOR = "nvim";
+    # EDITOR = "nvim";
+    EDITOR = "emacsclient";
     TERMINAL = "kitty";
 
     MACHINA = "$HOME/Project/NixOS";

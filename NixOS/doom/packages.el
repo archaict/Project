@@ -3,16 +3,33 @@
 ;;(package! helm-nixos-options)
 ;;(package! company-nixos-options)
 
-;; WINDOW MANAGER
-;;(package! exwm)
+;; MAJOR MODE
+(package! zen-mode)
+(package! command-log-mode)
+(package! xwwp)
 
-;; OTHERS
-;;(package! origami)
-
-(package! fast-scroll)
+;; TEXT MODE
+(package! perfect-margin)
 (package! lorem-ipsum)
 (package! org-bullets)
-(package! command-log-mode)
+(package! figlet)
+
+;; PRESENTATION
+(package! ox-reveal)
+(package! org-tree-slide)
+
+;; ORG
+;; (package! visual-fill-column)
+
+(package! fast-scroll)
+;; (package! origami)
+
+(package! doom-themes)
 
 (package! evil-better-visual-line)
 (provide 'packages)
+
+(package! github-search)
+
+(package! exwm)
+(package! wallpaper)

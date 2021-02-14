@@ -6,7 +6,8 @@
 # ──── [ ARKIV ]
 
     TERMINAL = "kitty";
-    EDITOR = "nvim";
+  # EDITOR = "nvim";
+    EDITOR = "emacsclient";
 
 # ──── [ DIRECTORY ]
 

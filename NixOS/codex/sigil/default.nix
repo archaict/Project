@@ -8,12 +8,11 @@
 
     ./cli.nix        # CLI
     ./codium.nix     # CODIUM
+    ./emacs.nix      # EMACS
     ./firefox.nix    # FIREFOX
     ./git.nix        # GIT
     ./music.nix      # NCMPCPP
     ./mpv.nix        # MPV
-  # ./emacs.nix      # EMACS
-  # ./emacs-init.nix # EMACS
     ./neovim.nix     # NEOVIM
     ./ranger.nix     # RANGER
     ./rofi.nix       # ROFI

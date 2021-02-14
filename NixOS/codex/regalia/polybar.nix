@@ -2,7 +2,7 @@
 
 {
   services.polybar = {
-    enable = true;
+    enable = false;
     script = "polybar -q -r top &";
     package = pkgs.polybar.override {
       i3GapsSupport = true;

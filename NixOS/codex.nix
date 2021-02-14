@@ -21,4 +21,6 @@
 
   manual.json.enable = true;
   news.display = "silent";
+  services.emacs.enable = false;
+
 }
