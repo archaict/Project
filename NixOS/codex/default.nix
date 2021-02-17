@@ -10,6 +10,7 @@
 
     ./arkiv.nix     # ARKIV
     ./extras.nix    # CONFIG
+    ./regalia.nix   # REGALIA
 
 # ──── [ REGALIA ]
 
