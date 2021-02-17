@@ -7,7 +7,7 @@
     ./pkgs           # PKGS
 
     ./cli.nix        # CLI
-    ./codium.nix     # CODIUM
+  # ./codium.nix     # CODIUM
     ./emacs.nix      # EMACS
     ./firefox.nix    # FIREFOX
     ./git.nix        # GIT

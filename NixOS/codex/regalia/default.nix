@@ -4,7 +4,7 @@
 
   imports = [
 
-    ./i3wm.nix      # I3WM
+  # ./i3wm.nix      # I3WM
   # ./regalia.nix   # XMONAD
     ./polybar.nix   # POLYBAR
     ./dunst.nix     # DUNST

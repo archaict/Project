@@ -8,12 +8,12 @@
     enableCompletion      = true;
     enableAutosuggestions = true;
       
-    dotDir = ".config/zsh";
+    dotDir = "$HOME/.config/zsh";
 
     history = {
       size = 10000;
       save = 10000;
-      path = ".config/zsh/.zhistory";
+      path = "$HOME/.config/zsh/.zhistory";
 
       share       = true;
       extended    = true;

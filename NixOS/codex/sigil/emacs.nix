@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-# programs.emacs = {
-#   enable = true;
-#   extraPackages = epkgs: [ epkgs.vterm ];
-# };
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [ epkgs.vterm ];
+  };
 }
