@@ -1,0 +1,365 @@
+#+TITLE:Digital Forensics
+#+SUBTITLE:Your life is inside an 'image'.
+#+STARTUP: Content
+* Disks
+
+In Digital Forensics evidence can come in many forms and devices, most of it can be found as hardisk and USB peripherals.
+
+First we need to check if USB is connected:
+
+#+begin_src shell :results verbatim
+$ sudo fdisk -l
+$ lsusb
+#+end_src
+
+To check MD5 & SHA you can use this command:
+
+#+begin_src shell :results verbatim
+$ sudo md5sum /dev/sdc1
+$ sudo sha1sum /dev/sdc1
+
+ALPH4NUMER1C4AL000ALPH4NUMER1C4AL  /dev/sdc1
+#+end_src
+
+For this session in Digital Forensics you might want to fill your USB with some pictures or data, testdisk will create a log 'image' that can be used for digital forensics. Digital forensics mostly use images of evidence that is used in investigation to recreate environment and recover lost data.
+
+In case you are using vm, you might want to look at USB, and check if your usb devices is passed through the vm you are using. You can check your USB device by using =fdisk=, if it is not passed through, you might instead use native linux or other alternatives.
+
+#+begin_src shell
+$ sudo fdisk -l
+
+Disk /dev/sdc: 28.65 GiB, 30765219840 bytes, 60088320 sectors
+Disk model:  SanDisk 3.2Gen1
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xa1afdc4c
+
+Device     Boot Start      End  Sectors  Size Id Type
+/dev/sdc1        2048 60088319 60086272 28.7G 83 Linux
+
+#+end_src
+
+You might get multiple output from =fdisk=, for this, I'm using Sandisk Ultra Fit 32GB, you might want 4GB/8GB to reduce time for this test.
+
+#+begin_src shell
+$ lsusb
+
+Bus 001 Device 002: ID 8087:8000 Intel Corp. Integrated Rate Matching Hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 011: ID 0781:5583 SanDisk Corp. Ultra Fit
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+#+end_src
+
+In this session we will use gparted to emulate lost files inside a USB device. Since you have to actually check if it is connected or not, you might want to run =fdisk= to list available device with its partitions.
+
+** Gparted & Parted
+
+Gparted can format devices into multiple format, you can specify to use ext4 in gparted to format your test device into ext4 devices.
+
+#+begin_src shell
+$ sudo gparted
+#+end_src
+
+You will be asked for root password, you should fill this out first before going further. Root permission is needed because you need to access USB peripherals itself to create a backup, since Linux need system/admin level access to tamper with the device, therefore you should use root previleges to run those command.
+
+For this sections I will instead use command line interface to format, but before that, we have to look at what type the device that we use.
+
+#+begin_src shell
+$ df -hT
+
+Filesystem     Type      Size  Used Avail Use% Mounted on
+devtmpfs       devtmpfs  192M     0  192M   0% /dev
+tmpfs          tmpfs     1.9G     0  1.9G   0% /dev/shm
+tmpfs          tmpfs     960M  6.9M  953M   1% /run
+tmpfs          tmpfs     1.9G  600K  1.9G   1% /run/wrappers
+/dev/sda3      ext4      423G  216G  186G  54% /
+tmpfs          tmpfs     4.0M     0  4.0M   0% /sys/fs/cgroup
+tmpfs          tmpfs     384M   12K  384M   1% /run/user/1000
+/dev/sdc1      ext4       29G   44M   27G   1% /run/media/user/...
+#+end_src
+
+As you can see, it is =/dev/sdc1= with =ext4= format, then we can continue into the next part.
+
+#+begin_src shell
+$ sudo parted
+
+GNU Parted 3.3
+Using /dev/sdc
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+
+(parted) print
+Model:  USB  SanDisk 3.2Gen1 (scsi)
+Disk /dev/sdc: 30.8GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags:
+
+Number  Start   End     Size    Type     File system  Flags
+ 1      1049kB  30.8GB  30.8GB  primary
+
+(parted) mklabel msdos
+Warning: The existing disk label on /dev/sdc will be destroyed and all data on
+this disk will be lost. Do you want to continue?
+Yes/No? yes
+
+(parted) mkpart
+Partition type?  primary/extended? primary
+File system type?  [ext2]? ext4
+Start? 0%
+End? -1s
+
+(parted) quit
+#+end_src
+
+Be sure to umount device before running this. This command will format and delete files inside the USB.
+
+#+begin_src shell
+$ sudo umount /dev/sdc1
+$ sudo mkfs.ext4 /dev/sdc1
+
+mke2fs 1.45.5 (07-Jan-2020)
+/dev/sdc1 contains a ext4 file system
+        last mounted on Wed Mar  2 00:00:00 2021
+Proceed anyway? (y,N) y
+Creating filesystem with 7510784 4k blocks and 1880480 inodes
+Filesystem UUID: ce049cf2-3f7b-44ca-b309-0e72b73c485a
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,         4096000
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done
+#+end_src
+
+* Data Dump
+
+By itself, it can do most things like formating USB devices and creating a backup image from said device. dd can also be used to convert and copy files. Some people use this to create an image that can be flashed again, this can be used for raspberry pi devices.
+
+#+begin_src shell :results verbatim
+# Description
+
+if = Input File
+of = Output File
+bs = Bytes (1M-4M)
+count = copy N input blocks
+
+# Command
+
+$ sudo dd if=/dev/zero of=/tmp/archive1 bs=1M count=1000000
+$ sudo dd if=/dev/urandom of=/tmp/archive1 bs=1M count=1000000
+#+end_src
+
+Check and create SHA1:
+
+#+begin_src shell :results verbatim
+$ sudo sha1sum /dev/sdc1
+$ cat split test.img | sha1sum
+#+end_src
+* Testdisk
+
+Run application with root previleges. Testdisk is designed to recover lost partitions and recover boot sessions that caused by faulty software or human error. Below is TestDisk description from its program.
+
+#+begin_src
+TestDisk is free data recovery software designed to help recover lost
+partitions and/or make non-booting disks bootable again when these symptoms
+are caused by faulty software, certain types of viruses or human error.
+It can also be used to repair some filesystem errors.
+
+Information gathered during TestDisk use can be recorded for later
+review. If you choose to create the text file, testdisk.log , it
+will contain TestDisk options, technical information and various
+outputs; including any folder/file names TestDisk was used to find and
+list onscreen.
+#+end_src
+
+
+- Fix partition table, recover deleted partition
+- Recover FAT32 boot sector from its backup
+- Rebuild FAT12/FAT16/FAT32 boot sector
+- Fix FAT tables
+- Rebuild NTFS boot sector
+- Recover NTFS boot sector from its backup
+- Fix MFT using MFT mirror
+- Locate ext2/ext3/ext4 Backup SuperBlock
+- Undelete files from FAT, exFAT, NTFS and ext2 filesystem
+- Copy files from deleted FAT, exFAT, NTFS and ext2/ext3/ext4 partitions.
+
+To actually run the program, you can run this as root in your terminal.
+
+#+begin_src shell
+$ sudo testdisk
+#+end_src
+
+This will create a curses windows that you can interact with. I wont include long blocks of text, so I will include what we will use, instead all the text inside the terminal screen.
+
+#+begin_src shell
+TestDisk 7.1, Data Recovery Utility, July 2019
+Christophe GRENIER <grenier@cgsecurity.org>
+https://www.cgsecurity.org
+
+Use arrow keys to select, then press Enter key:
+>[ Create ] Create a new log file
+ [ Append ] Append information to log file
+ [ No Log ] Don't record anything
+#+end_src
+
+We need to select media, in this case =/dev/sdc=, after that we will select partition table that are used, for now just use defaulted partition table for me it is =Intel=.
+
+#+begin_src shell
+Select a media (use Arrow keys, then press Enter):
+ Disk /dev/sda - 500 GB / 465 GiB - ST500LX012-SSHD-8GB
+>Disk /dev/sdc - 30 GB / 28 GiB - USB SanDisk 3.2Gen1
+#+end_src
+
+#+begin_src shell
+Disk /dev/sdc - 30 GB / 28 GiB - USB SanDisk 3.2Gen1
+
+Please select the partition table type, press Enter when done.
+>[Intel  ] Intel/PC partition
+ [EFI GPT] EFI GPT partition map (Mac i386, some x86_64...)
+ [Humax  ] Humax partition table
+ [Mac    ] Apple partition map (legacy)
+ [None   ] Non partitioned media
+ [Sun    ] Sun Solaris partition
+ [XBox   ] XBox partition
+ [Return ] Return to disk selection
+#+end_src
+
+We choose =advanced= and select =Image Creation= in the next screen.
+
+#+begin_src shell
+ [ Analyse  ] Analyse current partition structure and search for lost partitions
+>[ Advanced ] Filesystem Utils
+ [ Geometry ] Change disk geometry
+ [ Options  ] Modify options
+ [ MBR Code ] Write TestDisk MBR code to first sector
+ [ Delete   ] Delete all data in the partition table
+ [ Quit     ] Return to disk selection
+#+end_src
+
+#+begin_src shell
+     Partition                  Start        End    Size in sectors
+> 1 P Linux                    1   0  1 29339  63 32   60086272
+
+ [  Type  ]  [Superblock]  [  List  ] >[Image Creation]  [  Quit  ]
+                                Create an image
+#+end_src
+
+Press C to go to select the destination if it is already correct.
+
+#+begin_src shell
+Please select where to store the file image.dd (30764 MB), an image of the
+partition
+Keys: Arrow keys to select another directory
+      C when the destination is correct
+      Q to quit
+Directory /home/user/FORENSICS
+ drwxr-xr-x  1000   100      4096  3-Mar-2021 19:16 .
+>drwx------  1000   100      4096  3-Mar-2021 19:16 ..
+ -rw-r--r--     0     0      6705  3-Mar-2021 19:16 testdisk.log
+#+end_src
+
+Remember when I said to use 4GB/8GB? Take a cup of tea or coffee, because it will take a long time. Once done, you will have =image.dd= in your folder.
+
+#+begin_src shell
+Disk /dev/sdc - 30 GB / 28 GiB - USB SanDisk 3.2Gen1
+ 1 P Linux                    1   0  1 29339  63 32   60086272
+11.37 % =======>
+#+end_src
+
+
+#+begin_src shell
+Directory /home/user/FORENSICS
+.rw-r--r--  30G root  3 Mar 19:31 image.dd
+.rw-r--r-- 6.8k root  3 Mar 19:34 testdisk.log
+#+end_src
+
+Once done, we can go to the next step, recovery.
+* PhotoRec
+
+To actually recover the data that are lost from the device, you can use this software, here is the description from https://www.cgsecurity.org.
+
+#+begin_src
+PhotoRec is file data recovery software designed to recover lost files including video, documents and archives from hard disks, CD-ROMs, and lost pictures (thus the Photo Recovery name) from digital camera memory. PhotoRec ignores the file system and goes after the underlying data, so it will still work even if your media's file system has been severely damaged or reformatted.
+#+end_src
+
+You can use the =image.dd= that we have backed up before to recover the data.
+
+#+begin_src shell
+$ sudo photorec image.dd
+
+Select a media (use Arrow keys, then press Enter):
+>Disk image.dd - 30 GB / 28 GiB (RO)
+
+>[Proceed ]  [  Quit  ]
+#+end_src
+
+Choose =ext4= partition that we specify before.
+
+#+begin_src shell
+     Partition                  Start        End    Size in sectors
+      Unknown                  0   0  1  3740  50 22   60086272 [Whole disk]
+>   P ext4                     0   0  1  3740  50 22   60086272
+
+#+end_src
+
+#+RESULTS:
+
+#+begin_src shell
+To recover lost files, PhotoRec needs to know the filesystem type where the
+file were stored:
+>[ ext2/ext3 ] ext2/ext3/ext4 filesystem
+ [ Other     ] FAT/NTFS/HFS+/ReiserFS/...
+#+end_src
+
+#+begin_src shell
+Please choose if all space needs to be analysed:
+>[   Free    ] Scan for file from ext2/ext3 unallocated space only
+ [   Whole   ] Extract files from whole partition
+#+end_src
+
+#+begin_src shell
+Please select a destination to save the recovered files to.
+Do not choose to write the files to the same partition they were stored on.
+Keys: Arrow keys to select another directory
+      C when the destination is correct
+      Q to quit
+Directory /home/archaict/FORENSICS
+>drwxr-xr-x  1000   100      4096  3-Mar-2021 19:41 .
+ drwx------  1000   100      4096  3-Mar-2021 19:16 ..
+ -rw-r--r--     0     0 30764171264  3-Mar-2021 19:31 image.dd
+ -rw-r--r--     0     0     40960  3-Mar-2021 19:41 photorec.se2
+ -rw-r--r--     0     0      6776  3-Mar-2021 19:34 testdisk.log
+#+end_src
+
+You will then have multiple results depends on what you recover from the USB.
+
+#+begin_src shell
+Disk image.dd - 30 GB / 28 GiB (RO)
+     Partition                  Start        End    Size in sectors
+   P ext4                     0   0  1  3740  50 22   60086272
+
+Destination /home/archaict/FORENSICS/recup_dir
+
+Pass 2 - Reading sector    7336528/60086272, 32 files found
+Elapsed time 0h02m22s - Estimated time to completion 0h17m00
+a: 16 recovered
+txt: 14 recovered
+exe: 1 recovered
+gz: 1 recovered
+#+end_src
+
+Once done, you will have the data that are recovered inside =recup_dir.1=.
+
+#+begin_src shell
+Directory /home/user/FORENSICS
+.rw-r--r--  30G root  3 Mar 19:31 image.dd
+.rw-r--r--  40k root  3 Mar 19:41 photorec.se2
+.rw-r--r--  41k root  3 Mar 19:47 photorec.ses
+drwxr-xr-x    - root  3 Mar 19:45 recup_dir.1
+.rw-r--r-- 6.8k root  3 Mar 19:34 testdisk.log
+#+end_src
