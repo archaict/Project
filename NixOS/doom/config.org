@@ -2,7 +2,7 @@
 #+SUBTITLE:This is configurations for emacs-doombringer.
 #+AUTHOR: Archaict of Project 64
 #+PROPERTY: header-args :tangle config.el
-#+STARTUP: contents
+#+STARTUP: content
 
 ┌────────────────────────────────────────────────────┐
 │ TODO: Configure Doom-Emacs to your hearts content. │
@@ -54,6 +54,96 @@ Provide this config file to be used in ~init.el~
 (provide 'config)
 #+end_src
 
+* /Packages/
+
+** NixOS
+
+#+begin_src elisp :tangle packages.el
+;; NIXOS
+;;(package! nixos-options)
+;;(package! helm-nixos-options)
+;;(package! company-nixos-options)
+#+end_src
+
+** Mode
+
+#+begin_src elisp :tangle packages.el
+;; MAJOR MODE
+(package! zen-mode)
+(package! command-log-mode)
+(package! xwwp)
+
+;; TEXT MODE
+;;(package! perfect-margin)
+(package! lorem-ipsum)
+(package! org-bullets)
+(package! figlet)
+
+;; PRESENTATION
+(package! ox-reveal)
+(package! org-tree-slide)
+
+(package! openwith)
+;; Language
+
+;; ORG
+(package! ox-pandoc)
+#+end_src
+
+** Others
+
+#+begin_src elisp :tangle packages.el
+(package! fast-scroll)
+;; (package! origami)
+#+end_src
+
+** Themes
+
+#+begin_src elisp :tangle packages.el
+(package! doom-themes)
+
+(package! evil-better-visual-line)
+(provide 'packages)
+
+(package! exwm-outer-gaps
+  :recipe
+  (:host github
+   :repo "lucasgruss/exwm-outer-gaps"))
+#+end_src
+
+#+begin_src elisp :tangle config.el
+(after! solaire-mode
+  (solaire-global-mode -1))
+(custom-set-faces
+  '(default   ((t (:background "#1d2021"))))
+  '(mode-line ((t (:background "#303030"))))
+  '(doom-modeline-evil-insert-state   ((t (:foreground "#EBCB8B"))))
+  '(doom-modeline-evil-normal-state   ((t (:foreground "#D08770"))))
+;;'(hl-line   ((t (:background "#0b0e10"))))
+ )
+
+(setq doom-modeline-icon t)
+#+end_src
+
+** Search
+
+#+begin_src elisp :tangle packages.el
+(package! github-search)
+#+end_src
+
+** EAF
+
+#+begin_src elisp :tangle no
+;; (package! eaf
+;;   :recipe (:host github
+;;            :repo "manateelazycat/emacs-application-framework"
+;;            :files ("*")))
+;; (package! s)
+;; (package! epc)
+;; (package! ctable)
+;; (package! deferred)
+#+end_src
+
 * /Repairables/
 /Reap the benefit from confiscating stuff/
 Some utilities to repair this doom that has been lingering since..
@@ -95,6 +185,8 @@ Sometimes it is useful to collect your garbage.
 (kill-buffer "*Messages*")
 (setq-default message-log-max nil)
 (setq inhibit-startup-buffer-menu t)
+(after! persp-mode
+  (remove-hook 'persp-add-buffer-on-after-change-major-mode-filter-functions #'doom-unreal-buffer-p))
 #+end_src
 
 * /NixOS/
@@ -139,6 +231,9 @@ Lifehacks for NixOS options and stuffs.
       (:prefix-map ("N" . "NixOS")
         :desc "NixOS Options" "h" #'helm-nixos-options))
 #+end_src
+
+#+RESULTS:
+: helm-nixos-options
 
 ** MODE
 
@@ -200,8 +295,8 @@ All eye-candy configurations from yours truly.
       doom-variable-pitch-font (font-spec :family "Iosevka" :size 15)
       doom-big-font (font-spec :family "Iosevka" :size 24))
 
-;;(setq-default left-margin-width 4 right-margin-width 4)
-;;(set-window-buffer nil (current-buffer))
+(setq-default left-margin-width 4 right-margin-width 4)
+(set-window-buffer nil (current-buffer))
 
 (after! doom-themes
   (setq doom-themes-enable-bold t
@@ -241,7 +336,7 @@ All moodline goodness!
 (setq doom-modeline-continuous-word-count-modes nil)
 
 (custom-set-faces
-  '(mode-line ((t (:family "Iosevka Term" :height 1.0))))
+  '(mode-line ((t (:family "Iosevka Term" :height 1.0 ))))
   '(mode-line-inactive ((t (:family "Iosevka Term" :height 1.0)))))
 #+end_src
 
@@ -271,74 +366,6 @@ All moodline goodness!
 (setq evil-normal-state-cursor '("#dddddd" box))
 (setq evil-visual-state-cursor '("#dddddd" box))
 (setq evil-insert-state-cursor '("#dddddd" bar))
-#+end_src
-
-* /Packages/
-
-** NixOS
-
-#+begin_src elisp :tangle packages.el
-;; NIXOS
-;;(package! nixos-options)
-;;(package! helm-nixos-options)
-;;(package! company-nixos-options)
-#+end_src
-
-** Mode
-
-#+begin_src elisp :tangle packages.el
-;; MAJOR MODE
-(package! zen-mode)
-(package! command-log-mode)
-(package! xwwp)
-
-;; TEXT MODE
-;;(package! perfect-margin)
-(package! lorem-ipsum)
-(package! org-bullets)
-(package! figlet)
-
-;; PRESENTATION
-(package! ox-reveal)
-(package! org-tree-slide)
-
-;; ORG
-;; (package! visual-fill-column)
-#+end_src
-
-** Others
-
-#+begin_src elisp :tangle packages.el
-(package! fast-scroll)
-;; (package! origami)
-#+end_src
-
-** Themes
-
-#+begin_src elisp :tangle packages.el
-(package! doom-themes)
-
-(package! evil-better-visual-line)
-(provide 'packages)
-#+end_src
-
-** Search
-
-#+begin_src elisp :tangle packages.el
-(package! github-search)
-#+end_src
-
-** EAF
-
-#+begin_src elisp :tangle no
-;; (package! eaf
-;;   :recipe (:host github
-;;            :repo "manateelazycat/emacs-application-framework"
-;;            :files ("*")))
-;; (package! s)
-;; (package! epc)
-;; (package! ctable)
-;; (package! deferred)
 #+end_src
 
 * /Settings/
@@ -394,24 +421,21 @@ Configurations of every Emacs mode.
 
 #+begin_src elisp
 (setq org-ellipsis " ")
+(setq org-export-preserve-breaks t)
 (setq org-hide-emphasis-markers t)
 (setq org-hide-leading-stars t)
 (setq org-hidden-keywords '(title subtitle))
 
 (custom-set-faces!
   '(org-document-title      :height 2.0 :foreground "#eaeaea")
-  '(org-document-info       :height 1.0 :foreground "#cccccc" :italic t))
-
-(custom-set-faces!
+  '(org-document-info       :height 1.0 :foreground "#cccccc" :italic t)
   '(link                    :height 1.0 :foreground "#5E81AC" :italic t)
-  )
-
-(custom-set-faces!
-  '(org-level-1 :foreground "#eaeaea" :weight extra-bold :height 1.50 )
-  '(org-level-2 :foreground "#dddddd" :weight bold       :height 1.20 )
-  '(org-level-3 :foreground "#cccccc" :weight bold       :height 1.10 )
+  '(mode-line               :background "#303030")
+  '(org-level-1 :foreground "#eaeaea" :weight extra-bold :height 1.00 )
+  '(org-level-2 :foreground "#dddddd" :weight bold       :height 1.00 )
+  '(org-level-3 :foreground "#cccccc" :weight bold       :height 1.00 )
   '(org-level-4 :foreground "#bbbbbb" :weight bold       :height 1.00 )
-  '(org-level-5 :foreground "#aaaaaa" :weight bold       :height 0.90 ))
+  '(org-level-5 :foreground "#aaaaaa" :weight bold       :height 1.00 ))
 
 (lambda () (progn
   (setq left-margin-width 8)
@@ -431,9 +455,9 @@ Configurations of every Emacs mode.
 *** Bullets
 
 #+begin_src elisp
-;; BulletPoint: "※","⛬","⬢","‖"
+;; BulletPoint: "※","⛬","⬢","⌬"
 ;;(setq org-bullets-bullet-list '("⛬" "⬢" "⬢" "⬢" "⬢" "⬢"))
-(setq org-bullets-bullet-list '("⌬" "⬢" "⬢" "⬢" "⬢" "⬢"))
+(setq org-bullets-bullet-list '("※" "※" "※" "※" "※" "※"))
 ;;(setq org-bullets-bullet-list '("⬢"))
 #+end_src
 
@@ -456,15 +480,22 @@ Configurations of every Emacs mode.
 *** Reveal
 
 #+begin_src elisp
-;;(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
+(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
 #+end_src
 
 *** Deft
 
 #+begin_src elisp
-(setq deft-directory "~/notebook"
-      deft-extensions '("org" "md")
+(setq deft-directory "~/Dropbox/vault"
+      deft-extensions '("org")
       deft-recursive t)
+#+end_src
+
+*** Roam
+
+#+begin_src elisp
+(setq org-roam-directory "~/Dropbox/vault/roam")
+(setq org-roam-index-file "~/Dropbox/vault/roam/notebook.org")
 #+end_src
 
 *** Present
@@ -474,18 +505,75 @@ Configurations of every Emacs mode.
 (autoload 'org-present "org-present" nil t)
 #+end_src
 
+*** Agenda
+
+#+begin_src elisp
+(require 'org-inlinetask)
+(setq org-agenda-files (directory-files-recursively "~/Dropbox/vault/" "\\.org$"))
+
+#+end_src
+
 ** HIGHLIGHT
 
 #+begin_src elisp
 (setq hl-todo-keyword-faces
       '(("HOLD"   . "#D3869B")
-        ("TITLE"  . "#FABD2F")
+        ("TITLE"  . "#B8BB26")
+        ("LYFE"   . "#B8BB26")
         ("TODO"   . "#FABD2F")
         ("LINK"   . "#5E81AC")
         ("NOTE"   . "#B8BB26")
         ("DONE"   . "#808080")
         ("HACK"   . "#FE8019")
-        ("FIXME"  . "#FB4934")))
+        ("TEACH"  . "#7B2B5E")
+        ("UNIV"   . "#FE8019")
+        ("ASSIGN" . "#FB4934")
+        ("FIXME"  . "#FB4934")
+        ("WARNING"   . "#FB4934")))
+#+end_src
+
+** INDENT
+
+#+begin_src elisp
+(setq c-basic-indent 2)
+(setq c-default-style "linux")
+(setq tab-width 2)
+(setq-default indent-tabs-mode nil)
+#+end_src
+
+** DART
+
+#+begin_src elisp
+;; Dart Server --------------------------------------------------------------
+;; (setq dart-server-sdk-path "/Users/sashnortier/Desktop/Code/flutter/bin/cache/dart-sdk/")
+(setq dart-server-enable-analysis-server t)
+(add-hook 'dart-server-hook 'flycheck-mode)
+
+(use-package lsp-mode
+  :hook (dart-mode . lsp)
+  :commands lsp)
+
+(add-hook 'dart-mode-hook 'lsp)
+(with-eval-after-load "projectile"
+  (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
+  (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
+
+(setq lsp-auto-guess-root t)
+
+(use-package dart-mode
+  :ensure t
+  :hook (dart-mode . (lambda ()
+                      (add-hook 'after-save-hook #'flutter-run-or-hot-reload nil t)))
+  :custom
+  (dart-format-on-save t)
+  (dart-sdk-path "/run/current-system/sw/bin/cache/dart-sdk"))
+
+(use-package flutter
+  :after dart-mode
+  :bind (:map dart-mode-map
+              ("C-M-x" . #'flutter-run-or-hot-reload)))
+
+  ;;(flutter-sdk-path "/Users/sashnortier/Desktop/Code/flutter/"))
 #+end_src
 
 * /Functions/
@@ -517,7 +605,6 @@ Add-Hook to your emacs
 #+begin_src elisp
 (add-hook 'org-mode-hook (lambda () (hl-todo-mode 1)))
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-;; (add-hook 'org-mode-hook (lambda () (arc/org-mode-visual-fill)))
 (add-hook 'org-mode-hook ;; Prettify Symbols
           (lambda ()
             (push '("#+begin_src" . "λ") prettify-symbols-alist)
@@ -526,6 +613,10 @@ Add-Hook to your emacs
           '(lambda ()
              (add-hook 'write-contents-functions
                        'delete-trailing-whitespace)))
+
+(setq org-pandoc-options '((standalone . _)))
+(setq org-pandoc-options-for-docx '((standalone . nil)))
+(setq org-pandoc-format-extensions '(markdown_github+pipe_tables+raw_html))
 #+end_src
 
 ** OTHER Hooks
@@ -543,13 +634,16 @@ International variables on emacs.
 #+begin_src elisp
 (global-hl-todo-mode 1)
 (global-hi-lock-mode 1)
-;;(perfect-margin-mode 1)
 #+end_src
 
 * /Defaults/
 
 #+begin_src elisp
 (setq figlet-default-font "Future")
+
+(require 'openwith)
+(openwith-mode t)
+(setq openwith-associations '(("\\.pdf\\'" "zathura" (file))))
 #+end_src
 
 * EXWM
@@ -559,6 +653,7 @@ International variables on emacs.
 #+begin_src elisp :tangle packages.el
 (package! exwm)
 (package! wallpaper)
+;; (package! edwina)
 #+end_src
 
 ** Wallpaper
@@ -571,8 +666,8 @@ International variables on emacs.
       "feh" nil  "feh --bg-scale ~/Pictures/HD/streets.png"))
 (arc/set-wallpaper)
 ;; Transparency (disable outside emacs)
-(set-frame-parameter (selected-frame) 'alpha '(85 . 85))
-(add-to-list 'default-frame-alist '(alpha 85 85))
+(set-frame-parameter (selected-frame) 'alpha '(92 . 92))
+(add-to-list 'default-frame-alist '(alpha 92 92))
 ;;(set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 ;;(add-to-list 'default-frame-alist '(fullscreen . 'maximized))
 #+end_src
@@ -592,6 +687,7 @@ International variables on emacs.
 ;; Load the system tray before exwm-init
 (require 'exwm-systemtray)
 (exwm-systemtray-enable)
+(setq exwm-workspace-show-all-buffers t)
 #+end_src
 
 ** Bindings
@@ -608,7 +704,7 @@ International variables on emacs.
 
 ;; These keys should always pass through to Emacs
 (setq exwm-input-prefix-keys
-  '(?\C-x
+  '(;;?\C-x
     ?\C-u
     ?\C-h
     ?\M-x
@@ -619,7 +715,15 @@ International variables on emacs.
     ?\C-\ ))  ;; Ctrl+Space
 
 ;; Ctrl+Q will enable the next key to be sent directly
-(define-key exwm-mode-map [?\C-q] 'exwm-input-send-next-key)
+(define-key exwm-mode-map [?\C-i] 'exwm-input-send-next-key)
+(define-key exwm-mode-map [?\s-i] 'exwm-input-send-next-key)
+
+(setq exwm-input-simulation-keys
+      '(
+        ;; cut/paste.
+        ([?\s-X] . [?\C-x])
+        ([?\s-C] . [?\C-c])
+        ([?\s-V] . [?\C-v])))
 
 #+end_src
 
@@ -630,24 +734,49 @@ International variables on emacs.
       `(
         ([?\s-r] . exwm-reset)
 
-        ;; Move between windows
-        ([?\s-h] . windmove-left)
-        ([?\s-j] . windmove-down)
-        ([?\s-k] . windmove-up)
-        ([?\s-l] . windmove-right)
+     ;; ([?\s-j] . edwina-select-next-window)
+     ;; ([?\s-k] . edwina-select-previous-window)
+     ;; ([?\s-J] . edwina-swap-next-window)
+     ;; ([?\s-K] . edwina-swap-previous-window)
 
-        ([?\s-a] . (lambda () (interactive) (exwm-workspace-switch-create 1)))
-        ([?\s-s] . (lambda () (interactive) (exwm-workspace-switch-create 2)))
-        ([?\s-d] . (lambda () (interactive) (exwm-workspace-switch-create 3)))
-        ([?\s-p] . (lambda () (interactive) (exwm-workspace-switch-create 0)))
+        ([?\s-j] . evil-window-next)
+        ([?\s-k] . evil-window-prev)
+        ([?\s-l] . evil-window-increase-width)
+        ([?\s-h] . evil-window-decrease-width)
+
+     ;; ([?\s-h] . edwina-dec-mfact)
+     ;; ([?\s-l] . edwina-inc-mfact)
+     ;; ([?\s-H] . edwina-dec-nmaster)
+     ;; ([?\s-L] . edwina-inc-nmaster)
+
+        ([?\s-b] . ibuffer)
+        ([?\s-q] . kill-current-buffer)
+
+        ([?\s-F] . exwm-floating-toggle-floating)
+        ([?\s-m] . exwm-workspace-move-window)
+        ([?\s-f] . exwm-layout-toggle-fullscreen)
+
+        ([?\s-v] . evil-window-vsplit)
+        ([?\s-z] . evil-window-split)
+
+        ([?\s-x] . counsel-M-x)
+
+        ([s-tab] . dired)
+        ([s-backspace] . counsel-M-x)
+        ([s-return] . +vterm/here)
+
+        ([?\s-a] . (lambda () (interactive) (exwm-workspace-switch-create 0)))
+        ([?\s-s] . (lambda () (interactive) (exwm-workspace-switch-create 1)))
+        ([?\s-d] . (lambda () (interactive) (exwm-workspace-switch-create 2)))
+        ([?\s-p] . (lambda () (interactive) (exwm-workspace-switch-create 3)))
 
         ;; Launch applications via shell command
         ([?\s-o] . (lambda (command)
-                     (interactive (list (read-shell-command "$ ")))
+                     (interactive (list (read-shell-command "  ")))
                      (start-process-shell-command command nil command)))
 
         ;; Switch workspace
-        ([?\s-w] . exwm-workspace-switch)
+        ([?\s-w] . exwm-workspace-swap)
         ([?\s-`] . (lambda () (interactive) (exwm-workspace-switch-create 0)))
 
         ,@(mapcar (lambda (i)
@@ -655,7 +784,111 @@ International variables on emacs.
                       (lambda ()
                     (interactive)
                     (exwm-workspace-switch-create ,i))))
-                  (number-sequence 0 9))))
+                  (number-sequence 1 4))))
 
 (exwm-enable)
+#+end_src
+
+** Edwina
+
+#+begin_src elisp :tangle no
+(defun edwina--init ()
+  "Initialize command `edwina-mode'."
+  (print! "Simplified Edwina init")
+  (message "Simplified Edwina init")
+  (advice-add #'display-buffer :around #'edwina--display-buffer)
+  (unless (assoc 'edwina-mode mode-line-misc-info)
+    (push '(edwina-mode (:eval (edwina-mode-line-indicator)))
+          (cdr (last mode-line-misc-info))))
+  (edwina-arrange))
+
+(defun doom-popup-filter (in-buffer)
+  (with-current-buffer in-buffer
+    (progn
+      (message "[EDWINA] checking buffer t[%s] ib[%s] pun[%s] pub[%s] pu[%s] cb[%s] pm[%s]" (type-of in-buffer) in-buffer (+popup-buffer-p (buffer-name in-buffer)) (+popup-buffer-p in-buffer) (+popup-buffer-p) (current-buffer) +popup-mode)
+      (if (or (+popup-buffer-p)
+              (cond
+               (( string-match-p "popup" (buffer-name in-buffer)) t)
+               (( string-match-p "Password-Store" (buffer-name in-buffer)) t)
+               (( string-match-p "magit" (buffer-name in-buffer)) t)
+               (t nil)))
+          (progn (message "Filter %s" (buffer-name in-buffer)) t )
+        (progn (message "No Filter %s" (buffer-name in-buffer)) nil )))))
+
+(setq! edwina-buffer-filter #'doom-popup-filter)
+
+(map! :leader
+      (:prefix ("r" . "Edwina")
+       :desc "Toggle Edwina" "e" #'edwina-mode
+       :desc "Arrange" "r" #'edwina-arrange
+       :desc "Next Window" "h" #'edwina-select-next-window
+       :desc "Prev Window" "l" #'edwina-select-previous-window
+       :desc "Swap Next" "L" #'edwina-swap-next-window
+       :desc "Swap Prev" "H" #'edwina-swap-previous-window
+       :desc "Dec MFact" "-" #'edwina-dec-mfact
+       :desc "Inc MFact" "=" #'edwina-inc-mfact
+       :desc "Dec Master" "_" #'edwina-dec-nmaster
+       :desc "Inc Master" "+" #'edwina-inc-nmaster
+       :desc "Del Window" "d" #'edwina-delete-window
+       :desc "Zoom on Window" "z" #'edwina-zoom
+       ))
+
+(edwina-mode 1)
+#+end_src
+
+** Sound
+
+#+begin_src elisp
+(defun my/increase-brightness ()
+  "Increase brightness"
+  (interactive)
+  (shell-command-to-string "light -A 2"))
+
+(defun my/decrease-brightness ()
+  "Increase brightness"
+  (interactive)
+  (shell-command-to-string "light -U 2"))
+
+(exwm-input-set-key (kbd "<XF86MonBrightnessDown>") 'my/decrease-brightness)
+(exwm-input-set-key (kbd "<XF86MonBrightnessUp>") 'my/increase-brightness)
+
+(defun my/adjust-volume (delta)
+  "Adjust sound volume by DELTA."
+  (shell-command-to-string (format "pactl set-sink-volume @DEFAULT_SINK@ %s" delta)))
+
+(defun my/volume-mute ()
+  "Increase brightness"
+  (interactive)
+  (shell-command-to-string "pactl set-sink-mute 0 toggle"))
+
+(defmacro my/volume-command (delta)
+  "Return a command modifying sound volume by DELTA."
+  `(lambda () (interactive) (my/adjust-volume ,delta)))
+
+(exwm-input-set-key (kbd "<XF86AudioRaiseVolume>") (my/volume-command "+5%"))
+(exwm-input-set-key (kbd "<XF86AudioLowerVolume>") (my/volume-command "-5%"))
+(exwm-input-set-key (kbd "<XF86AudioMute>") 'my/volume-mute)
+
+
+
+#+end_src
+
+* Email
+
+#+begin_src elisp :tangle no
+(set-email-account! "<email>"
+  '((mu4e-sent-folder       . "/<email>/Sent")
+    (mu4e-drafts-folder     . "/<email>/Drafts")
+    (mu4e-trash-folder      . "/<email>/Trash")
+    (smtpmail-smtp-user     . "<email>")
+    (smtpmail-smtp-server   . "smtp.mailbox.org")
+    (smtpmail-smtp-service  . 587)
+    (mu4e-compose-signature . "Signature"))
+  t)
+#+end_src
+
+#+begin_src elisp :tangle no
+(after! mu4e
+  (setq mu4e-get-mail-command (concat "mbsync -a -c " (getenv "XDG_CONFIG_HOME") "/isync/mbsyncrc")))
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 #+end_src

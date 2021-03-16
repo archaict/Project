@@ -34,9 +34,9 @@
        :ui
        deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
-       doom-dashboard    ; a nifty splash screen for Emacs
+    ;; doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       (emoji +unicode)  ; 🙂
+      (emoji +unicode)   ; 🙂
     ;; fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
     ;; hydra
@@ -47,7 +47,7 @@
     ;; nav-flash         ; blink cursor line after big motions
     ;; neotree           ; a project drawer, like NERDTree for vim
     ;; ophints           ; highlight the region an operation acts on
-       (popup +defaults)   ; tame sudden yet inevitable temporary windows
+      (popup +defaults)  ; tame sudden yet inevitable temporary windows
     ;; tabs              ; a tab bar for Emacs
        treemacs          ; a project drawer, like neotree but cooler
        unicode           ; extended unicode support for various languages
@@ -58,7 +58,7 @@
     ;; zen                ; distraction-free coding or writing
 
        :editor
-       (evil +everywhere) ; come to the dark side, we have cookies
+      (evil +everywhere)  ; come to the dark side, we have cookies
        file-templates     ; auto-snippets for empty files
        fold               ; (nigh) universal code folding
     ;; (format +onsave)   ; automated prettiness
@@ -96,7 +96,7 @@
     ;; docker
     ;; editorconfig       ; let someone else argue about tabs vs spaces
     ;; ein                ; tame Jupyter notebooks with emacs
-       (eval +overlay)    ; run code, run (also, repls)
+      (eval +overlay)     ; run code, run (also, repls)
     ;; gist               ; interacting with github gists
        lookup             ; navigate your code and its documentation
        lsp                ; language server protocols for Emacs
@@ -124,10 +124,12 @@
     ;; crystal            ; ruby at the speed of c
     ;; csharp             ; unity, .NET, and mono shenanigans
     ;; data               ; config/data formats
-    ;; (dart +flutter)    ; paint ui and not much else
+      (dart
+       +flutter
+       +lsp)              ; paint ui and not much else
     ;; elixir             ; erlang done right
     ;; elm                ; care for a cup of TEA?
-       (emacs-lisp +lsp)  ; drown in parentheses
+      (emacs-lisp +lsp)   ; drown in parentheses
     ;; erlang             ; an elegant language for a more civilized age
        ess                ; emacs speaks statistics
     ;; faust              ; dsp, but you get to keep your soul
@@ -150,20 +152,19 @@
     ;; lua                ; one-based indices? one-based indices
        markdown           ; writing docs for people to ignore
     ;; nim                ; python + lisp at the speed of c
-       (nix +lsp)         ; I hereby declare "nix geht mehr!"
+      (nix +lsp)          ; I hereby declare "nix geht mehr!"
     ;; ocaml              ; an objective camel
-       (org               ; organize your plain life in plain text
-     ;; +pretty           ; yessss my pretties! (nice unicode symbols)
-     ;; +dragndrop        ; drag & drop files/images into org buffers
-     ;; +hugo             ; use Emacs for hugo blogging
-     ;; +jupyter          ; ipython/jupyter support for babel
-     ;; +pandoc           ; export-with-pandoc support
-     ;; +journal          ; journal of your plain life
-     ;; +gnuplot          ; who doesn't like pretty pictures
-     ;; +pomodoro         ; be fruitful with the tomato technique
-     ;; +present          ; using org-mode for presentations
-     ;; +roam             ; wander around notes
-        )                 ; eof org-mode and plain-life
+      (org                ; organize your plain life in plain text
+    ;; +pretty            ; yessss my pretties! (nice unicode symbols)
+    ;; +dragndrop         ; drag & drop files/images into org buffers
+    ;; +hugo              ; use Emacs for hugo blogging
+    ;; +jupyter           ; ipython/jupyter support for babel
+    ;; +pandoc            ; export-with-pandoc support
+    ;; +journal           ; journal of your plain life
+    ;; +gnuplot           ; who doesn't like pretty pictures
+    ;; +pomodoro          ; be fruitful with the tomato technique
+    ;; +present           ; using org-mode for presentations
+       +roam)             ; wander around notes
        php                ; perl's insecure younger brother
     ;; plantuml           ; diagrams for confusing people more
     ;; purescript         ; javascript, but functional
@@ -186,9 +187,9 @@
        yaml               ; JSON, but readable
 
        :email
-       (mu4e +gmail)
+      (mu4e +gmail)
     ;; notmuch
-    ;; (wanderlust +gmail)
+    ;;(wanderlust +gmail)
 
        :app
        calendar
@@ -198,4 +199,4 @@
 
        :config
        literate
-       (default +bindings +smartparens))
+      (default +bindings +smartparens))

@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: #+begin_comment block
-# key: <c
-# uuid: <c
+# key: cmt
+# uuid: cmt
 # --
 #+begin_comment
 `%`$0

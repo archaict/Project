@@ -9,7 +9,7 @@
 (package! xwwp)
 
 ;; TEXT MODE
-(package! perfect-margin)
+;;(package! perfect-margin)
 (package! lorem-ipsum)
 (package! org-bullets)
 (package! figlet)
@@ -18,8 +18,11 @@
 (package! ox-reveal)
 (package! org-tree-slide)
 
+(package! openwith)
+;; Language
+
 ;; ORG
-;; (package! visual-fill-column)
+(package! ox-pandoc)
 
 (package! fast-scroll)
 ;; (package! origami)
@@ -29,7 +32,13 @@
 (package! evil-better-visual-line)
 (provide 'packages)
 
+(package! exwm-outer-gaps
+  :recipe
+  (:host github
+   :repo "lucasgruss/exwm-outer-gaps"))
+
 (package! github-search)
 
 (package! exwm)
 (package! wallpaper)
+;; (package! edwina)
