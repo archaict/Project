@@ -1,15 +1,15 @@
 #+title:Phishing
 #+roam_tags: Social_Engineering
 
-TODO:
-1. Fake Website
+Phishing is a type of attack that are using E-mail, voice (Vishing), or SMS (smishing) to attack its target. This kind of attack can be pointed into an individual which is called as spear phishing. Phishing has been around since 90s targeting America Online (AOL). In these day and age, phishing is disguised in many ways, from E-mail notification of a big company sending you money, or even from a fake account that are sending you "love letter" with malware in disguise.
 
-* Gophish
+** Gophish
 
 WEB: https://getgophish.com/
 GIT: https://github.com/gophish/gophish
 
-* Blackeye
+
+** Blackeye
 
 GIT: https://github.com/An0nUD4Y/blackeye
 
@@ -18,24 +18,19 @@ Installation:
 - Ngrok ( Create your account first )
 - GIthub Account ( Easier )
 
-This preparation are needed, because =blackeye.sh= are not working as intended, as precaution, we have to manually run the ngrok server and serve the php to our http://localhost:8080 ( or another port ) to get it to works.
+[ WARNING ] This preparation are needed if =blackeye.sh= not working as intended, as precaution, we have to manually run the ngrok server and serve the php to our http://localhost:8080 ( or another port ) to get it to works. Go to next section to actually run =blackeye=.
 
-Here is the command you need to install and setup ngrok.
+Here is the command you need to install and setup ngrok manually, though you will proabably be downloading this again in =blackeye=, so you might want to copy ngrok to your =blackeye= folder later. Authtoken can be seen [[https://dashboard.ngrok.com/get-started/your-authtoken][here]].
 
 #+begin_src shell
+$ git clone https://github.com/An0nUD4Y/blackeye
+$ cd blackeye
 $ wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 $ unzip ngrok-stable-linux-amd64.zip
 $ ./ngrok authtoken 0000000000000000000000000000000000000000000000000
 #+end_src
 
-Now clone blackeye from An0nUD4Y repos.
-
-#+begin_src shell
-$ git clone https://github.com/An0nUD4Y/blackeye
-$ cd blackeye
-#+end_src
-
-To actually run blackeye, you have to serve the php first and then the ngrok server, and you will see a screen like this.
+If you run ngrok server by itself, it will be seen like this:
 
 #+begin_src shell
 ngrok by @inconshreveable
@@ -52,13 +47,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
                               22      0       0.25    0.07    0.06    3.14
 #+end_src
 
-And then you can connect to php by using this command:
-
-#+begin_src shell
-$ php -d /path/to/blackeye/sites/instagram -S localhost:8080
-#+end_src
-
-Lastly run this command to actually run blackeye. Above preparation are just in case that you're not seeing ngrok Link.
+As of when this articles made, you can access http://127.0.0.1:4040/status to check ngrok status and below =command_line= section, you will see your URL that can be used.
 
 #+begin_src shell
 $ sudo ./blackeye.sh # Password Needed
@@ -106,4 +95,10 @@ $ sudo ./blackeye.sh # Password Needed
 [*] Account: helloWorld
 [*] Password:  12345678
 [*] Saved: sites/instagram/saved.usernames.txt
+#+end_src
+
+If your php is not connected, you can do this instead before running =blackeye=.
+
+#+begin_src shell
+$ php -d /path/to/blackeye/sites/instagram -S localhost:8080
 #+end_src
