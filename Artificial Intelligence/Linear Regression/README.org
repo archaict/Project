@@ -1,14 +1,68 @@
 #+title:Linear Regression
 #+SUBTITLE:Another way to regress all your thinking.
 
+If your installation doesn't have numpy or statsmodel, you might want to install it using command below.
+
 #+begin_src shell
-python3 Linear_Regression.py
+pip install numpy
+pip install statsmodels
+pip install matplotlib
 #+end_src
 
-#+RESULTS:
-: hello
+Import stuff that are needed for this project.
 
 #+begin_src python :tangle Linear_Regression.py
 import numpy as np
+import matplotlib.pyplot as plt
 import statsmodels.api as sm
+from statmodels.formula.api import ols
+%matplotlib inline
 #+end_src
+
+Example of using array as data.
+
+#+begin_src python :tangle Linear_Regression.py
+x = [[2, 3], [2, 5], [20, 8], [44, 2], [22, 84], [28, 18], [20, 18], [20, 17]]
+y = [8, 15, 22, 24, 25, 20, 48, 23]
+x, y = np.array(x), np.array(y)
+#+end_src
+
+Fitting all the model using Linear Regression.
+
+#+begin_src python :tangle Linear_Regression.py
+x = sm.add_constant(x)
+model = sm.OLS(y, x)
+results = model.fit()
+print(results.summary())
+#+end_src
+
+
+Results from the test:
+
+#+begin_src python
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.175
+Model:                            OLS   Adj. R-squared:                 -0.155
+Method:                 Least Squares   F-statistic:                    0.5312
+Date:                Wed, 24 Mar 2021   Prob (F-statistic):              0.618
+Time:                        20:25:35   Log-Likelihood:                -29.599
+No. Observations:                   8   AIC:                             65.20
+Df Residuals:                       5   BIC:                             65.44
+Df Model:                           2
+Covariance Type:            nonrobust
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const         15.5895      8.527      1.828      0.127      -6.330      37.509
+x1             0.3093      0.346      0.894      0.412      -0.580       1.199
+x2             0.0736      0.174      0.422      0.690      -0.375       0.522
+==============================================================================
+Omnibus:                       17.368   Durbin-Watson:                   2.128
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):                6.777
+Skew:                           1.929   Prob(JB):                       0.0338
+Kurtosis:                       5.334   Cond. No.                         69.1
+==============================================================================
+#+end_src
+
+For further example can be seen on =Linear_Regression.ipynb=.
