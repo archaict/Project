@@ -1,0 +1,14 @@
+#+title:Linear Regression
+#+SUBTITLE:Another way to regress all your thinking.
+
+#+begin_src shell
+python3 Linear_Regression.py
+#+end_src
+
+#+RESULTS:
+: hello
+
+#+begin_src python :tangle Linear_Regression.py
+import numpy as np
+import statsmodels.api as sm
+#+end_src
