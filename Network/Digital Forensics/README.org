@@ -363,3 +363,200 @@ Directory /home/user/FORENSICS
 drwxr-xr-x    - root  3 Mar 19:45 recup_dir.1
 .rw-r--r-- 6.8k root  3 Mar 19:34 testdisk.log
 #+end_src
+* Volatile
+
+Volatile memory are types of memory that are usually stored in RAM *only* when the systems are on power. This type of memory requires power to maintain its stored information, thus when the computer is shutdown, either normally or abruptedly or interrupted in any way, the data inside the storage will be erased.
+
+Since the tools are not installed, we have to install it manually by running commands below. This command will use the =setup.py= that are part of the repos to install its dependencies. Though it is installing all of its contents, you might still want to refer to its installation pages, since some errors will be found if you didn't install other tools alongside =volatility=. Below is the list of needed installation after installing =volatility=.
+
+
+** Installing
+
+- Distorm3
+- Yara
+- PyCrypto
+- PIL
+- OpenPyxl
+- ujson
+- pytz
+- IPython
+- libforensic1394
+
+There are some dependencies that comes from python version 2, so you might want to install those dependencies using this command.
+#+begin_src shell
+# Install python2 pip2 and deps
+$ wget https://bootstrap.pypa.io/get-pip.py
+$ sudo python2 get-pip.py
+$ pip2 install --upgrade setuptools
+$ sudo apt-get install python-dev
+$ pip2 install Distorm3 PyCrypto Pillow OpenPyxl ujson pytz
+
+# Install libforensic1394
+$ sudo apt install cmake
+$ git clone https://github.com/FreddieWitherden/libforensic1394
+$ cd libforensic1394
+$ mkdir build && cd build
+$ cmake -G"Unix Makefiles" ../
+$ make
+$ sudo make install
+#+end_src
+
+After we install all the dependencies we can start installing =volatility=.
+
+#+begin_src shell
+$ git clone https://github.com/volatilityfoundation/volatility.git
+$ cd volatility
+$ sudo python setup.py install
+#+end_src
+
+** Volatile Testing Ground
+
+Source samples that we use can be downloaded here.
+LINK: https://github.com/volatilityfoundation/volatility/wiki/Memory-Samples
+
+For simpler command, you can use command below, you can put this files anywhere, but for this purpose, it is better to put it inside IMG folder.
+
+#+begin_src shell
+$ wget http://files.sempersecurus.org/dumps/cridex_memdump.zip ~/IMG
+$ cd ~/IMG
+$ unzip cridex_memdump.zip
+#+end_src
+
+We will then use =vol.py= to see the imageinfo from =cridex.vmem=.
+#+begin_src shell
+$ vol.py -f volatility3/cridex.vmem imageinfo
+
+Volatility Foundation Volatility Framework 2.6.1
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : WinXPSP2x86, WinXPSP3x86 (Instantiated with WinXPSP2x86)
+                     AS Layer1 : IA32PagedMemoryPae (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/paranoia/volatility3/cridex.vmem)
+                      PAE type : PAE
+                           DTB : 0x2fe000L
+                          KDBG : 0x80545ae0L
+          Number of Processors : 1
+     Image Type (Service Pack) : 3
+                KPCR for CPU 0 : 0xffdff000L
+             KUSER_SHARED_DATA : 0xffdf0000L
+           Image date and time : 2012-07-22 02:45:08 UTC+0000
+     Image local date and time : 2012-07-21 22:45:08 -0400
+#+end_src
+
+Next we try using pslist command to see what process is running on the systems.
+
+#+begin_src shell
+$ vol.py --profile=WinXPSP3x86 -f cridex.vmem pslist
+
+    Volatility Foundation Volatility Framework 2.6.1
+Offset(V)  Name                    PID   PPID   Thds     Hnds   Sess  Wow64 Start
+---------- -------------------- ------ ------ ------ -------- ------ ------ ------------------------------
+0x823c89c8 System                    4      0     53      240 ------      0
+0x822f1020 smss.exe                368      4      3       19 ------      0 2012-07-22 02:42:31 UTC+0000
+0x822a0598 csrss.exe               584    368      9      326      0      0 2012-07-22 02:42:32 UTC+0000
+0x82298700 winlogon.exe            608    368     23      519      0      0 2012-07-22 02:42:32 UTC+0000
+0x81e2ab28 services.exe            652    608     16      243      0      0 2012-07-22 02:42:32 UTC+0000
+0x81e2a3b8 lsass.exe               664    608     24      330      0      0 2012-07-22 02:42:32 UTC+0000
+0x82311360 svchost.exe             824    652     20      194      0      0 2012-07-22 02:42:33 UTC+0000
+0x81e29ab8 svchost.exe             908    652      9      226      0      0 2012-07-22 02:42:33 UTC+0000
+0x823001d0 svchost.exe            1004    652     64     1118      0      0 2012-07-22 02:42:33 UTC+0000
+0x821dfda0 svchost.exe            1056    652      5       60      0      0 2012-07-22 02:42:33 UTC+0000
+0x82295650 svchost.exe            1220    652     15      197      0      0 2012-07-22 02:42:35 UTC+0000
+0x821dea70 explorer.exe           1484   1464     17      415      0      0 2012-07-22 02:42:36 UTC+0000
+0x81eb17b8 spoolsv.exe            1512    652     14      113      0      0 2012-07-22 02:42:36 UTC+0000
+0x81e7bda0 reader_sl.exe          1640   1484      5       39      0      0 2012-07-22 02:42:36 UTC+0000
+0x820e8da0 alg.exe                 788    652      7      104      0      0 2012-07-22 02:43:01 UTC+0000
+0x821fcda0 wuauclt.exe            1136   1004      8      173      0      0 2012-07-22 02:43:46 UTC+0000
+0x8205bda0 wuauclt.exe            1588   1004      5      132      0      0 2012-07-22 02:44:01 UTC+0000
+#+end_src
+
+Since this test images are rather old as you can see on the starting process, it and the profle we use, you might want to use tools that are catered to newer OSes. All the command bellow that are using ps* means checking what processes are running in the system, it will show the same thing from different viewpoint.
+
+#+begin_src shell
+$ vol.py --profile=WinXPSP3x86 -f cridex.vmem pstree
+
+Volatility Foundation Volatility Framework 2.6.1
+Name                                                  Pid   PPid   Thds   Hnds Time
+-------------------------------------------------- ------ ------ ------ ------ ----
+ 0x823c89c8:System                                      4      0     53    240 1970-01-01 00:00:00 UTC+0000
+. 0x822f1020:smss.exe                                 368      4      3     19 2012-07-22 02:42:31 UTC+0000
+.. 0x82298700:winlogon.exe                            608    368     23    519 2012-07-22 02:42:32 UTC+0000
+... 0x81e2ab28:services.exe                           652    608     16    243 2012-07-22 02:42:32 UTC+0000
+.... 0x821dfda0:svchost.exe                          1056    652      5     60 2012-07-22 02:42:33 UTC+0000
+.... 0x81eb17b8:spoolsv.exe                          1512    652     14    113 2012-07-22 02:42:36 UTC+0000
+.... 0x81e29ab8:svchost.exe                           908    652      9    226 2012-07-22 02:42:33 UTC+0000
+.... 0x823001d0:svchost.exe                          1004    652     64   1118 2012-07-22 02:42:33 UTC+0000
+..... 0x8205bda0:wuauclt.exe                         1588   1004      5    132 2012-07-22 02:44:01 UTC+0000
+..... 0x821fcda0:wuauclt.exe                         1136   1004      8    173 2012-07-22 02:43:46 UTC+0000
+.... 0x82311360:svchost.exe                           824    652     20    194 2012-07-22 02:42:33 UTC+0000
+.... 0x820e8da0:alg.exe                               788    652      7    104 2012-07-22 02:43:01 UTC+0000
+.... 0x82295650:svchost.exe                          1220    652     15    197 2012-07-22 02:42:35 UTC+0000
+... 0x81e2a3b8:lsass.exe                              664    608     24    330 2012-07-22 02:42:32 UTC+0000
+.. 0x822a0598:csrss.exe                               584    368      9    326 2012-07-22 02:42:32 UTC+0000
+ 0x821dea70:explorer.exe                             1484   1464     17    415 2012-07-22 02:42:36 UTC+0000
+. 0x81e7bda0:reader_sl.exe                           1640   1484      5     39 2012-07-22 02:42:36 UTC+0000
+#+end_src
+
+#+begin_src shell
+$ vol.py --profile=WinXPSP3x86 -f cridex.vmem psxview
+
+Volatility Foundation Volatility Framework 2.6.1
+Offset(P)  Name                    PID pslist psscan thrdproc pspcid csrss session deskthrd ExitTime
+---------- -------------------- ------ ------ ------ -------- ------ ----- ------- -------- --------
+0x02498700 winlogon.exe            608 True   True   True     True   True  True    True
+0x02511360 svchost.exe             824 True   True   True     True   True  True    True
+0x022e8da0 alg.exe                 788 True   True   True     True   True  True    True
+0x020b17b8 spoolsv.exe            1512 True   True   True     True   True  True    True
+0x0202ab28 services.exe            652 True   True   True     True   True  True    True
+0x02495650 svchost.exe            1220 True   True   True     True   True  True    True
+0x0207bda0 reader_sl.exe          1640 True   True   True     True   True  True    True
+0x025001d0 svchost.exe            1004 True   True   True     True   True  True    True
+0x02029ab8 svchost.exe             908 True   True   True     True   True  True    True
+0x023fcda0 wuauclt.exe            1136 True   True   True     True   True  True    True
+0x0225bda0 wuauclt.exe            1588 True   True   True     True   True  True    True
+0x0202a3b8 lsass.exe               664 True   True   True     True   True  True    True
+0x023dea70 explorer.exe           1484 True   True   True     True   True  True    True
+0x023dfda0 svchost.exe            1056 True   True   True     True   True  True    True
+0x024f1020 smss.exe                368 True   True   True     True   False False   False
+0x025c89c8 System                    4 True   True   True     True   False False   False
+0x024a0598 csrss.exe               584 True   True   True     True   False True    True
+#+end_src
+
+Under this will include all the connection on the system, either it is results from scanning and the connection that it uses.
+
+#+begin_src shell
+$ vol.py --profile=WinXPSP3x86 -f cridex.vmem connections
+
+Volatility Foundation Volatility Framework 2.6.1
+Offset(V)  Local Address             Remote Address            Pid
+---------- ------------------------- ------------------------- ---
+0x81e87620 172.16.112.128:1038       41.168.5.140:8080         1484
+#+end_src
+
+#+begin_src shell
+$ vol.py --profile=WinXPSP3x86 -f cridex.vmem connscan
+
+Volatility Foundation Volatility Framework 2.6.1
+Offset(P)  Local Address             Remote Address            Pid
+---------- ------------------------- ------------------------- ---
+0x02087620 172.16.112.128:1038       41.168.5.140:8080         1484
+0x023a8008 172.16.112.128:1037       125.19.103.198:8080       1484
+#+end_src
+
+You can see Geolocation of the IP's using this:
+#+begin_src shell
+$ curl https://freegeoip.app/xml/41.168.5.140
+<Response>
+	<IP>41.168.5.140</IP>
+	<CountryCode>ZA</CountryCode>
+	<CountryName>South Africa</CountryName>
+	<RegionCode>GP</RegionCode>
+	<RegionName>Gauteng</RegionName>
+	<City>Johannesburg</City>
+	<ZipCode>2041</ZipCode>
+	<TimeZone>Africa/Johannesburg</TimeZone>
+	<Latitude>-26.2308</Latitude>
+	<Longitude>28.0585</Longitude>
+	<MetroCode>0</MetroCode>
+</Response>
+
+#+end_src
