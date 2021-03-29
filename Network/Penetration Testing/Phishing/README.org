@@ -57,8 +57,8 @@ You might want to use port =1025= for smtp, it will be already configured if you
 
 *** Landing Pages
 
-FIXME [[./Assets/GoPhish_Landing_Pages.png]]
-FIXME [[./Assets/GoPhish_Landing_Pages_URL.png]]
+[[./Assets/GoPhish_Landing_Pages.png]]
+[[./Assets/GoPhish_Landing_Pages_URL.png]]
 
 Here will be where you import the site, click on import and include URL to the page that you want to clone, also you can redirect it to the real address.
 
@@ -91,6 +91,7 @@ Be sure to point the URL to your localhost for this, or to the server you're run
 
 You can then see your victims and overall status from the dashboard area.
 
+[[./Assets/GoPhish_Dashboard.png]]
 [[./Assets/GoPhish_Results.png]]
 
 
