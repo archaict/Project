@@ -1,6 +1,7 @@
 #+title:Phishing
 #+OPTIONS: \n:t
 #+roam_tags: Social_Engineering
+#+attr_html: :width 100px
 
 [WARNING: WRITER ARE NOT RESPONSIBLE FOR ANY MISUSE OR DAMAGE CAUSED BY USING TOOLS MENTIONED IN THIS REPO. IT IS ILLEGAL TO USE THIS TOOLS WITHOUT MUTUAL CONSENT, YOU'VE BEEN WARNED!]
 
@@ -27,9 +28,77 @@ There are multiple preparation that you can do to help with assigning things lat
   + GoPhish also want E-mails that can use smtp, the username and password in the page needs your e-mail credentials, this is why it is not even recommended to use your personal address, use E-mail services that are not connected to you by any means.
 
 #+begin_src shell
+# GoPhish
+$ mkdir -p ~/opt
+$ cd ~/opt
 $ curl -L https://github.com/gophish/gophish/releases/download/0.7.1/gophish-v0.7.1-linux-64bit.zip -o gophish.zip
-$ mkdir -p ~/opt && unzip gophish.zip ~/opt/gophish
+$ unzip gophish.zip ~/opt/gophish
+
+# MailHog
+$ sudo apt-get -y install golang-go
+$ go get github.com/mailhog/MailHog
 #+end_src
+
+Once you clone GoPhish and installing MailHog, you can then run it via command line by running:
+
+#+begin_src shell
+$ sudo ~/opt/gophish
+$ sudo ~/go/bin/MailHog
+#+end_src
+
+Once you run it on *separate* terminal, now we need to go to https://localhost:3333 for GoPhish and https://localhost:8025 for MailHog. There are some templates you have to fill before we launch the attack, this will be discussed on the next section. Username for *GoPhish* is =admin= & =gophish=.
+
+*** Sending Profile
+
+[[./Assets/GoPhish_Sending_Profiles.png]]
+
+You might want to use port =1025= for smtp, it will be already configured if you run MailHog, this will send email to that smtp address, also you can try =Send Test Email= to check if it is sending to the right address.
+
+
+*** Landing Pages
+
+FIXME [[./Assets/GoPhish_Landing_Pages.png]]
+FIXME [[./Assets/GoPhish_Landing_Pages_URL.png]]
+
+Here will be where you import the site, click on import and include URL to the page that you want to clone, also you can redirect it to the real address.
+
+*** E-Mail Templates
+
+[[./Assets/GoPhish_Email.png]]
+
+You can use Templates as above, it is taken from official GoPhish documentation page, you might want to go [[https://docs.getgophish.com/user-guide/building-your-first-campaign/creating-the-template][here]]. It is also possible to include attachments using this email, since it is only for testing purpose, it will attached nothing.
+
+[[./Assets/GoPhish_Email_URL.png]]
+
+To include the url, you have to highlight the word here and click *link* button in the html editor, it will then brought you this window to include your URL.
+
+*** Groups
+
+[[./Assets/GoPhish_Groups.png]]
+
+
+Since it is possible if you want to send it to multiple people, you can have it inside the groups, you can import it using CSVs.
+
+*** Launching Campaign
+
+After all the preparation, we can then go to *Campaign* page and create a new campaign, you can also clone or edit your campaign here.
+
+[[./Assets/GoPhish_Campaign.png]]
+
+Be sure to point the URL to your localhost for this, or to the server you're running if you're using instances like Digital Ocean or AWS.
+
+*** Dashboard
+
+You can then see your victims and overall status from the dashboard area.
+
+[[./Assets/GoPhish_Results.png]]
+
+
+*** MailHog
+
+This will be the E-mail that you get from GoPhish.
+
+[[./Assets/MailHog.png]]
 
 
 ** Blackeye
