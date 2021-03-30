@@ -9,7 +9,6 @@ pip install statsmodels
 pip install matplotlib
 #+end_src
 
-
 Import stuff that are needed for this project. For this project we use numpy, matplotlib, and statsmodel to help with the statistics.
 
 #+begin_src python :tangle Linear_Regression.py
