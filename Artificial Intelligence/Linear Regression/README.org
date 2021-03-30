@@ -9,7 +9,8 @@ pip install statsmodels
 pip install matplotlib
 #+end_src
 
-Import stuff that are needed for this project.
+
+Import stuff that are needed for this project. For this project we use numpy, matplotlib, and statsmodel to help with the statistics.
 
 #+begin_src python :tangle Linear_Regression.py
 import numpy as np
@@ -19,7 +20,8 @@ from statmodels.formula.api import ols
 %matplotlib inline
 #+end_src
 
-Example of using array as data.
+Example of using array as data, since it is possible to create the data itself as an array, we can use dummy data for calculations.
+
 
 #+begin_src python :tangle Linear_Regression.py
 x = [[2, 3], [2, 5], [20, 8], [44, 2], [22, 84], [28, 18], [20, 18], [20, 17]]
@@ -27,7 +29,7 @@ y = [8, 15, 22, 24, 25, 20, 48, 23]
 x, y = np.array(x), np.array(y)
 #+end_src
 
-Fitting all the model using Linear Regression.
+Fitting all the model and add constant for X and create models using statsmodel.
 
 #+begin_src python :tangle Linear_Regression.py
 x = sm.add_constant(x)
@@ -36,8 +38,7 @@ results = model.fit()
 print(results.summary())
 #+end_src
 
-
-Results from the test:
+This model that already fitted then printed and represented as visualization and statsmodel. And this is the result from the test:
 
 #+begin_src python
                             OLS Regression Results
