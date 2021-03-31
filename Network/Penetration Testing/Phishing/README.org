@@ -39,6 +39,8 @@ $ sudo apt-get -y install golang-go
 $ go get github.com/mailhog/MailHog
 #+end_src
 
+#+RESULTS:
+
 Once you clone GoPhish and installing MailHog, you can then run it via command line by running:
 
 #+begin_src shell
@@ -72,6 +74,20 @@ Here will be where you import the site, click on import and include URL to the p
 [[./Assets/GoPhish_Email.png]]
 
 You can use Templates as above, it is taken from official GoPhish documentation page, you might want to go [[https://docs.getgophish.com/user-guide/building-your-first-campaign/creating-the-template][here]]. It is also possible to include attachments using this email, since it is only for testing purpose, it will attached nothing.
+
+#+begin_src
+Subject {{.Email}}
+
+{{.FirstName}},
+
+The password for {{.Email}} has expired.
+
+Please reset your password here.
+
+Thanks, Campus Ground
+
+{{.Tracker}}
+#+end_src
 
 [[./Assets/GoPhish_Email_URL.png]]
 
