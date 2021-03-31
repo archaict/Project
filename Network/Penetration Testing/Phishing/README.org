@@ -29,7 +29,7 @@ There are multiple preparation that you can do to help with assigning things lat
 
 #+begin_src shell
 # GoPhish
-$ mkdir -p ~/opt
+$ mkdir -p ~/opt/gophish
 $ cd ~/opt
 $ curl -L https://github.com/gophish/gophish/releases/download/0.7.1/gophish-v0.7.1-linux-64bit.zip -o gophish.zip
 $ unzip gophish.zip ~/opt/gophish
@@ -42,8 +42,13 @@ $ go get github.com/mailhog/MailHog
 Once you clone GoPhish and installing MailHog, you can then run it via command line by running:
 
 #+begin_src shell
-$ sudo ~/opt/gophish
-$ sudo ~/go/bin/MailHog
+# 1st Terminal
+$ cd ~/opt/gophish
+$ sudo ./gophish
+
+# 2nd Terminal
+$ cd ~/go/bin
+$ sudo ./MailHog
 #+end_src
 
 Once you run it on *separate* terminal, now we need to go to https://localhost:3333 for GoPhish and https://localhost:8025 for MailHog. There are some templates you have to fill before we launch the attack, this will be discussed on the next section. Username for *GoPhish* is =admin= & =gophish=.
