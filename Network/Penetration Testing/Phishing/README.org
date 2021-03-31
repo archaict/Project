@@ -9,16 +9,15 @@ Phishing is a type of attack that are using E-mail, voice (Vishing), or SMS (smi
 
 ** How does it work?
 
-Phishing can be done in multiple ways, while phishing itself can be run through E-mail, you might want to use other means of attack if you are targeting a specific person that might or might not use E-mail. Whatsapp, social media, can be used for Phishing campaign, it is because the educational needs in social media todays are mostly teenagers, which is a possible target for phishing.
+Phishing can be done in multiple ways, while phishing itself can be run through E-mail, you might want to use other means of attack if you are targeting a specific person that might or might not use E-mail. Whatsapp, social media, can be used for Phishing campaign, it is because the educational backgrounds in social media nowadays are mostly teenagers, which is a possible target for phishing.
 
 Phishing servers are usually run on cloud services, or can be hosted local in a computer, but since Phishers are sneaky, one might use public instances to do the attack. Each fake E-mail is sent to victim(s) E-mail address in lieu of other means of attack said above. Digital Ocean or AWS might be a good place to hosts this server. While the E-mail is sent, Phishers might get notice when the link is clicked or opened, if the E-mail is read or not, if the Landing Page sent already have forms filled by victim(s) or not, and any information related to the campaign.
 
 ** Gophish
 
-WEB: https://getgophish.com/
-GIT: https://github.com/gophish/gophish
+WEB: https://getgophish.com | GIT: https://github.com/gophish/gophish
 
-GoPhish can be used to create a campaign based Phishing environment, for this environment to work, we have to setup some boundaries first, one rule of thumb, do not use your personal mail address for this. =Mailhog= will help assigning email@localhost.localdomain to hog all the mail that sent or receive during the campaign, it is possible to use other E-mail address, but there's some issues that when sent to an E-mail address based on Google, it is possible that it will already flagged as spam or something else to help with the security.
+GoPhish can be used to create a campaign based Phishing environment, for this environment to work, we have to set up some boundaries first, one rule of thumb, do not use your personal mail address for this. =Mailhog= will help assigning email@localhost.localdomain to hog all the mail that sent or receive during the campaign, it is possible to use other E-mail address, but there's some issues that when sent to an E-mail address based on Google, it is possible that it will already flagged as spam or something else to help with the security.
 
 There are multiple preparation that you can do to help with assigning things later for gophish:
 - AWS, Azure, Digital Ocean, or local can be used as the base for GoPhish server.
