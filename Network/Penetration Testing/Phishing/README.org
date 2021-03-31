@@ -72,8 +72,6 @@ Here will be where you import the site, click on import and include URL to the p
 
 [[./Assets/GoPhish_Email.png]]
 
-You can use Templates as above, it is taken from official GoPhish documentation page, you might want to go [[https://docs.getgophish.com/user-guide/building-your-first-campaign/creating-the-template][here]]. It is also possible to include attachments using this email, since it is only for testing purpose, it will attached nothing.
-
 #+begin_src
 Subject {{.Email}}
 
@@ -87,6 +85,8 @@ Thanks, Campus Ground
 
 {{.Tracker}}
 #+end_src
+
+You can use Templates as above, it is taken from official GoPhish documentation page, you might want to go [[https://docs.getgophish.com/user-guide/building-your-first-campaign/creating-the-template][here]]. It is also possible to include attachments using this email, since it is only for testing purpose, it will attached nothing.
 
 [[./Assets/GoPhish_Email_URL.png]]
 
