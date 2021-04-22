@@ -1,6 +1,7 @@
 #+TITLE:Digital Forensics
 #+SUBTITLE:Your life is inside an 'image'.
 #+STARTUP: Content
+
 * Disks
 
 In Digital Forensics evidence can come in many forms and devices, most of it can be found as hardisk and USB peripherals.
@@ -363,12 +364,12 @@ Directory /home/user/FORENSICS
 drwxr-xr-x    - root  3 Mar 19:45 recup_dir.1
 .rw-r--r-- 6.8k root  3 Mar 19:34 testdisk.log
 #+end_src
+
 * Volatile
 
 Volatile memory are types of memory that are usually stored in RAM *only* when the systems are on power. This type of memory requires power to maintain its stored information, thus when the computer is shutdown, either normally or abruptedly or interrupted in any way, the data inside the storage will be erased.
 
 Since the tools are not installed, we have to install it manually by running commands below. This command will use the =setup.py= that are part of the repos to install its dependencies. Though it is installing all of its contents, you might still want to refer to its installation pages, since some errors will be found if you didn't install other tools alongside =volatility=. Below is the list of needed installation after installing =volatility=.
-
 
 ** Installing
 
@@ -382,7 +383,8 @@ Since the tools are not installed, we have to install it manually by running com
 - IPython
 - libforensic1394
 
-There are some dependencies that comes from python version 2, so you might want to install those dependencies using this command.
+FIXME! There are some dependencies that comes from python version 2, so you might want to install those dependencies using this command. You can bypass installing the dependencies for now, since it seems the installation is a bit broken. Skip ahead to the next code block.
+
 #+begin_src shell
 # Install python2 pip2 and deps
 $ wget https://bootstrap.pypa.io/get-pip.py
@@ -417,14 +419,16 @@ LINK: https://github.com/volatilityfoundation/volatility/wiki/Memory-Samples
 For simpler command, you can use command below, you can put this files anywhere, but for this purpose, it is better to put it inside IMG folder.
 
 #+begin_src shell
-$ wget http://files.sempersecurus.org/dumps/cridex_memdump.zip ~/IMG
+$ mkdir -p ~/IMG
 $ cd ~/IMG
+$ wget http://files.sempersecurus.org/dumps/cridex_memdump.zip ~/IMG/cridex_memdump.zip
 $ unzip cridex_memdump.zip
 #+end_src
 
-We will then use =vol.py= to see the imageinfo from =cridex.vmem=.
+First, check if you're inside =~/IMG= directory, after that we can proceed to =vol.py=. You might see some dependencies error, this is not intended, but because volatility itself has dependencies on =python2= modules.
+
 #+begin_src shell
-$ vol.py -f volatility3/cridex.vmem imageinfo
+$ vol.py -f cridex.vmem imageinfo
 
 Volatility Foundation Volatility Framework 2.6.1
 INFO    : volatility.debug    : Determining profile based on KDBG search...
@@ -546,17 +550,88 @@ You can see Geolocation of the IP's using this:
 #+begin_src shell
 $ curl https://freegeoip.app/xml/41.168.5.140
 <Response>
-	<IP>41.168.5.140</IP>
-	<CountryCode>ZA</CountryCode>
-	<CountryName>South Africa</CountryName>
-	<RegionCode>GP</RegionCode>
-	<RegionName>Gauteng</RegionName>
-	<City>Johannesburg</City>
-	<ZipCode>2041</ZipCode>
-	<TimeZone>Africa/Johannesburg</TimeZone>
-	<Latitude>-26.2308</Latitude>
-	<Longitude>28.0585</Longitude>
-	<MetroCode>0</MetroCode>
+    <IP>41.168.5.140</IP>
+    <CountryCode>ZA</CountryCode>
+    <CountryName>South Africa</CountryName>
+    <RegionCode>GP</RegionCode>
+    <RegionName>Gauteng</RegionName>
+    <City>Johannesburg</City>
+    <ZipCode>2041</ZipCode>
+    <TimeZone>Africa/Johannesburg</TimeZone>
+    <Latitude>-26.2308</Latitude>
+    <Longitude>28.0585</Longitude>
+    <MetroCode>0</MetroCode>
 </Response>
 
+$ curl https://freegeoip.app/xml/125.19.103.198
+<Response>
+    <IP>125.19.103.198</IP>
+    <CountryCode>IN</CountryCode>
+    <CountryName>India</CountryName>
+    <RegionCode></RegionCode>
+    <RegionName></RegionName>
+    <City></City>
+    <ZipCode></ZipCode>
+    <TimeZone>Asia/Kolkata</TimeZone>
+    <Latitude>20.0063</Latitude>
+    <Longitude>77.006</Longitude>
+    <MetroCode>0</MetroCode>
+</Response>
+#+end_src
+
+
+* Scapy
+
+Help you navigate and manipulate network packets.
+
+From Danscourses :
+
+- Part 1 : https://www.youtube.com/watch?v=EuTAmtMGdNU
+- Part 2 : https://www.youtube.com/watch?v=gOcT5r0spVM
+
+#+begin_src python :session *TURING_A* :exports results :results output /usr/bin/python3
+from scapy.all import *
+
+ping = IP(dst="192.168.1.1")/ICMP()
+print(ping)
+#+end_src
+
+** Analysis
+This can be used as alternative of wireshark in cli, technicaly they do the same thing, also tshark (cli wireshark).
+
+#+begin_src python
+$ sudo scapy
+>>> sniff(count=4)
+>>> sniff(iface='wlp2s0', prn=lambda x: x.summary(), count=4) # show live transmissions
+>>> sniff(iface='wlp2s0', prn=lambda x: x.show(),
+count=4) # show newest request (http, etc.)
+#+end_src
+
+#+begin_src python
+# List of available commands
+>>> lsc()
+# Read pcap file
+>>> p = rdpcap("/home/codex/Downloads/ground.pcap")
+# List ground.pcap
+>>> p
+<ground.pcap: TCP:733 UDP:40 ICMP:0 Other:7>
+# Length or total of packets captured
+>>> len(p)
+780
+# Choose or select packet
+>>> pkt = p[100]
+>>> pkt # show inside packet[100]
+# Type of packet
+>>> type(pkt)
+scapy.layers.l2.Ether
+# Userspace Variables inside packet[100]
+>>> dir(pkt)
+# Hex > There is usually passwords if on http (not careful)
+>>> hexdump(pkt)
+# List Information of packet[100]
+>>> ls(pkt)
+# Summary of packet[100]
+>>> pkt.summary()
+'Ether / IP / TCP 118.98.30.80:https > 192.168.0.0:XXXX A / Raw'
+>>> pkt.show()
 #+end_src
