@@ -597,29 +597,99 @@ print(ping)
 #+end_src
 
 ** Analysis
-This can be used as alternative of wireshark in cli, technicaly they do the same thing, also tshark (cli wireshark).
+This can be used as alternative of wireshark in cli, technicaly they do the same thing, also tshark (cli wireshark). To install use =sudo pip3 install scapy matplotlib pyx=, you can install just scapy, the rest are for warnings only.
 
 #+begin_src python
 $ sudo scapy
 >>> sniff(count=4)
->>> sniff(iface='wlp2s0', prn=lambda x: x.summary(), count=4) # show live transmissions
->>> sniff(iface='wlp2s0', prn=lambda x: x.show(),
-count=4) # show newest request (http, etc.)
+>>> sniff(iface='wlp2s0', prn=lambda x: x.summary(), count=4) # show live transmissions, iface is network interface
+>>> sniff(iface='wlp2s0', prn=lambda x: x.show(), count=4)    # show newest request (http, etc.)
 #+end_src
+
 
 #+begin_src python
 # List of available commands
 >>> lsc()
+
+IPID_count          : Identify IP id values classes in a list of packets
+arpcachepoison      : Poison target's cache with (your MAC,victim's IP) couple
+arping              : Send ARP who-has requests to determine which hosts are up
+arpleak             : Exploit ARP leak flaws, like NetBSD-SA2017-002.
+bind_layers         : Bind 2 layers on some specific fields' values.
+bridge_and_sniff    : Forward traffic between interfaces if1 and if2, sniff and return
+chexdump            : Build a per byte hexadecimal representation
+computeNIGroupAddr  : Compute the NI group Address. Can take a FQDN as input parameter
+corrupt_bits        :
+corrupt_bytes       :
+defrag              : defrag(plist) -> ([not fragmented], [defragmented],
+defragment          : defragment(plist) -> plist defragmented as much as possible
+dhcp_request        : Send a DHCP discover request and return the answer
+dyndns_add          : Send a DNS add message to a nameserver for "name" to have a new "rdata"
+dyndns_del          : Send a DNS delete message to a nameserver for "name"
+etherleak           : Exploit Etherleak flaw
+explore             : Function used to discover the Scapy layers and protocols.
+fletcher16_checkbytes: Calculates the Fletcher-16 checkbytes returned as 2 byte binary-string.
+fletcher16_checksum : Calculates Fletcher-16 checksum of the given buffer.
+fragleak            : --
+fragleak2           : --
+fragment            : Fragment a big IP datagram
+fuzz                :
+getmacbyip          : Return MAC address corresponding to a given IP address
+getmacbyip6         : Returns the MAC address corresponding to an IPv6 address
+hexdiff             :
+hexdump             : Build a tcpdump like hexadecimal view
+hexedit             : Run hexedit on a list of packets, then return the edited packets.
+hexstr              : Build a fancy tcpdump like hex from bytes.
+import_hexcap       : Imports a tcpdump like hexadecimal view
+is_promisc          : Try to guess if target is in Promisc mode. The target is provided by its ip.
+linehexdump         : Build an equivalent view of hexdump() on a single line
+ls                  : List  available layers, or infos on a given layer class or name.
+neighsol            : Sends and receive an ICMPv6 Neighbor Solicitation message
+overlap_frag        : Build overlapping fragments to bypass NIPS
+promiscping         : Send ARP who-has requests to determine which hosts are in promiscuous mode
+rdpcap              : Read a pcap or pcapng file and return a packet list
+report_ports        : portscan a target and output a LaTeX table
+restart             : Restarts scapy
+rfc                 :
+send                :
+sendp               :
+sendpfast           : Send packets at layer 2 using tcpreplay for performance
+sniff               :
+split_layers        : Split 2 layers previously bound.
+sr                  :
+sr1                 :
+sr1flood            : Flood and receive packets at layer 3 and return only the first answer
+srbt                : send and receive using a bluetooth socket
+srbt1               : send and receive 1 packet using a bluetooth socket
+srflood             : Flood and receive packets at layer 3
+srloop              :
+srp                 :
+srp1                :
+srp1flood           : Flood and receive packets at layer 2 and return only the first answer
+srpflood            : Flood and receive packets at layer 2
+srploop             :
+tcpdump             : Run tcpdump or tshark on a list of packets.
+tdecode             :
+traceroute          : Instant TCP traceroute
+traceroute6         : Instant TCP traceroute using IPv6
+traceroute_map      : Util function to call traceroute on multiple targets, thentshark : Sniff packets and print them calling pkt.summary().
+wireshark           :
+wrpcap              : Write a list of packets to a pcap file
+#+end_src
+
+This is the possible command you can use, I will list just enough info for you to understand.
+
+#+begin_src python
 # Read pcap file
->>> p = rdpcap("/home/codex/Downloads/ground.pcap")
+>>> pak = rdpcap("/home/codex/Downloads/ground.pcap")
 # List ground.pcap
->>> p
+>>> pak
 <ground.pcap: TCP:733 UDP:40 ICMP:0 Other:7>
 # Length or total of packets captured
 >>> len(p)
 780
 # Choose or select packet
->>> pkt = p[100]
+>>> pkt = pak[100]
 >>> pkt # show inside packet[100]
 # Type of packet
 >>> type(pkt)
