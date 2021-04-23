@@ -5,9 +5,7 @@
 
 * What it is?
 
-** Digital Forensics
-
-Investigation & analysis technique to gather, and preserve evidence from a particular computing device.
+Investigation & analysis technique to gather, and preserve evidence from a particular computing device. Digital Forensics can also be considered as Blue Teaming, while cybersecs Attack are considered Red Teaming. Digital Forensics also laid some basics for your computing knowledge, it also helps if you have grasps how computer, networks, and its pheriperals works beforehand.
 
 ** Digital Forensics Step
 
@@ -17,10 +15,12 @@ Investigation & analysis technique to gather, and preserve evidence from a parti
 4. Analyzing
 5. Presenting
 
-** CEAR
+** CEAR Steps
 
-Collection > Examination > Analysis > Reporting
-Mobile > Data > Information > Evidence
+CEAR: Collection > Examination > Analysis > Reporting
+Example: Mobile > Data > Information > Evidence
+
+You can gather data from mobile through dumping data and backups, using metasploit to gather infromation. MsfConsole lets you do remote hacking, but in this case it can be used in digital forensics as cybersecs red teaming, and analyze data as blue team.
 
 ** Identify
 
@@ -28,19 +28,24 @@ Mobile > Data > Information > Evidence
 2. Identify media types
 3. Survey it first
 
+   Once you know the goal fo the investigation, this will then clear the path as of what you need to get, either there are media/file types that you have to be aware of while investigating, or look at what might be possible to be taken as evidence.
+
 ** Acquire
 
 1. Plan it first
-   What needs to be done?
 2. Start acquire
-   Acquire from any possible sources.
 3. Verify the data
-   There is anti-forensics ( Compressing & Password )
+
+   What needs to be done? Like the step before it, identify what types of data is useful, and then create a plan as how to get those data. Acquire these data from any possible sources, either it is USB, Harddisk or other peripherals that can be used as data storage.
+
+   There is also anti-forensics ( Compressing & Password ) that is used to hinder forensics, since metadata is useful, some zips might reap off those metadata from files depending on how they compress the file. Password protected data or encrypted files can also hinder investigation in some way.
 
 ** Data Type
 
 1. Volatile [ RAM ]
 2. Non-Volatile [ Media, Text Files ]
+
+   You might see more of this below in the example of tools used for each data type.
 
 ** Examination
 
@@ -88,15 +93,16 @@ Timestamp create, update, etc
 
 ** Summary
 
-- Alwayss do forensics methodically.
-- Remember CEAR.
-- Identify and acquire.
-- Imaging first before live forensics.
+Things in digital forensics should be approached methodically, this will of course let you as Digital Forensics investigator to do things step by step, which is crucial in keeping evidence, identify evidence, acquire it and examining its content. Remember Collection > Examination > Analysis > Reporting, this step-by-step guidelines, like before, will help you true to your goal in investigation. Lastly, always do image backup with methods that you will see in this page, backup can be done with =dd= or other tools, and after the backup has been created, you'll be good to do live forensics.
 
-** Where to Learn?
+** Where to Learn & Practice?
+
 - [[https://www.forensicfocus.com/][Foresic Focus]]
 - [[https://www.honeynet.org/][Honeynet]]
-- CTF < [[file:20210305200056-digital_forensics.org][Digital Forensics]] practice
+- CTF Sites
+  + [[https://www.hackthebox.eu/][Hackthebox]]
+  + [[ https://trailofbits.github.io/ctf/forensics/ ][TrailofBits]]
+  + [[https://ctf101.org/forensics/overview/][CTF101]]
 
 * Disks
 
