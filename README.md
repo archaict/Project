@@ -3,7 +3,7 @@
 <i><sup> Agents, anomalies has been detected in your repo's. </sup></i></h4>
 
 <p align="justify">
-<i><sup> [WARNING: WRITER ARE NOT RESPONSIBLE FOR ANY MISUSE OR DAMAGE CAUSED BY USING TOOLS MENTIONED IN THIS REPO. IT IS ILLEGAL TO USE THIS TOOLS WITHOUT MUTUAL CONSENT, YOU'VE BEEN WARNED!]</sup></i>
+<b><sup> [WARNING: WRITER ARE NOT RESPONSIBLE FOR ANY MISUSE OR DAMAGE CAUSED BY USING TOOLS MENTIONED IN THIS REPO. IT IS ILLEGAL TO USE THIS TOOLS WITHOUT MUTUAL CONSENT, YOU'VE BEEN WARNED!]</sup></b>
 </p>
 
 This repo contains material that I used in univ projects and stuff that I learn along
