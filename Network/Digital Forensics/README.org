@@ -2,6 +2,102 @@
 #+SUBTITLE:Your life is inside an 'image'.
 #+STARTUP: Content
 
+
+* What it is?
+
+** Digital Forensics
+
+Investigation & analysis technique to gather, and preserve evidence from a particular computing device.
+
+** Digital Forensics Step
+
+1. Identifying
+2. Preserving
+3. Recovering
+4. Analyzing
+5. Presenting
+
+** CEAR
+
+Collection > Examination > Analysis > Reporting
+Mobile > Data > Information > Evidence
+
+** Identify
+
+1. What the main goals
+2. Identify media types
+3. Survey it first
+
+** Acquire
+
+1. Plan it first
+   What needs to be done?
+2. Start acquire
+   Acquire from any possible sources.
+3. Verify the data
+   There is anti-forensics ( Compressing & Password )
+
+** Data Type
+
+1. Volatile [ RAM ]
+2. Non-Volatile [ Media, Text Files ]
+
+** Examination
+
+1. Bypassing any OS security Features
+   + Windows: bitlocker < unlock first
+2. Bypassing Encryption
+   + Shut off any security measure before examine
+3. Struggling with file compression and Access Control
+   + Cellebrite > Iphone < No matter, it will still be unlocked, it is used in big company.
+4. Checking millions of data
+   + Always check data that are important, not everything < take times.
+
+** Modification Access Creation [MAC]
+
+Timestamp create, update, etc
++ Relation between time to each timestamp [ 1:00 user, 1:05 breached 1:10 user ]
+
+** Analysis
+
+- People [ Who? A > B Relationship? ]
+- Places [ Server room location? Last location? CCTV? ]
+- Items  [ Hardisk, Flashdisk? Information that are taken? ]
+- Events [ Timestamp, location, user relation? ]
+- Determine how every elements connected
+
+** Reporting
+
+- Always give alternative explanations as you can
+  + Do not report only one conclusion always use multiple
+  + Is it possible that another conclusion can be taken?
+- Audience Consideration
+  + Judge may not understand techincal jargon
+  + Use easily understood technical jargon
+- Actionable Information
+  + Ask information from collected evidence
+  + Do you know disk USB Flashdisk?
+
+** Basic Technique
+
+1. Methodical approaches when examine the data.
+2. Examine the copy, not the original one.
+3. Raw log have more confidence than in normalized one.
+4. Rely on file headers, not file extensions.
+5. One data log is not enough, combine from various data sources, and determine how information fits.
+
+** Summary
+
+- Alwayss do forensics methodically.
+- Remember CEAR.
+- Identify and acquire.
+- Imaging first before live forensics.
+
+** Where to Learn?
+- [[https://www.forensicfocus.com/][Foresic Focus]]
+- [[https://www.honeynet.org/][Honeynet]]
+- CTF < [[file:20210305200056-digital_forensics.org][Digital Forensics]] practice
+
 * Disks
 
 In Digital Forensics evidence can come in many forms and devices, most of it can be found as hardisk and USB peripherals.
