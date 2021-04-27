@@ -1,7 +1,10 @@
 #+TITLE:Digital Forensics
 #+SUBTITLE:Your life is inside an 'image'.
-#+STARTUP: Content
+#+STARTUP: Content inlineimages
 
+As general rule of thumb, when doing Forensics, Red/Blue Teaming, or other stuff that are based on Cyber Security, you should do it over VIRTUAL MACHINE, and do not use your daily driver to do this. You should do this inside a VM and passthrough the USB through VirtualBox or QEMU depending on what you use. It is advisable to DO NOT CONNECT VPN like HackTheBox to your host, do it INSIDE VIRTUAL MACHINE as you're sharing your connection with other trained hackers inside those CTFs VPN.
+
+If you're not sure of what you're doing, please refer to Cyber Security sections in this github repo or research about networking basics before you go into Digital Forensics or Cyber Security. YOU'VE BEEN WARNED.
 
 * What it is?
 
@@ -681,7 +684,6 @@ $ curl https://freegeoip.app/xml/125.19.103.198
 </Response>
 #+end_src
 
-
 * Scapy
 
 Help you navigate and manipulate network packets.
@@ -807,3 +809,15 @@ scapy.layers.l2.Ether
 'Ether / IP / TCP 118.98.30.80:https > 192.168.0.0:XXXX A / Raw'
 >>> pkt.show()
 #+end_src
+
+* Android
+
+Mobile digital forensics can be done in multiple ways, either manually or automatically. ADB tools are needed, also victim's phone USB debugging option should be enabled.
+
+** Android Triage
+
+This script is used to alleviate the many commands that are available in ADB tools. ADB stands for Android Debug Bridge, this tool usually used to help developers in debugging Android applications during creation or compilation time in Android Studio (or others). Android Triage created by Mattia Epifani, this bash script can be used to automatize operations that are usually "cumbersome" - if you're lazy - to a simple to understand script.
+
+[[./triage.jpg]]
+
+This is options that are available on the script itself, you might want to see inside the script in [[ https://github.com/RealityNet/android_triage ][this]] source.
