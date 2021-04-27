@@ -1,6 +1,4 @@
-#+TITLE:Penetration Testing
-#+SUBTITLE:Your life inside a lucky jar of chocolate chips.
-#+STARTUP: Content inlineimages
+# Penetration Testing
 
 <p align="justify">
 <b><sup> [WARNING: WRITER ARE NOT RESPONSIBLE FOR ANY MISUSE OR DAMAGE CAUSED BY USING TOOLS MENTIONED IN THIS REPO. IT IS ILLEGAL TO USE THIS TOOLS WITHOUT MUTUAL CONSENT, YOU'VE BEEN WARNED!]</sup></b>
