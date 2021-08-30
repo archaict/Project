@@ -202,11 +202,12 @@ good to go. You can check alias that you've been specified by typing
 
 Distribution manage all your packages. You might want to use Debian based distros if you're new to linux.
 
-| Base   | Package Manager | Usage           |
-| :----  | :-------------: | --------------: |
-| Arch   | package-manager | pacman -Syyu    |
-| Debian | aptitutde       | apt-get install |
-| Fedora | Dandified YUM   | dnf install     |
+| Base   | Package Manager | Usage             |
+| :----  | :-------------: | ----------------: |
+| Arch   | package-manager | pacman -Syyu      |
+| Debian | aptitutde       | apt-get install   |
+| Fedora | Dandified YUM   | dnf install       |
+| Nixos  | Nix             | configuration.nix |
 
 There are tailored distros that are based on above mainline ditros, they might
 be tailored for specified category in mind, like gaming, studio, and so on.
